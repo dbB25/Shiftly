@@ -111,18 +111,30 @@
     </script>
 <script>
     const botones = document.querySelectorAll("#areas-aprendizaje .area button");
+    const botonContinuar = document.querySelector(".boton-continuar button");
+
+    let areaSeleccionada = false;
 
     botones.forEach(boton => {
         boton.addEventListener("click", () => {
 
-            // Quitar la selección anterior
             botones.forEach(b => {
                 b.closest(".area").classList.remove("seleccionada");
             });
 
-            // Marcar la nueva área seleccionada
             boton.closest(".area").classList.add("seleccionada");
+            areaSeleccionada = true;
         });
+    });
+
+    botonContinuar.addEventListener("click", () => {
+
+        if (!areaSeleccionada) {
+            alert("Selecciona un área de aprendizaje para continuar.");
+            return;
+        }
+
+        alert("Área seleccionada. ¡Continuemos!");
     });
 </script>
 </body>
