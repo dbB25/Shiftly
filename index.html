@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiftly - Selección de áreas</title>
+
+    
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    SHIFT
+                </a>
+
+                <div class="navbar-links">
+                    <a href="#">Inicio</a>
+                    <a href="#">Aprender</a>
+                    <a href="#">Mi perfil</a>
+                    <a href="#">Ayuda</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <section class="seleccion-areas">
+            <div class="container">
+
+                <div class="encabezado-areas">
+                    <p>ÁREA DE APRENDIZAJE</p>
+
+                    <h1>¿Qué inglés quieres aprender?</h1>
+
+                    <p>
+                        Elige un área de aprendizaje para adaptar el contenido
+                        a tus intereses y comienza tu camino con SHIFT
+                    </p>
+                </div>
+                <div id="areas-aprendizaje">
+                    <article class="area">
+        <h2>Programación</h2>
+        <p>Inglés enfocado en tecnología, desarrollo y mundo digital</p>
+        <button type="button">Seleccionar →</button>
+    </article>
+
+    <article class="area">
+        <h2>Gastronomía</h2>
+        <p>Aprende vocabulario, expresiones y situaciones del mundo culinario</p>
+        <button type="button">Seleccionar →</button>
+    </article>
+
+    <article class="area">
+        <h2>Turismo</h2>
+        <p>Inglés para viajes, hoteles, atención al cliente y experiencias turísticas</p>
+        <button type="button">Seleccionar →</button>
+    </article>
+
+    <article class="area">
+        <h2>Negocios</h2>
+        <p>Inglés para ambientes profesionales, empresariales y comunicación laboral</p>
+        <button type="button">Seleccionar →</button>
+    </article>
+
+    <article class="area">
+        <h2>Inglés cotidiano</h2>
+        <p>Expresiones y vocabulario para situaciones diarias de la vida real</p>
+        <button type="button">Seleccionar →</button>
+    </article>
+                </div>
+                <div class="boton-continuar">
+                    <button type="button">
+                        Continuar →
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>
+            En SHIFT creemos que el inglés puede llevarte más lejos
+        </p>
+    </footer>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+<script>
+    const botones = document.querySelectorAll("#areas-aprendizaje .area button");
+    const botonContinuar = document.querySelector(".boton-continuar button");
+
+    let areaSeleccionada = false;
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+
+            botones.forEach(b => {
+                b.closest(".area").classList.remove("seleccionada");
+            });
+
+            boton.closest(".area").classList.add("seleccionada");
+            areaSeleccionada = true;
+        });
+    });
+
+    botonContinuar.addEventListener("click", () => {
+
+        if (!areaSeleccionada) {
+            alert("Selecciona un área de aprendizaje para continuar");
+            return;
+        }
+
+        alert("Área seleccionada¡Continuemos!");
+    });
+</script>
+</body>
+</html>
