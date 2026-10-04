@@ -142,7 +142,7 @@ button:hover {
     main h1 {
         font-size: 32px;
     }
-}/* ===== DISTRIBUCIÓN DE LA SECCIÓN ===== */
+}
 
 #seleccion-areas .container {
     max-width: 1450px;
@@ -155,7 +155,7 @@ button:hover {
     align-items: center;
 }
 
-/* Texto de introducción */
+
 .encabezado-areas {
     text-align: left;
     margin-bottom: 0;
@@ -175,7 +175,7 @@ button:hover {
     max-width: 420px;
 }
 
-/* Cinco tarjetas */
+
 #areas-aprendizaje {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -223,7 +223,7 @@ button:hover {
     color: white;
 }
 
-/* Botón continuar */
+
 .boton-continuar {
     grid-column: 1 / -1;
     text-align: center;
@@ -261,7 +261,7 @@ button:hover {
     overflow-wrap: normal;
     word-break: normal;
 }
-/* Área seleccionada */
+
 #areas-aprendizaje .area.seleccionada {
     border: 3px solid #5b1557;
     transform: scale(1.03);
