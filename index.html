@@ -109,6 +109,21 @@
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
+<script>
+    const botones = document.querySelectorAll("#areas-aprendizaje .area button");
 
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+
+            // Quitar la selección anterior
+            botones.forEach(b => {
+                b.closest(".area").classList.remove("seleccionada");
+            });
+
+            // Marcar la nueva área seleccionada
+            boton.closest(".area").classList.add("seleccionada");
+        });
+    });
+</script>
 </body>
 </html>

@@ -261,3 +261,9 @@ button:hover {
     overflow-wrap: normal;
     word-break: normal;
 }
+/* Área seleccionada */
+#areas-aprendizaje .area.seleccionada {
+    border: 3px solid #5b1557;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(91, 21, 87, 0.25);
+}
