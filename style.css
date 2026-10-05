@@ -146,6 +146,13 @@ main > p {
     line-height: 1.6;
 }
 
+main.container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 40px auto !important;
+    display: block !important;
+}
+
 /* =========================================
    SELECCIÓN DE ÁREAS
    ========================================= */
@@ -223,12 +230,12 @@ main > p {
 }
 
 #areas-aprendizaje .area.seleccionada {
-    border: 3px solid #5b1557;
+    border: 3px solid var(--color-secundario);
     transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(91, 21, 87, 0.25);
+    box-shadow: 0 8px 20px rgba(82, 21, 78, 0.25);
 }
 
-/* BOTONES */
+/* BOTONES GLOBALES */
 
 .area button,
 button,
@@ -241,6 +248,7 @@ button,
     font-size: 14px;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.2s ease;
 }
 
 .area button:hover,
@@ -254,8 +262,6 @@ button:hover,
     grid-column: 1 / -1;
     text-align: center;
     margin-top: 10px;
-    overflow-wrap: normal;
-    word-break: normal;
 }
 
 .boton-continuar button {
@@ -413,7 +419,7 @@ button:hover,
 }
 
 /* =========================================
-   RESULTADO DEL DIAGNÓSTICO
+   RESULTADO DEL DIAGNÓSTICO (RESTAURADO)
    ========================================= */
 
 .resultado-diagnostico {
@@ -432,7 +438,7 @@ button:hover,
 }
 
 .resultado-encabezado p:first-child {
-    color: var(--color-secundario);
+    color: #52154E;
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -440,13 +446,13 @@ button:hover,
 }
 
 .resultado-encabezado h1 {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 42px;
     margin-bottom: 15px;
 }
 
 .resultado-encabezado p:last-child {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 17px;
     line-height: 1.6;
     max-width: 650px;
@@ -454,7 +460,7 @@ button:hover,
 }
 
 .resultado-card {
-    background-color: var(--color-superficie);
+    background-color: #EFE9E7;
     border-radius: 20px;
     padding: 40px;
     text-align: center;
@@ -462,7 +468,7 @@ button:hover,
 }
 
 .resultado-label {
-    color: var(--color-secundario);
+    color: #52154E;
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -476,7 +482,7 @@ button:hover,
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-secundario);
+    background-color: #52154E;
     color: white;
     border-radius: 50%;
     font-size: 38px;
@@ -484,13 +490,13 @@ button:hover,
 }
 
 .resultado-card h2 {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 28px;
     margin-bottom: 15px;
 }
 
 .resultado-card > p:last-child {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 16px;
     line-height: 1.6;
     max-width: 600px;
@@ -498,7 +504,7 @@ button:hover,
 }
 
 .resultado-recomendacion {
-    background-color: var(--color-fondo);
+    background-color: #DAE0F2;
     border-radius: 20px;
     padding: 30px;
     margin-top: 25px;
@@ -506,13 +512,13 @@ button:hover,
 }
 
 .resultado-recomendacion h2 {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 23px;
     margin-bottom: 12px;
 }
 
 .resultado-recomendacion p {
-    color: var(--color-primario);
+    color: #111344;
     font-size: 16px;
     line-height: 1.6;
     margin: 0 auto;
@@ -532,13 +538,13 @@ button:hover,
 }
 
 .resultado-botones .btn-primary {
-    background-color: var(--color-secundario);
-    border-color: var(--color-secundario);
+    background-color: #52154E;
+    border-color: #52154E;
 }
 
 .resultado-botones .btn-primary:hover {
-    background-color: var(--color-primario);
-    border-color: var(--color-primario);
+    background-color: #111344;
+    border-color: #111344;
 }
 
 /* =========================================
@@ -575,18 +581,6 @@ button:hover,
     margin-bottom: 10px;
 }
 
-.dashboard-encabezado p:last-child {
-    color: var(--color-primario);
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-.dashboard-contenido {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
 .dashboard-card {
     background-color: var(--color-blanco);
     border-radius: 20px;
@@ -608,12 +602,6 @@ button:hover,
     margin-bottom: 15px;
 }
 
-.dashboard-card span {
-    color: var(--color-primario);
-    font-size: 15px;
-    line-height: 1.5;
-}
-
 .dashboard-card .progress {
     height: 12px;
     border-radius: 20px;
@@ -633,19 +621,6 @@ button:hover,
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-
-.dashboard-racha h2 {
-    font-size: 38px;
-}
-
-/* Estadísticas del Dashboard */
-
-.dashboard-estadisticas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 20px;
 }
 
 .estadistica {
@@ -671,64 +646,14 @@ button:hover,
     margin-bottom: 8px;
 }
 
-.estadistica-texto {
-    color: var(--color-primario);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* Progreso por área del Dashboard */
-
-.progreso-area {
-    margin-top: 20px;
-}
-
-.area-item {
-    margin-bottom: 20px;
-}
-
-.area-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    color: var(--color-primario);
-    font-weight: 600;
-}
-
 .area-info span:last-child {
     color: var(--color-secundario);
     font-weight: 700;
 }
 
-.progreso-area .progress {
-    height: 12px;
-    background-color: var(--color-fondo);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
 .progreso-area .progress-bar {
     background-color: var(--color-secundario);
     border-radius: 10px;
-}
-
-/* Siguiente lección */
-
-.dashboard-siguiente {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.dashboard-siguiente h2 {
-    margin-bottom: 5px;
-}
-
-.dashboard-siguiente p {
-    margin-bottom: 8px;
 }
 
 .dashboard-siguiente .btn {
@@ -744,6 +669,76 @@ button:hover,
 .dashboard-siguiente .btn:hover {
     background-color: var(--color-primario);
     border-color: var(--color-primario);
+}
+
+/* =========================================
+   GLOSARIO Y BIBLIOTECA DE REPASO (CON PALETA CORPORATIVA)
+   ========================================= */
+
+.card-body {
+    text-align: center;
+}
+
+.card-body .badge {
+    background-color: var(--color-secundario) !important;
+    color: #FFFFFF !important;
+    display: inline-block;
+    margin: 0 auto 8px auto;
+    font-weight: 500;
+}
+
+.card-title {
+    color: var(--color-primario) !important;
+}
+
+.card-body details summary.btn-outline-dark {
+    color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.card-body details summary.btn-outline-dark:hover {
+    background-color: var(--color-secundario) !important;
+    color: #FFFFFF !important;
+}
+
+.card-body .list-group-item {
+    text-align: center;
+}
+
+.card-body .list-group-item > .d-flex {
+    justify-content: center !important;
+    gap: 8px;
+    color: var(--color-primario) !important;
+}
+
+.card-body .list-group-item .bi-volume-up-fill {
+    color: var(--color-secundario) !important;
+}
+
+.card-body details .text-secondary {
+    text-align: center;
+    color: var(--color-secundario) !important;
+    font-weight: 600;
+}
+
+.btn-dark {
+    background-color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+}
+
+.btn-outline-dark {
+    color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-secundario) !important;
+    color: #FFFFFF !important;
 }
 
 /* =========================================
