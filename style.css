@@ -889,3 +889,710 @@ button:hover,
         align-items: center;
     }
 }
+/* =========================================
+   PANTALLA RESULTADO DE LECCIÓN (FIN DE LECCIÓN)
+   ========================================= */
+
+/* Reinicio de contenedores principales para evitar que grid lo aplaste */
+main.resultado-leccion,
+.resultado-leccion {
+    background-color: var(--color-fondo) !important;
+    padding: 60px 20px !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+.resultado-leccion .container {
+    max-width: 850px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 15px !important;
+}
+
+/* Encabezado */
+.resultado-encabezado {
+    text-align: center !important;
+    margin-bottom: 10px !important;
+}
+
+.resultado-etiqueta {
+    color: var(--color-secundario) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 8px !important;
+}
+
+.resultado-encabezado h1 {
+    color: var(--color-primario) !important;
+    margin: 10px 0 !important;
+}
+
+.resultado-subtitulo {
+    color: var(--color-primario) !important;
+    font-size: 16px !important;
+    margin-top: 8px !important;
+}
+
+/* Tarjetas independientes y espaciadas */
+.resultado-card {
+    background-color: var(--color-blanco) !important;
+    border-radius: 20px !important;
+    padding: 40px 30px !important;
+    box-shadow: 0 8px 24px rgba(17, 19, 68, 0.08) !important;
+    margin-bottom: 25px !important;
+    width: 100% !important;
+}
+
+/* Estrellas y Nivel de Porcentaje */
+.estrellas-puntaje {
+    margin-bottom: 25px !important;
+}
+
+.estrellas-puntaje i {
+    color: #FFB800 !important;
+    margin: 0 4px !important;
+}
+
+.estrellas-puntaje .estrella-vacia {
+    color: #CBD5E1 !important;
+}
+
+.nivel-porcentaje {
+    width: 120px !important;
+    height: 120px !important;
+    background-color: var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 38px !important;
+    font-weight: 700 !important;
+    margin: 0 auto 25px auto !important;
+    box-shadow: 0 8px 20px rgba(82, 21, 78, 0.25) !important;
+}
+
+.resultado-resumen-texto {
+    max-width: 580px !important;
+    color: var(--color-primario) !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    margin: 0 auto 30px auto !important;
+}
+
+/* Caja de precisión con barra */
+.barra-precision-caja {
+    background-color: var(--color-superficie) !important;
+    color: var(--color-primario) !important;
+    padding: 22px !important;
+    border-radius: 16px !important;
+    margin-top: 15px !important;
+}
+
+.barra-precision-caja .progress {
+    height: 12px !important;
+    background-color: var(--color-fondo) !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.barra-precision-caja .progress-bar {
+    background-color: var(--color-secundario) !important;
+    border-radius: 20px !important;
+}
+
+/* Lista de Aciertos y Errores (Acomodo vertical con aire) */
+.lista-respuestas {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin-top: 25px !important;
+}
+
+.tarjeta-respuesta {
+    background-color: var(--color-blanco) !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+.tarjeta-respuesta.acierto {
+    border-left: 6px solid #22C55E !important;
+}
+
+.tarjeta-respuesta.error {
+    border-left: 6px solid #EF4444 !important;
+}
+
+.insignia-estado {
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.estado-acierto {
+    background-color: #DCFCE7 !important;
+    color: #15803D !important;
+}
+
+.estado-error {
+    background-color: #FEE2E2 !important;
+    color: #B91C1C !important;
+}
+
+.detalle-respuesta {
+    background-color: #F8FAFC !important;
+    border: 1px solid #F1F5F9 !important;
+    padding: 14px 18px !important;
+    border-radius: 10px !important;
+    margin-top: 12px !important;
+    line-height: 1.5 !important;
+}
+
+.texto-verde {
+    color: #16A34A !important;
+    font-weight: 600 !important;
+}
+
+/* Botones Inferiores de Acción */
+.resultado-botones {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 15px !important;
+    margin-bottom: 30px !important;
+}
+
+.btn-repasar {
+    color: var(--color-secundario) !important;
+    border: 2px solid var(--color-secundario) !important;
+    font-weight: 600 !important;
+    background-color: transparent !important;
+    border-radius: 25px !important;
+    padding: 12px 28px !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.btn-repasar:hover {
+    background-color: var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+}
+
+.btn-siguiente {
+    background-color: var(--color-secundario) !important;
+    border: 2px solid var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+    font-weight: 600 !important;
+    border-radius: 25px !important;
+    padding: 12px 28px !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.btn-siguiente:hover {
+    background-color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
+    color: var(--color-blanco) !important;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 576px) {
+    .resultado-botones {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .btn-repasar,
+    .btn-siguiente {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+/* =========================================
+   ESTILOS EXCLUSIVOS - FIN DE LECCIÓN
+   ========================================= */
+
+.vista-resultado {
+    background-color: var(--color-fondo) !important;
+    padding: 50px 20px !important;
+    min-height: 80vh;
+}
+
+.contenedor-resultado {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 35px !important; /* Espacio vertical amplio entre secciones */
+}
+
+/* Encabezado */
+.encabezado-resultado {
+    text-align: center !important;
+}
+
+.etiqueta-resultado {
+    color: var(--color-secundario) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px !important;
+    margin-bottom: 8px !important;
+}
+
+.encabezado-resultado h1 {
+    color: var(--color-primario) !important;
+    font-size: 38px !important;
+    margin-bottom: 10px !important;
+}
+
+.subtitulo-resultado {
+    color: var(--color-primario) !important;
+    font-size: 16px !important;
+}
+
+/* Tarjetas */
+.tarjeta-resultado {
+    background-color: var(--color-blanco) !important;
+    border-radius: 20px !important;
+    padding: 40px !important;
+    box-shadow: 0 8px 24px rgba(17, 19, 68, 0.08) !important;
+}
+
+.tarjeta-centrada {
+    text-align: center !important;
+}
+
+.titulo-seccion {
+    color: var(--color-primario) !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+}
+
+/* Estrellas y Círculo */
+.estrellas-puntaje {
+    font-size: 32px !important;
+    margin-bottom: 20px !important;
+}
+
+.estrellas-puntaje i {
+    color: #FFB800 !important;
+    margin: 0 3px !important;
+}
+
+.estrellas-puntaje .estrella-vacia {
+    color: #CBD5E1 !important;
+}
+
+.circulo-porcentaje {
+    width: 110px !important;
+    height: 110px !important;
+    background-color: var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 34px !important;
+    font-weight: 700 !important;
+    margin: 0 auto 20px auto !important;
+    box-shadow: 0 8px 20px rgba(82, 21, 78, 0.2) !important;
+}
+
+.texto-resumen {
+    color: var(--color-primario) !important;
+    font-size: 16px !important;
+    max-width: 500px !important;
+    margin: 0 auto 30px auto !important;
+    line-height: 1.6 !important;
+}
+
+/* Caja de Precisión */
+.caja-precision {
+    background-color: var(--color-superficie) !important;
+    padding: 20px !important;
+    border-radius: 16px !important;
+}
+
+.info-precision {
+    display: flex !important;
+    justify-content: space-between !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--color-primario) !important;
+    margin-bottom: 10px !important;
+}
+
+.caja-precision .progress {
+    height: 12px !important;
+    background-color: var(--color-fondo) !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.caja-precision .progress-bar {
+    background-color: var(--color-secundario) !important;
+    border-radius: 20px !important;
+}
+
+/* Lista de Aciertos/Errores */
+.lista-respuestas {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important; /* Separación vertical entre preguntas */
+}
+
+.item-respuesta {
+    background-color: var(--color-blanco) !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 20px !important;
+}
+
+.item-respuesta.acierto {
+    border-left: 6px solid #22C55E !important;
+}
+
+.item-respuesta.error {
+    border-left: 6px solid #EF4444 !important;
+}
+
+.encabezado-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 12px !important;
+}
+
+.insignia-estado {
+    padding: 5px 14px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.estado-acierto {
+    background-color: #DCFCE7 !important;
+    color: #15803D !important;
+}
+
+.estado-error {
+    background-color: #FEE2E2 !important;
+    color: #B91C1C !important;
+}
+
+.numero-pregunta {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #64748B !important;
+}
+
+.pregunta-texto {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--color-primario) !important;
+    margin-bottom: 12px !important;
+}
+
+.detalle-caja {
+    background-color: #F8FAFC !important;
+    border: 1px solid #F1F5F9 !important;
+    padding: 14px 18px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+}
+
+.texto-verde {
+    color: #16A34A !important;
+    font-weight: 700 !important;
+}
+
+/* Botones */
+.botones-resultado {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 10px !important;
+}
+
+.btn-resultado {
+    border-radius: 25px !important;
+    padding: 12px 30px !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.btn-repasar {
+    color: var(--color-secundario) !important;
+    border: 2px solid var(--color-secundario) !important;
+    background-color: transparent !important;
+}
+
+.btn-repasar:hover {
+    background-color: var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+}
+
+.btn-siguiente {
+    background-color: var(--color-secundario) !important;
+    border: 2px solid var(--color-secundario) !important;
+    color: var(--color-blanco) !important;
+}
+
+.btn-siguiente:hover {
+    background-color: var(--color-primario) !important;
+    border-color: var(--color-primario) !important;
+    color: var(--color-blanco) !important;
+}
+
+.footer-simple {
+    background-color: var(--color-blanco) !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 25px 0 !important;
+    margin-top: 40px !important;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .botones-resultado {
+        flex-direction: column !important;
+    }
+
+    .btn-resultado {
+        width: 100% !important;
+    }
+
+    .tarjeta-resultado {
+        padding: 25px 20px !important;
+    }
+}
+/* =========================================
+   ESTILOS EXCLUSIVOS - AUTENTICACIÓN Y PERFIL
+   ========================================= */
+
+.vista-autenticacion {
+    background-color: var(--color-fondo) !important;
+    padding: 60px 20px !important;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-autenticacion {
+    width: 100%;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+}
+
+.tarjeta-autenticacion {
+    background-color: var(--color-blanco) !important;
+    border-radius: 20px !important;
+    padding: 40px 30px !important;
+    box-shadow: 0 8px 24px rgba(17, 19, 68, 0.08) !important;
+}
+
+.encabezado-auth {
+    margin-bottom: 25px !important;
+}
+
+.encabezado-auth h1 {
+    color: var(--color-primario) !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+
+.formulario-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.campo-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label-auth {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.caja-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-input {
+    position: absolute;
+    left: 14px;
+    color: #64748B;
+    font-size: 16px;
+}
+
+.input-auth {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-auth-simple {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-auth:focus,
+.input-auth-simple:focus {
+    border-color: var(--color-secundario);
+}
+
+.enlace-primario {
+    color: var(--color-secundario);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.enlace-secundario {
+    color: #64748B;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.enlace-primario:hover,
+.enlace-secundario:hover {
+    text-decoration: underline;
+}
+
+.pie-auth {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.icono-destacado {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-superficie);
+    color: var(--color-secundario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto;
+}
+
+/* Código de Verificación de 4 dígitos */
+.caja-codigo-verificacion {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.input-codigo {
+    width: 55px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px solid #CBD5E1;
+    border-radius: 12px;
+    color: var(--color-primario);
+    outline: none;
+}
+
+.input-codigo:focus {
+    border-color: var(--color-secundario);
+}
+
+/* Vista de Perfil */
+.vista-perfil {
+    background-color: var(--color-fondo) !important;
+    padding: 50px 20px !important;
+    min-height: 80vh;
+}
+
+.contenedor-perfil {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.avatar-perfil {
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-secundario);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+}
+/* =========================================
+   PANTALLA DE CONTACTO Y UBICACIÓN
+   ========================================= */
+
+/* Estructura del mapa en Google Maps */
+iframe {
+    border-radius: 12px;
+    width: 100%;
+    min-height: 400px;
+    box-shadow: 0 4px 12px rgba(17, 19, 68, 0.05);
+}
+
+/* Enlace del teléfono con transición de color */
+a[href^="tel:"] {
+    transition: color 0.2s ease;
+}
+
+a[href^="tel:"]:hover {
+    color: var(--color-primario) !important;
+    text-decoration: underline !important;
+}
+
+/* Ajustes de campos y área de texto */
+textarea.form-control {
+    resize: none;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+}
+
+textarea.form-control:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 0.25rem rgba(82, 21, 78, 0.15);
+}
+
+/* Responsive para pantallas móviles */
+@media (max-width: 991px) {
+    iframe {
+        min-height: 320px;
+    }
+}
