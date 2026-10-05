@@ -933,3 +933,41 @@ button:hover {
     }
 
 }
+
+/* =========================================
+   PROGRESO POR ÁREA
+   ========================================= */
+
+.progreso-area {
+    margin-top: 20px;
+}
+
+.area-item {
+    margin-bottom: 20px;
+}
+
+.area-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #111344;
+    font-weight: 600;
+}
+
+.area-info span:last-child {
+    color: #52154E;
+    font-weight: 700;
+}
+
+.progreso-area .progress {
+    height: 12px;
+    background-color: #DAE0F2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progreso-area .progress-bar {
+    background-color: #52154E;
+    border-radius: 10px;
+}

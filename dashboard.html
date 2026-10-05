@@ -108,92 +108,132 @@
 
 
                     <!-- ESTADÍSTICAS -->
-<div class="dashboard-card">
-    <h3>Mis estadísticas</h3>
+                    <div class="dashboard-card">
 
-    <div class="dashboard-estadisticas">
+                        <h3>Mis estadísticas</h3>
 
-        <div class="estadistica">
-            <span class="estadistica-numero">12</span>
-            <span class="estadistica-texto">Lecciones completadas</span>
-        </div>
+                        <div class="dashboard-estadisticas">
 
-        <div class="estadistica">
-            <span class="estadistica-numero">145</span>
-            <span class="estadistica-texto">Palabras aprendidas</span>
-        </div>
+                            <div class="estadistica">
+                                <span class="estadistica-numero">12</span>
+                                <span class="estadistica-texto">
+                                    Lecciones completadas
+                                </span>
+                            </div>
 
-        <div class="estadistica">
-            <span class="estadistica-numero">38</span>
-            <span class="estadistica-texto">Ejercicios realizados</span>
-        </div>
+                            <div class="estadistica">
+                                <span class="estadistica-numero">145</span>
+                                <span class="estadistica-texto">
+                                    Palabras aprendidas
+                                </span>
+                            </div>
 
-    </div>
-</div>
+                            <div class="estadistica">
+                                <span class="estadistica-numero">38</span>
+                                <span class="estadistica-texto">
+                                    Ejercicios realizados
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
 
 
                     <!-- PROGRESO POR ÁREA -->
-                    <div class="dashboard-card dashboard-areas">
+                    <div class="dashboard-card">
 
-                        <p>PROGRESO POR ÁREA</p>
+                        <h3>Progreso por área</h3>
 
-                        <div class="area-progreso">
-                            <div>
-                                <span>Vocabulario</span>
-                                <strong>75%</strong>
-                            </div>
+                        <div class="progreso-area">
 
-                            <div class="progress">
-                                <div
-                                    class="progress-bar"
-                                    style="width: 75%;">
+                            <!-- VOCABULARIO -->
+                            <div class="area-item">
+
+                                <div class="area-info">
+                                    <span>Vocabulario</span>
+                                    <span>75%</span>
                                 </div>
-                            </div>
-                        </div>
 
-
-                        <div class="area-progreso">
-                            <div>
-                                <span>Gramática</span>
-                                <strong>60%</strong>
-                            </div>
-
-                            <div class="progress">
-                                <div
-                                    class="progress-bar"
-                                    style="width: 60%;">
+                                <div class="progress">
+                                    <div
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: 75%;"
+                                        aria-valuenow="75"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-
-                        <div class="area-progreso">
-                            <div>
-                                <span>Comprensión</span>
-                                <strong>55%</strong>
                             </div>
 
-                            <div class="progress">
-                                <div
-                                    class="progress-bar"
-                                    style="width: 55%;">
+
+                            <!-- GRAMÁTICA -->
+                            <div class="area-item">
+
+                                <div class="area-info">
+                                    <span>Gramática</span>
+                                    <span>60%</span>
                                 </div>
-                            </div>
-                        </div>
 
-
-                        <div class="area-progreso">
-                            <div>
-                                <span>Conversación</span>
-                                <strong>45%</strong>
-                            </div>
-
-                            <div class="progress">
-                                <div
-                                    class="progress-bar"
-                                    style="width: 45%;">
+                                <div class="progress">
+                                    <div
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: 60%;"
+                                        aria-valuenow="60"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
                                 </div>
+
                             </div>
+
+
+                            <!-- COMPRENSIÓN -->
+                            <div class="area-item">
+
+                                <div class="area-info">
+                                    <span>Comprensión</span>
+                                    <span>55%</span>
+                                </div>
+
+                                <div class="progress">
+                                    <div
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: 55%;"
+                                        aria-valuenow="55"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <!-- CONVERSACIÓN -->
+                            <div class="area-item">
+
+                                <div class="area-info">
+                                    <span>Conversación</span>
+                                    <span>45%</span>
+                                </div>
+
+                                <div class="progress">
+                                    <div
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: 45%;"
+                                        aria-valuenow="45"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -203,6 +243,7 @@
                     <div class="dashboard-card dashboard-siguiente">
 
                         <div>
+
                             <p>SIGUIENTE LECCIÓN</p>
 
                             <h2>
@@ -212,6 +253,7 @@
                             <span>
                                 Daily Conversations
                             </span>
+
                         </div>
 
                         <a href="#" class="btn btn-primary">
