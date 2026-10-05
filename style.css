@@ -971,3 +971,116 @@ button:hover {
     background-color: #52154E;
     border-radius: 10px;
 }
+
+/* =========================================
+   LOGO DEL NAVBAR
+   ========================================= */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.navbar-brand span {
+    color: #111344;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   DASHBOARD RESPONSIVE
+   ========================================= */
+
+@media (max-width: 992px) {
+
+    .dashboard-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-racha {
+        min-height: 180px;
+    }
+
+    .dashboard-siguiente {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================
+   NAVBAR RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .navbar-brand img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar-brand span {
+        font-size: 27px;
+    }
+
+    .dashboard-encabezado h1 {
+        font-size: 42px;
+    }
+
+    .dashboard-card {
+        padding: 25px;
+    }
+
+}
+
+
+/* =========================================
+   ESTADÍSTICAS EN MÓVIL
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .dashboard-estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .estadistica {
+        min-height: 110px;
+    }
+
+    .dashboard-encabezado h1 {
+        font-size: 34px;
+    }
+
+    .dashboard-encabezado p {
+        font-size: 16px;
+    }
+
+    .dashboard-siguiente {
+        align-items: center;
+    }
+
+}
