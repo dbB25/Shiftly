@@ -640,3 +640,35 @@ button:hover {
         width: 100%;
     }
 }
+
+/* LOGO DE SHIFTLY */
+.logo-shiftly {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-brand span {
+    color: #111344;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* AJUSTE DEL LOGO EN MÓVILES */
+@media (max-width: 600px) {
+
+    .logo-shiftly {
+        height: 36px;
+    }
+
+    .navbar-brand span {
+        font-size: 24px;
+    }
+
+}
