@@ -62,14 +62,22 @@ body {
 }
 
 .top-nav a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 20px;
     color: var(--color-primario);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
 }
 
-.top-nav a:hover {
+.top-nav a:hover,
+.top-nav a.selected {
     color: var(--color-secundario);
+}
+
+.top-nav a.selected {
+    background: rgba(237, 208, 236, 0.55);
 }
 
 .nav-avatar {
@@ -105,6 +113,10 @@ body {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+
+.heading-accent {
+    color: var(--color-secundario);
 }
 
 .page-head h1 {
