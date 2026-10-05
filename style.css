@@ -885,3 +885,51 @@ button:hover {
 .dashboard-racha h2 {
     font-size: 38px;
 }
+
+/* =========================================
+   ESTADÍSTICAS DE APRENDIZAJE
+   ========================================= */
+
+.dashboard-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.estadistica {
+    background-color: #DAE0F2;
+    border-radius: 16px;
+    padding: 25px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 130px;
+    transition: transform 0.2s ease;
+}
+
+.estadistica:hover {
+    transform: translateY(-4px);
+}
+
+.estadistica-numero {
+    color: #52154E;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.estadistica-texto {
+    color: #111344;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+    .dashboard-estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+}
