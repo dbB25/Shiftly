@@ -163,16 +163,16 @@ button:hover {
 
 .encabezado-areas h1 {
     color: #111344;
-    font-size: 42px;
-    line-height: 1.15;
+    font-size: 35px;
+    line-height: 1;
     margin: 12px 0 20px;
 }
 
 .encabezado-areas p {
     color: #111344;
     font-size: 18px;
-    line-height: 1.5;
-    max-width: 420px;
+    line-height: 1;
+    max-width: 400px;
 }
 
 
@@ -185,7 +185,7 @@ button:hover {
 #areas-aprendizaje .area {
     background-color: #EFE9E7;
     border-radius: 20px;
-    padding: 25px 15px;
+    padding: 20px 15px;
     text-align: center;
     min-height: 300px;
 
@@ -198,14 +198,15 @@ button:hover {
 
 #areas-aprendizaje .area h2 {
     color: #111344;
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 12px;
 }
 
 #areas-aprendizaje .area p {
     color: #111344;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: 12px;
+    line-height: 1;
+    justify-content: center;
 }
 
 #areas-aprendizaje .area button {
@@ -214,7 +215,7 @@ button:hover {
     border: none;
     border-radius: 25px;
     padding: 12px 15px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -225,22 +226,22 @@ button:hover {
 
 
 .boton-continuar {
-    grid-column: 1 / -1;
+    margin-left: 20px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 .boton-continuar button {
     background-color: #52154E;
     color: white;
     border: none;
-    border-radius: 25px;
-    padding: 14px 30px;
-    font-size: 16px;
+    border-radius: 60px;
+    padding: 20px 20px;
+    font-size: 12px;
     cursor: pointer;
 }
 #areas-aprendizaje .area h2 {
-    font-size: 19px;
+    font-size: 16px;
     line-height: 1.2;
     margin: 0 0 15px;
     overflow-wrap: break-word;
@@ -266,4 +267,19 @@ button:hover {
     border: 3px solid #5b1557;
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(91, 21, 87, 0.25);
+}
+.area h2 {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.area p {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
