@@ -1,3 +1,45 @@
+feature/glosario-repaso
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --color-primario: #111344;
+    --color-secundario: #52154E;
+    --color-fondo: #DAE0F2;
+    --color-superficie: #EFE9E7;
+    --color-acento: #EDD0EC;
+}
+
+body {
+    background-color: var(--color-fondo);
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primario);
+}
+
+h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.badge-shift {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+}
+
+.card-vocabulario {
+    background-color: var(--color-superficie);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.caja-ejemplo {
+    background-color: #ffffff;
+    border-left: 4px solid var(--color-secundario);
+    border-radius: 8px;
+    padding: 12px 16px;
+
 
 * {
     box-sizing: border-box;
@@ -671,4 +713,5 @@ button:hover {
         font-size: 24px;
     }
 
+main
 }
