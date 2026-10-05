@@ -4,7 +4,7 @@ Shiftly es una app web gamificada de inglés profesional que prepara a trabajado
 
 ---
 
-## 👥 Integrantes del Equipo
+##  Integrantes del Equipo
 
 * **Luis David Balandrano Delgado** - *Líder Técnico*  
   *(Apartado para foto)*
@@ -21,19 +21,19 @@ Shiftly es una app web gamificada de inglés profesional que prepara a trabajado
 
 ---
 
-## 📝 Descripción de la Aplicación
+##  Descripción de la Aplicación
 
 Shiftly brinda una experiencia de aprendizaje personalizada y gamificada[cite: 9]. Permite a los usuarios seleccionar un área profesional de interés[cite: 6], evaluar su nivel mediante un test de diagnóstico inicial[cite: 3, 12], realizar ejercicios prácticos iterativos[cite: 4], consultar un glosario con biblioteca de repaso por sectores[cite: 5, 14] y dar seguimiento a su racha y progreso dentro de un panel de control dedicado[cite: 2].
 
 ---
 
-## 🎯 Objetivo
+##  Objetivo
 
 Desarrollar una plataforma web responsiva, accesible e interactiva construida con Bootstrap[cite: 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17] que facilite la capacitación en inglés técnico y corporativo[cite: 9, 11, 14], preparando profesionalmente a los trabajadores para desenvolverse sin barreras idiomáticas en el ámbito laboral extranjero[cite: 9].
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 * **HTML5:** Estructuración de páginas y componentes semánticos[cite: 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17].
 * **CSS3 (Custom Styles):** Reglas de diseño personalizadas, variables CSS (`--color-primario`, `--color-secundario`, etc.) y ajustes tipográficos[cite: 15, 16].
@@ -44,7 +44,7 @@ Desarrollar una plataforma web responsiva, accesible e interactiva construida co
 
 ---
 
-## ✨ Características Principales
+##  Características Principales
 
 * **Selección de Área Profesional:** Selección de contexto técnico (Programación, Gastronomía, Turismo, Negocios e Inglés Cotidiano)[cite: 6].
 * **Módulo de Diagnóstico:** Evaluación interactiva con cálculo del nivel B1 (Intermedio) y recomendaciones de estudio[cite: 3, 12].
@@ -57,7 +57,7 @@ Desarrollar una plataforma web responsiva, accesible e interactiva construida co
 
 ---
 
-## 🧩 Componentes de Bootstrap Utilizados
+##  Componentes de Bootstrap Utilizados
 
 * **Navbar:** Menús de navegación superiores fijos (*sticky-top*) y colapsables con menú hamburguesa[cite: 1, 2, 5, 10, 14, 17].
 * **Grid System (Rows & Cols):** Sistema de maquetación adaptable mediante contenedores y columnas (`row`, `col-lg-*`, `col-md-*`)[cite: 1, 2, 3, 4, 5, 8, 14].
@@ -69,7 +69,7 @@ Desarrollar una plataforma web responsiva, accesible e interactiva construida co
 
 ---
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```text
 Shiftly/
