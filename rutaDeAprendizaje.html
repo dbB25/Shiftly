@@ -4,101 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shiftly - Prototipo de Panel y Lección Recomendada</title>
-    <!-- Tailwind CSS for rapid responsive layouts and utilities -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            primary: '#111344',
-                            secondary: '#52154E',
-                            bg: '#DAE0F2',
-                            surface: '#EFE9E7',
-                            accent: '#EDD0EC',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        /* Custom styles & design tokens matching brand specs */
+        
+        /* Variables de color según la marca */
         :root {
-            --primary-color: #111344;
-            --secondary-color: #52154E;
-            --bg-neutral: #DAE0F2;
-            --card-surface: #EFE9E7;
-            --accent-color: #EDD0EC;
-            --text-dark: #111344;
-            --text-muted: #52154E;
+            --brand-primary: #111344;
+            --brand-secondary: #52154E;
+            --brand-bg: #DAE0F2;
+            --brand-surface: #EFE9E7;
+            --brand-accent: #EDD0EC;
         }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-neutral);
-            color: var(--text-dark);
+            background-color: var(--brand-bg);
+            color: var(--brand-primary);
         }
 
-        .tab-btn.active {
-            background-color: #52154E;
-            color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        /* Clases personalizadas de color para Bootstrap */
+        .bg-brand-primary { background-color: var(--brand-primary) !important; }
+        .bg-brand-secondary { background-color: var(--brand-secondary) !important; }
+        .bg-brand-surface { background-color: var(--brand-surface) !important; }
+        .bg-brand-accent { background-color: var(--brand-accent) !important; }
+        .bg-brand-accent-light { background-color: rgba(237, 208, 236, 0.4) !important; }
+        
+        .text-brand-primary { color: var(--brand-primary) !important; }
+        .text-brand-secondary { color: var(--brand-secondary) !important; }
+        .text-brand-accent { color: var(--brand-accent) !important; }
+
+        .border-brand-accent { border-color: rgba(237, 208, 236, 0.8) !important; }
+        .border-brand-secondary { border-color: var(--brand-secondary) !important; }
+
+        /* Estilos específicos de componentes */
+        .tab-btn-custom {
+            border: none;
+            background: transparent;
+            color: #cbd5e1;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .tab-btn-custom:hover {
+            color: var(--brand-accent);
+        }
+        .tab-btn-custom.active {
+            background-color: var(--brand-secondary) !important;
+            color: #ffffff !important;
             font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Pulse animation for active learning pill */
+        .gradient-bar {
+            height: 6px;
+            background: linear-gradient(to right, var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+        }
+
+        .btn-brand {
+            background-color: var(--brand-secondary);
+            color: #ffffff;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-brand:hover {
+            background-color: var(--brand-primary);
+            color: #ffffff;
+        }
+
+        /* Animación para el indicador activo */
         @keyframes subtle-pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+            50% { opacity: 0.4; }
         }
         .animate-pulse-subtle {
             animation: subtle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
+
+        /* Ajustes de navegación */
+        .nav-link-custom {
+            color: rgba(17, 19, 68, 0.8);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 1rem 0;
+            display: inline-block;
+        }
+        .nav-link-custom:hover {
+            color: var(--brand-secondary);
+        }
+        .nav-link-custom.active {
+            color: var(--brand-secondary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--brand-secondary);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-vh-100 d-flex flex-column justify-content-between">
 
     <!-- PROTOTYPE NOTICE BANNER -->
-    <div class="bg-brand-accent text-brand-primary px-4 py-2 text-xs md:text-sm font-medium text-center flex items-center justify-center gap-2 shadow-sm border-b border-brand-secondary/20">
-        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-brand-secondary text-white uppercase tracking-wider">Prototipo Visual</span>
-        <span>Este componente es una maqueta estática diseñada para la iteración de interfaz de <strong>Shiftly</strong>.</span>
+    <div class="bg-brand-accent text-brand-primary px-3 py-2 text-center shadow-sm border-bottom border-brand-secondary border-opacity-25 fs-7">
+        <span class="badge bg-brand-secondary text-white text-uppercase px-2 py-1 me-1">Prototipo Visual</span>
+        <small>Este componente es una maqueta estática diseñada para la iteración de interfaz de <strong>Shiftly</strong>.</small>
     </div>
 
-    <!-- HEADER / NAVIGATION PLACEHOLDER -->
-    <header class="bg-brand-surface border-b border-brand-accent/50 sticky top-0 z-30 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-8">
-                <!-- Shiftly Logo -->
-                <div class="flex items-center gap-2 font-bold text-xl text-brand-primary tracking-tight cursor-pointer">
-                    <div class="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white shadow-sm font-black">S</div>
-                    <span>Shiftly</span>
-                </div>
-                <!-- Nav Links -->
-                <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-primary/80">
-                    <a href="#" class="text-brand-secondary font-semibold border-b-2 border-brand-secondary pb-4 pt-4">Dashboard</a>
-                    <a href="#" class="hover:text-brand-secondary transition-colors pb-4 pt-4">Mis Cursos</a>
-                    <a href="#" class="hover:text-brand-secondary transition-colors pb-4 pt-4">Rutas de Aprendizaje</a>
-                    <a href="#" class="hover:text-brand-secondary transition-colors pb-4 pt-4">Reportes</a>
-                </nav>
-            </div>
-            
-            <!-- User Profile / Utilities -->
-            <div class="flex items-center gap-4">
-                <button class="text-brand-primary/60 hover:text-brand-primary p-1.5 rounded-full hover:bg-brand-accent/40 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                </button>
-                <div class="flex items-center gap-3 border-l border-brand-accent pl-4">
-                    <div class="w-9 h-9 rounded-full bg-brand-accent text-brand-primary flex items-center justify-center font-bold text-sm border border-brand-secondary/30">
-                        JL
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-brand-surface border-bottom border-brand-accent sticky-top shadow-sm">
+        <div class="container-xl">
+            <div class="d-flex align-items-center justify-content-between" style="height: 64px;">
+                <div class="d-flex align-items-center gap-4">
+                    <!-- Shiftly Logo -->
+                    <div class="d-flex align-items-center gap-2 fw-bold fs-5 text-brand-primary tracking-tight" style="cursor: pointer;">
+                        <div class="bg-brand-primary text-white rounded-3 d-flex align-items-center justify-content-center fw-black" style="width: 32px; height: 32px;">S</div>
+                        <span>Shiftly</span>
                     </div>
-                    <div class="hidden sm:block text-left">
-                        <p class="text-xs font-semibold text-brand-primary">Julio Cesar Licona H</p>
-                        <p class="text-[11px] text-brand-secondary/80">Learner Account</p>
+                    <!-- Nav Links -->
+                    <nav class="d-none d-md-flex gap-4">
+                        <a href="#" class="nav-link-custom active">Dashboard</a>
+                        <a href="#" class="nav-link-custom">Mis Cursos</a>
+                        <a href="#" class="nav-link-custom">Rutas de Aprendizaje</a>
+                        <a href="#" class="nav-link-custom">Reportes</a>
+                    </nav>
+                </div>
+                
+                <!-- User Profile / Utilities -->
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-link p-1 text-brand-primary opacity-75 hover-opacity-100 rounded-circle">
+                        <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </button>
+                    <div class="d-flex align-items-center gap-2 border-start border-brand-accent ps-3">
+                        <div class="rounded-circle bg-brand-accent text-brand-primary d-flex align-items-center justify-center fw-bold small border border-brand-secondary border-opacity-25" style="width: 36px; height: 36px;">
+                            JL
+                        </div>
+                        <div class="d-none d-sm-block text-start">
+                            <p class="mb-0 fw-semibold text-brand-primary" style="font-size: 0.75rem;">Julio Cesar Licona H</p>
+                            <p class="mb-0 text-brand-secondary opacity-75" style="font-size: 0.6875rem;">Learner Account</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,28 +148,28 @@
     </header>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+    <main class="container-xl py-4 flex-grow-1">
         
         <!-- PROTOTYPE STATE CONTROLLER TOOLBAR -->
-        <div class="mb-8 p-4 bg-brand-primary rounded-2xl shadow-lg text-white border border-brand-primary/50">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="mb-4 p-3 p-md-4 bg-brand-primary rounded-4 shadow border border-brand-primary text-white">
+            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
                 <div>
-                    <h2 class="text-sm font-bold text-brand-accent flex items-center gap-2">
-                        <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    <h2 class="h6 fw-bold text-brand-accent d-flex align-items-center gap-2 mb-1">
+                        <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
                         Control de Estados del Prototipo
                     </h2>
-                    <p class="text-xs text-slate-300 mt-0.5">Selecciona un estado para probar el comportamiento de la tarjeta de recomendación:</p>
+                    <p class="mb-0 text-white-50" style="font-size: 0.75rem;">Selecciona un estado para probar el comportamiento de la tarjeta de recomendación:</p>
                 </div>
                 
                 <!-- State Selector Tabs -->
-                <div class="inline-flex p-1 bg-brand-primary/60 rounded-xl border border-brand-accent/30 text-xs text-slate-200">
-                    <button id="btn-state-active" onclick="switchState('active')" class="tab-btn active px-3 py-1.5 rounded-lg transition-all">
+                <div class="d-inline-flex p-1 rounded-3 border border-brand-accent border-opacity-25" style="background-color: rgba(17, 19, 68, 0.6);">
+                    <button id="btn-state-active" onclick="switchState('active')" class="tab-btn-custom active">
                         1. Lección Disponible
                     </button>
-                    <button id="btn-state-completed" onclick="switchState('completed')" class="tab-btn px-3 py-1.5 rounded-lg transition-all hover:text-brand-accent">
+                    <button id="btn-state-completed" onclick="switchState('completed')" class="tab-btn-custom">
                         2. Todo Completado
                     </button>
-                    <button id="btn-state-empty" onclick="switchState('empty')" class="tab-btn px-3 py-1.5 rounded-lg transition-all hover:text-brand-accent">
+                    <button id="btn-state-empty" onclick="switchState('empty')" class="tab-btn-custom">
                         3. Sin Ruta Activa
                     </button>
                 </div>
@@ -135,217 +177,217 @@
         </div>
 
         <!-- DASHBOARD GRID LAYOUT -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div class="row g-4 align-items-start">
             
-            <!-- LEFT / MAIN COLUMN (2 Cols on Large) -->
-            <div class="lg:col-span-2 space-y-6">
+            <!-- LEFT / MAIN COLUMN -->
+            <div class="col-lg-8 d-flex flex-column gap-4">
                 
                 <!-- ================= STATE 1: ACTIVE RECOMMENDATION CARD ================= -->
-                <section id="card-active-state" class="relative bg-brand-surface rounded-2xl shadow-md border border-brand-accent/50 overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <section id="card-active-state" class="bg-brand-surface rounded-4 shadow-sm border border-brand-accent overflow-hidden transition-all">
                     <!-- Top subtle highlight bar -->
-                    <div class="h-1.5 bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+                    <div class="gradient-bar"></div>
 
-                    <div class="p-6 sm:p-7">
+                    <div class="p-4 p-md-4">
                         <!-- Header / Metadata Row -->
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                            <div class="flex items-center gap-2">
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-brand-accent text-brand-primary border border-brand-secondary/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-secondary mr-1.5 animate-pulse-subtle"></span>
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                            <div>
+                                <span class="badge rounded-pill bg-brand-accent text-brand-primary border border-brand-secondary border-opacity-25 px-2.5 py-1">
+                                    <span class="d-inline-block rounded-circle bg-brand-secondary me-1 animate-pulse-subtle" style="width: 6px; height: 6px;"></span>
                                     Ruta: Shiftly Fundamentals
                                 </span>
                             </div>
-                            <div class="flex items-center gap-3 text-xs font-medium text-brand-primary/70">
-                                <span class="flex items-center gap-1 bg-white/60 px-2.5 py-1 rounded-md text-brand-primary">
-                                    <svg class="w-3.5 h-3.5 text-brand-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div class="d-flex align-items-center gap-2" style="font-size: 0.75rem;">
+                                <span class="badge bg-white bg-opacity-75 text-brand-primary font-medium px-2 py-1">
+                                    <svg class="text-brand-secondary me-1" style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     15 min
                                 </span>
-                                <span class="flex items-center gap-1 bg-brand-accent/40 text-brand-secondary border border-brand-secondary/20 px-2.5 py-1 rounded-md">
-                                    <span class="w-2 h-2 rounded-full bg-brand-secondary"></span>
+                                <span class="badge bg-brand-accent-light text-brand-secondary border border-brand-secondary border-opacity-25 px-2 py-1">
+                                    <span class="d-inline-block rounded-circle bg-brand-secondary me-1" style="width: 6px; height: 6px;"></span>
                                     Intermedio
                                 </span>
                             </div>
                         </div>
 
                         <!-- Card Title & Context -->
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Siguiente lección recomendada</p>
-                            <h1 class="text-xl sm:text-2xl font-bold text-brand-primary leading-tight">
+                        <div class="mb-4">
+                            <p class="text-uppercase fw-bold text-brand-secondary mb-1" style="font-size: 0.75rem; letter-spacing: 0.05em;">Siguiente lección recomendada</p>
+                            <h1 class="h4 fw-bold text-brand-primary mb-2">
                                 Módulo 3: Configuración de Turnos y Horarios
                             </h1>
-                            <p class="text-sm text-brand-primary/80 mt-2 leading-relaxed">
+                            <p class="text-brand-primary opacity-75 mb-0 small leading-relaxed">
                                 Aprende a estructurar turnos rotativos, definir parámetros de descanso obligatorio y publicar calendarios sin traslapes operativos.
                             </p>
                         </div>
 
                         <!-- Recommendation Reason Box -->
-                        <div class="p-3.5 rounded-xl bg-white/50 border border-brand-accent/60 mb-6 flex items-start gap-3">
-                            <div class="p-1 bg-brand-accent text-brand-primary rounded-lg shrink-0 mt-0.5">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div class="p-3 rounded-3 bg-white bg-opacity-50 border border-brand-accent mb-4 d-flex align-items-start gap-2">
+                            <div class="p-1 bg-brand-accent text-brand-primary rounded-2 flex-shrink-0 mt-1">
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
-                            <div class="text-xs text-brand-primary/80">
-                                <span class="font-semibold text-brand-primary">¿Por qué esta lección?</span>
-                                <p class="mt-0.5">Es el siguiente paso correlativo tras haber aprobado exitosamente <em>"Gestión de Usuarios y Roles"</em>.</p>
+                            <div class="text-brand-primary opacity-75" style="font-size: 0.75rem;">
+                                <strong class="text-brand-primary">¿Por qué esta lección?</strong>
+                                <p class="mb-0">Es el siguiente paso correlativo tras haber aprobado exitosamente <em>"Gestión de Usuarios y Roles"</em>.</p>
                             </div>
                         </div>
 
                         <!-- CTA Actions Footer -->
-                        <div class="pt-4 border-t border-brand-accent/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div class="w-full sm:w-auto text-center sm:text-left">
-                                <span class="text-xs text-brand-primary/70">Progreso de la Ruta: <strong class="text-brand-primary">45%</strong></span>
-                                <div class="w-full sm:w-36 bg-white/70 rounded-full h-2 mt-1">
-                                    <div class="bg-brand-secondary h-2 rounded-full" style="width: 45%"></div>
+                        <div class="pt-3 border-top border-brand-accent d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
+                            <div class="w-100 w-sm-auto text-center text-sm-start">
+                                <span class="text-brand-primary opacity-75" style="font-size: 0.75rem;">Progreso de la Ruta: <strong class="text-brand-primary">45%</strong></span>
+                                <div class="progress mt-1" style="height: 8px; width: 100%; min-width: 140px; background-color: rgba(255,255,255,0.7);">
+                                    <div class="progress-bar bg-brand-secondary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <a href="#start-lesson" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-secondary hover:bg-brand-primary text-white font-semibold text-sm transition-all shadow-md shadow-brand-secondary/20 active:scale-[0.98]">
+                            <a href="#start-lesson" class="btn btn-brand rounded-3 px-4 py-2 font-semibold text-decoration-none d-inline-flex align-items-center justify-content-center gap-2 shadow-sm w-100 w-sm-auto" style="font-size: 0.875rem;">
                                 <span>Comenzar lección</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
                         </div>
                     </div>
                 </section>
 
                 <!-- ================= STATE 2: COMPLETED STATE CARD ================= -->
-                <section id="card-completed-state" class="hidden bg-brand-surface rounded-2xl shadow-md border border-brand-accent/50 overflow-hidden p-6 sm:p-8 text-center">
-                    <div class="w-16 h-16 bg-brand-accent text-brand-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                <section id="card-completed-state" class="d-none bg-brand-surface rounded-4 shadow-sm border border-brand-accent p-4 p-md-5 text-center">
+                    <div class="rounded-circle bg-brand-accent text-brand-secondary d-flex align-items-center justify-content-center mx-auto mb-3 shadow-inner" style="width: 64px; height: 64px;">
+                        <svg style="width: 32px; height: 32px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                     </div>
-                    <span class="inline-block px-3 py-1 rounded-full bg-brand-accent/60 text-brand-secondary text-xs font-semibold mb-2 border border-brand-secondary/20">
+                    <span class="badge bg-brand-accent-light text-brand-secondary rounded-pill mb-2 border border-brand-secondary border-opacity-25 px-3 py-1">
                         ¡Ruta Completada!
                     </span>
-                    <h2 class="text-2xl font-bold text-brand-primary mb-2">¡Estás al día con tus lecciones!</h2>
-                    <p class="text-brand-primary/80 text-sm max-w-md mx-auto mb-6">
+                    <h2 class="h3 fw-bold text-brand-primary mb-2">¡Estás al día con tus lecciones!</h2>
+                    <p class="text-brand-primary opacity-75 small mx-auto mb-4" style="max-width: 420px;">
                         Has completado con éxito todos los módulos asignados en tu ruta activa. Gran trabajo manteniendo tus competencias al día en Shiftly.
                     </p>
-                    <div class="flex flex-wrap items-center justify-center gap-3">
-                        <button class="px-5 py-2.5 rounded-xl border border-brand-secondary/30 text-brand-primary hover:bg-white/50 text-sm font-semibold transition-colors">
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-outline-secondary rounded-3 text-brand-primary border-brand-secondary border-opacity-25 bg-white bg-opacity-50 hover-bg-white font-semibold text-sm px-3 py-2" style="font-size: 0.875rem;">
                             Repasar lecciones anteriores
                         </button>
-                        <button class="px-5 py-2.5 rounded-xl bg-brand-secondary text-white hover:bg-brand-primary text-sm font-semibold transition-colors">
+                        <button class="btn btn-brand rounded-3 font-semibold text-sm px-3 py-2" style="font-size: 0.875rem;">
                             Explorar catálogo de cursos
                         </button>
                     </div>
                 </section>
 
                 <!-- ================= STATE 3: EMPTY STATE CARD ================= -->
-                <section id="card-empty-state" class="hidden bg-brand-surface rounded-2xl shadow-md border border-dashed border-brand-secondary/40 overflow-hidden p-6 sm:p-8 text-center">
-                    <div class="w-16 h-16 bg-white/60 text-brand-secondary/60 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <section id="card-empty-state" class="d-none bg-brand-surface rounded-4 shadow-sm border border-dashed border-brand-secondary border-opacity-50 p-4 p-md-5 text-center">
+                    <div class="rounded-circle bg-white bg-opacity-75 text-brand-secondary opacity-50 d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px;">
+                        <svg style="width: 32px; height: 32px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <h2 class="text-xl font-bold text-brand-primary mb-1">Sin ruta de aprendizaje asignada</h2>
-                    <p class="text-brand-primary/70 text-sm max-w-sm mx-auto mb-6">
+                    <h2 class="h4 fw-bold text-brand-primary mb-1">Sin ruta de aprendizaje asignada</h2>
+                    <p class="text-brand-primary opacity-75 small mx-auto mb-4" style="max-width: 380px;">
                         Actualmente no tienes un plan de estudios activo. Selecciona una ruta para comenzar a recomendarte clases.
                     </p>
-                    <button class="px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-secondary text-white text-sm font-semibold transition-colors">
+                    <button class="btn bg-brand-primary hover-bg-brand-secondary text-white rounded-3 font-semibold px-4 py-2" style="font-size: 0.875rem;">
                         Solicitar o Inscribir Ruta
                     </button>
                 </section>
 
                 <!-- TASKS & MODULES SECTION (BAR STYLE) -->
-                <div class="bg-brand-surface rounded-2xl p-6 border border-brand-accent/50 shadow-sm">
-                    <div class="flex items-center justify-between mb-6">
+                <div class="bg-brand-surface rounded-4 p-4 border border-brand-accent shadow-sm">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
                         <div>
-                            <h3 class="text-base font-bold text-brand-primary">Tareas y Módulos de la Ruta</h3>
-                            <p class="text-xs text-brand-primary/70">Progreso visual de cada tarea de la ruta activa</p>
+                            <h3 class="h6 fw-bold text-brand-primary mb-0">Tareas y Módulos de la Ruta</h3>
+                            <p class="text-brand-primary opacity-75 mb-0" style="font-size: 0.75rem;">Progreso visual de cada tarea de la ruta activa</p>
                         </div>
-                        <span class="text-xs font-bold text-brand-secondary bg-brand-accent/60 px-2.5 py-1 rounded-full border border-brand-secondary/20">
+                        <span class="badge bg-brand-accent-light text-brand-secondary rounded-pill border border-brand-secondary border-opacity-25 px-3 py-1">
                             2 / 5 Completadas
                         </span>
                     </div>
 
                     <!-- BAR-STYLE TASKS LIST -->
-                    <div class="space-y-4">
+                    <div class="d-flex flex-column gap-3">
                         
                         <!-- Task Bar 1: Completed -->
-                        <div class="p-4 rounded-xl bg-white/70 border border-brand-accent/40 hover:shadow-sm transition-all">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-brand-secondary text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-                                    <h4 class="text-sm font-semibold text-brand-primary">Módulo 1: Introducción a la Plataforma</h4>
+                        <div class="p-3 rounded-3 bg-white bg-opacity-75 border border-brand-accent">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-brand-secondary text-white d-flex align-items-center justify-content-center fw-bold flex-shrink-0" style="width: 24px; height: 24px; font-size: 0.75rem;">✓</span>
+                                    <h4 class="h6 fw-semibold text-brand-primary mb-0">Módulo 1: Introducción a la Plataforma</h4>
                                 </div>
-                                <div class="flex items-center gap-3 text-xs text-brand-primary/70 self-end sm:self-auto">
+                                <div class="d-flex align-items-center gap-3 text-brand-primary opacity-75 ms-auto ms-sm-0" style="font-size: 0.75rem;">
                                     <span>10 min</span>
-                                    <span class="font-bold text-brand-secondary">100%</span>
+                                    <span class="fw-bold text-brand-secondary">100%</span>
                                 </div>
                             </div>
-                            <div class="w-full bg-brand-accent/40 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-brand-secondary h-2.5 rounded-full" style="width: 100%"></div>
+                            <div class="progress" style="height: 8px; background-color: rgba(237, 208, 236, 0.4);">
+                                <div class="progress-bar bg-brand-secondary" role="progressbar" style="width: 100%"></div>
                             </div>
                         </div>
 
                         <!-- Task Bar 2: Completed -->
-                        <div class="p-4 rounded-xl bg-white/70 border border-brand-accent/40 hover:shadow-sm transition-all">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-brand-secondary text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-                                    <h4 class="text-sm font-semibold text-brand-primary">Módulo 2: Gestión de Usuarios y Roles</h4>
+                        <div class="p-3 rounded-3 bg-white bg-opacity-75 border border-brand-accent">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-brand-secondary text-white d-flex align-items-center justify-content-center fw-bold flex-shrink-0" style="width: 24px; height: 24px; font-size: 0.75rem;">✓</span>
+                                    <h4 class="h6 fw-semibold text-brand-primary mb-0">Módulo 2: Gestión de Usuarios y Roles</h4>
                                 </div>
-                                <div class="flex items-center gap-3 text-xs text-brand-primary/70 self-end sm:self-auto">
+                                <div class="d-flex align-items-center gap-3 text-brand-primary opacity-75 ms-auto ms-sm-0" style="font-size: 0.75rem;">
                                     <span>20 min</span>
-                                    <span class="font-bold text-brand-secondary">100%</span>
+                                    <span class="fw-bold text-brand-secondary">100%</span>
                                 </div>
                             </div>
-                            <div class="w-full bg-brand-accent/40 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-brand-secondary h-2.5 rounded-full" style="width: 100%"></div>
+                            <div class="progress" style="height: 8px; background-color: rgba(237, 208, 236, 0.4);">
+                                <div class="progress-bar bg-brand-secondary" role="progressbar" style="width: 100%"></div>
                             </div>
                         </div>
 
                         <!-- Task Bar 3: Active / In Progress -->
-                        <div class="p-4 rounded-xl bg-white border-2 border-brand-secondary shadow-sm transition-all">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-brand-accent text-brand-primary flex items-center justify-center text-xs font-bold shrink-0 border border-brand-secondary/30">3</span>
-                                    <h4 class="text-sm font-bold text-brand-primary flex items-center gap-2">
+                        <div class="p-3 rounded-3 bg-white border border-2 border-brand-secondary shadow-sm">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-brand-accent text-brand-primary d-flex align-items-center justify-content-center fw-bold flex-shrink-0 border border-brand-secondary border-opacity-25" style="width: 24px; height: 24px; font-size: 0.75rem;">3</span>
+                                    <h4 class="h6 fw-bold text-brand-primary mb-0 d-flex align-items-center gap-2">
                                         Módulo 3: Configuración de Turnos y Horarios
-                                        <span class="text-[10px] uppercase tracking-wider bg-brand-accent text-brand-primary px-2 py-0.5 rounded-full font-bold">En curso</span>
+                                        <span class="badge bg-brand-accent text-brand-primary text-uppercase px-2 py-0.5" style="font-size: 0.625rem;">En curso</span>
                                     </h4>
                                 </div>
-                                <div class="flex items-center gap-3 text-xs text-brand-primary/70 self-end sm:self-auto">
+                                <div class="d-flex align-items-center gap-3 text-brand-primary opacity-75 ms-auto ms-sm-0" style="font-size: 0.75rem;">
                                     <span>15 min</span>
-                                    <span class="font-bold text-brand-secondary">25%</span>
+                                    <span class="fw-bold text-brand-secondary">25%</span>
                                 </div>
                             </div>
-                            <div class="w-full bg-brand-accent/40 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-brand-secondary h-2.5 rounded-full" style="width: 25%"></div>
+                            <div class="progress" style="height: 8px; background-color: rgba(237, 208, 236, 0.4);">
+                                <div class="progress-bar bg-brand-secondary" role="progressbar" style="width: 25%"></div>
                             </div>
                         </div>
 
                         <!-- Task Bar 4: Locked / Pending -->
-                        <div class="p-4 rounded-xl bg-white/40 border border-brand-accent/30 opacity-75">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-brand-accent/30 text-brand-primary/50 flex items-center justify-center text-xs font-bold shrink-0">4</span>
-                                    <h4 class="text-sm font-medium text-brand-primary/70 flex items-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5 text-brand-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <div class="p-3 rounded-3 bg-white bg-opacity-50 border border-brand-accent opacity-75">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-brand-accent bg-opacity-50 text-brand-primary opacity-50 d-flex align-items-center justify-content-center fw-bold flex-shrink-0" style="width: 24px; height: 24px; font-size: 0.75rem;">4</span>
+                                    <h4 class="h6 fw-medium text-brand-primary opacity-75 mb-0 d-flex align-items-center gap-1">
+                                        <svg style="width: 14px; height: 14px;" class="opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                                         Módulo 4: Reportes y Exportación de Datos
                                     </h4>
                                 </div>
-                                <div class="flex items-center gap-3 text-xs text-brand-primary/50 self-end sm:self-auto">
+                                <div class="d-flex align-items-center gap-3 text-brand-primary opacity-50 ms-auto ms-sm-0" style="font-size: 0.75rem;">
                                     <span>25 min</span>
-                                    <span class="font-medium">0%</span>
+                                    <span>0%</span>
                                 </div>
                             </div>
-                            <div class="w-full bg-brand-accent/30 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-brand-secondary/30 h-2.5 rounded-full" style="width: 0%"></div>
+                            <div class="progress" style="height: 8px; background-color: rgba(237, 208, 236, 0.3);">
+                                <div class="progress-bar bg-brand-secondary opacity-50" role="progressbar" style="width: 0%"></div>
                             </div>
                         </div>
 
                         <!-- Task Bar 5: Locked / Pending -->
-                        <div class="p-4 rounded-xl bg-white/40 border border-brand-accent/30 opacity-75">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-brand-accent/30 text-brand-primary/50 flex items-center justify-center text-xs font-bold shrink-0">5</span>
-                                    <h4 class="text-sm font-medium text-brand-primary/70 flex items-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5 text-brand-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <div class="p-3 rounded-3 bg-white bg-opacity-50 border border-brand-accent opacity-75">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-1 mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-brand-accent bg-opacity-50 text-brand-primary opacity-50 d-flex align-items-center justify-content-center fw-bold flex-shrink-0" style="width: 24px; height: 24px; font-size: 0.75rem;">5</span>
+                                    <h4 class="h6 fw-medium text-brand-primary opacity-75 mb-0 d-flex align-items-center gap-1">
+                                        <svg style="width: 14px; height: 14px;" class="opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                                         Módulo 5: Integraciones Avanzadas
                                     </h4>
                                 </div>
-                                <div class="flex items-center gap-3 text-xs text-brand-primary/50 self-end sm:self-auto">
+                                <div class="d-flex align-items-center gap-3 text-brand-primary opacity-50 ms-auto ms-sm-0" style="font-size: 0.75rem;">
                                     <span>30 min</span>
-                                    <span class="font-medium">0%</span>
+                                    <span>0%</span>
                                 </div>
                             </div>
-                            <div class="w-full bg-brand-accent/30 rounded-full h-2.5 overflow-hidden">
-                                <div class="bg-brand-secondary/30 h-2.5 rounded-full" style="width: 0%"></div>
+                            <div class="progress" style="height: 8px; background-color: rgba(237, 208, 236, 0.3);">
+                                <div class="progress-bar bg-brand-secondary opacity-50" role="progressbar" style="width: 0%"></div>
                             </div>
                         </div>
 
@@ -355,32 +397,36 @@
             </div>
 
             <!-- RIGHT COLUMN / SIDEBAR -->
-            <div class="space-y-6">
+            <div class="col-lg-4 d-flex flex-column gap-4">
                 <!-- User Progress Summary Widget -->
-                <div class="bg-brand-surface rounded-2xl p-6 border border-brand-accent/50 shadow-sm">
-                    <h3 class="text-sm font-bold text-brand-primary mb-4 uppercase tracking-wider text-xs">Resumen de Actividad</h3>
-                    <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="p-3 bg-white/50 rounded-xl border border-brand-accent/30">
-                            <span class="text-2xl font-bold text-brand-secondary">2/5</span>
-                            <p class="text-xs text-brand-primary/70 mt-0.5">Lecciones completadas</p>
+                <div class="bg-brand-surface rounded-4 p-4 border border-brand-accent shadow-sm">
+                    <h3 class="text-uppercase fw-bold text-brand-primary mb-3" style="font-size: 0.75rem; letter-spacing: 0.05em;">Resumen de Actividad</h3>
+                    <div class="row g-2 text-center">
+                        <div class="col-6">
+                            <div class="p-3 bg-white bg-opacity-50 rounded-3 border border-brand-accent">
+                                <span class="h3 fw-bold text-brand-secondary d-block mb-0">2/5</span>
+                                <p class="text-brand-primary opacity-75 mb-0" style="font-size: 0.75rem;">Lecciones completadas</p>
+                            </div>
                         </div>
-                        <div class="p-3 bg-white/50 rounded-xl border border-brand-accent/30">
-                            <span class="text-2xl font-bold text-brand-primary">30 min</span>
-                            <p class="text-xs text-brand-primary/70 mt-0.5">Tiempo invertido</p>
+                        <div class="col-6">
+                            <div class="p-3 bg-white bg-opacity-50 rounded-3 border border-brand-accent">
+                                <span class="h3 fw-bold text-brand-primary d-block mb-0">30 min</span>
+                                <p class="text-brand-primary opacity-75 mb-0" style="font-size: 0.75rem;">Tiempo invertido</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Assistance Card -->
-                <div class="bg-brand-primary rounded-2xl p-6 text-white shadow-md border border-brand-primary/50">
-                    <div class="w-10 h-10 rounded-lg bg-brand-accent/20 text-brand-accent flex items-center justify-center mb-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="bg-brand-primary rounded-4 p-4 text-white shadow border border-brand-primary">
+                    <div class="rounded-3 bg-brand-accent bg-opacity-25 text-brand-accent d-flex align-items-center justify-content-center mb-3" style="width: 40px; height: 40px;">
+                        <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <h4 class="font-bold text-base mb-1">¿Tienes dudas con este tema?</h4>
-                    <p class="text-slate-200 text-xs leading-relaxed mb-4">
+                    <h4 class="fw-bold h6 mb-1">¿Tienes dudas con este tema?</h4>
+                    <p class="text-white-50 small mb-3 leading-relaxed" style="font-size: 0.8125rem;">
                         Consulta la documentación de Shiftly o agenda una sesión de aclaración con tu tutor asignado.
                     </p>
-                    <a href="#" class="text-xs font-semibold text-brand-accent hover:underline flex items-center gap-1">
+                    <a href="#" class="text-brand-accent text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1 hover-underline">
                         Centro de ayuda y soporte &rarr;
                     </a>
                 </div>
@@ -389,13 +435,16 @@
         </div>
     </main>
 
+    <!-- Bootstrap 5 JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- INTERACTIVE STATE SWITCHER JAVASCRIPT -->
     <script>
         function switchState(stateName) {
-            // Hide all states
-            document.getElementById('card-active-state').classList.add('hidden');
-            document.getElementById('card-completed-state').classList.add('hidden');
-            document.getElementById('card-empty-state').classList.add('hidden');
+            // Hide all states using Bootstrap's d-none class
+            document.getElementById('card-active-state').classList.add('d-none');
+            document.getElementById('card-completed-state').classList.add('d-none');
+            document.getElementById('card-empty-state').classList.add('d-none');
 
             // Reset tab styles
             document.getElementById('btn-state-active').classList.remove('active');
@@ -404,13 +453,13 @@
 
             // Show selected state & highlight active tab
             if (stateName === 'active') {
-                document.getElementById('card-active-state').classList.remove('hidden');
+                document.getElementById('card-active-state').classList.remove('d-none');
                 document.getElementById('btn-state-active').classList.add('active');
             } else if (stateName === 'completed') {
-                document.getElementById('card-completed-state').classList.remove('hidden');
+                document.getElementById('card-completed-state').classList.remove('d-none');
                 document.getElementById('btn-state-completed').classList.add('active');
             } else if (stateName === 'empty') {
-                document.getElementById('card-empty-state').classList.remove('hidden');
+                document.getElementById('card-empty-state').classList.remove('d-none');
                 document.getElementById('btn-state-empty').classList.add('active');
             }
         }
