@@ -308,5 +308,410 @@ button:hover {
     border: 3px solid #5b1557;
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(91, 21, 87, 0.25);
+}
+
+/* =========================================
+   DIAGNÓSTICO - SHIFTLY
+   ========================================= */
+
+.diagnostico {
+    padding: 60px 20px;
+}
+
+.diagnostico > .container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+}
+
+.diagnostico-encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.diagnostico-encabezado > p:first-child {
+    color: #52154E;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.diagnostico-encabezado h1 {
+    color: #111344;
+    font-size: 42px;
+    margin: 0 0 15px;
+}
+
+.diagnostico-encabezado p:last-child {
+    color: #111344;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Barra de progreso */
+
+.diagnostico-progreso {
+    background-color: #EFE9E7;
+    padding: 20px 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.diagnostico-progreso span {
+    color: #111344;
+    font-weight: 600;
+}
+
+.diagnostico-progreso .progress {
+    height: 12px;
+    border-radius: 20px;
+    background-color: #DAE0F2;
+}
+
+.diagnostico-progreso .progress-bar {
+    background-color: #52154E;
+    border-radius: 20px;
+    font-size: 0;
+}
+
+/* Tarjeta de pregunta */
+
+.diagnostico-pregunta {
+    background-color: #EFE9E7;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 20px rgba(17, 19, 68, 0.10);
+}
+
+.pregunta-numero {
+    color: #52154E;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.diagnostico-pregunta h2 {
+    color: #111344;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+/* Opciones */
+
+.opciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.opcion {
+    width: 100%;
+    min-height: 60px;
+    padding: 15px 20px;
+    border: 2px solid #DAE0F2;
+    border-radius: 15px;
+    background-color: white;
+    color: #111344;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.opcion:hover {
+    border-color: #52154E;
+    background-color: #f5edf4;
+}
+
+.opcion.seleccionada {
+    border-color: #52154E;
+    background-color: #52154E;
+    color: white;
+}
+
+/* Botones de navegación */
+
+.diagnostico-navegacion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.diagnostico-navegacion .btn {
+    border-radius: 25px;
+    padding: 12px 25px;
+}
+
+.diagnostico-navegacion .btn-primary {
+    background-color: #52154E;
+    border-color: #52154E;
+}
+
+.diagnostico-navegacion .btn-primary:hover {
+    background-color: #111344;
+    border-color: #111344;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .diagnostico {
+        padding: 35px 15px;
+    }
+
+    .diagnostico-encabezado h1 {
+        font-size: 32px;
+    }
+
+    .diagnostico-pregunta {
+        padding: 25px 20px;
+    }
+
+    .opciones {
+        grid-template-columns: 1fr;
+    }
+
+    .diagnostico-navegacion .btn {
+        padding: 10px 18px;
+    }
+}
+
+/* =========================================
+   AJUSTES VISUALES - TEST DE DIAGNÓSTICO
+   ========================================= */
+
+.diagnostico-encabezado {
+    padding-top: 10px;
+}
+
+.diagnostico-progreso {
+    margin-top: 25px;
+}
+
+.diagnostico-pregunta {
+    margin-top: 10px;
+}
+
+.pregunta-numero {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.diagnostico-pregunta h2 {
+    font-weight: 700;
+}
+
+.opcion {
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.opcion:hover {
+    transform: translateY(-2px);
+}
+
+.diagnostico-navegacion {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   RESULTADO DEL DIAGNÓSTICO - SHIFTLY
+   ========================================= */
+
+.resultado-diagnostico {
+    padding: 60px 20px;
+}
+
+.resultado-diagnostico > .container {
+    max-width: 850px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Encabezado */
+
+.resultado-encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.resultado-encabezado p:first-child {
+    color: #52154E;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.resultado-encabezado h1 {
+    color: #111344;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.resultado-encabezado p:last-child {
+    color: #111344;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Tarjeta del nivel */
+
+.resultado-card {
+    background-color: #EFE9E7;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(17, 19, 68, 0.10);
+}
+
+.resultado-label {
+    color: #52154E;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.nivel {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #52154E;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.resultado-card h2 {
+    color: #111344;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.resultado-card > p:last-child {
+    color: #111344;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Recomendación */
+
+.resultado-recomendacion {
+    background-color: #DAE0F2;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.resultado-recomendacion h2 {
+    color: #111344;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.resultado-recomendacion p {
+    color: #111344;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+/* Botones */
+
+.resultado-botones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.resultado-botones .btn {
+    border-radius: 25px;
+    padding: 12px 25px;
+}
+
+.resultado-botones .btn-primary {
+    background-color: #52154E;
+    border-color: #52154E;
+}
+
+.resultado-botones .btn-primary:hover {
+    background-color: #111344;
+    border-color: #111344;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .resultado-diagnostico {
+        padding: 35px 15px;
+    }
+
+    .resultado-encabezado h1 {
+        font-size: 32px;
+    }
+
+    .resultado-card {
+        padding: 30px 20px;
+    }
+
+    .resultado-botones {
+        flex-direction: column;
+    }
+
+    .resultado-botones .btn {
+        width: 100%;
+    }
+}
+
+/* LOGO DE SHIFTLY */
+.logo-shiftly {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-brand span {
+    color: #111344;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* AJUSTE DEL LOGO EN MÓVILES */
+@media (max-width: 600px) {
+
+    .logo-shiftly {
+        height: 36px;
+    }
+
+    .navbar-brand span {
+        font-size: 24px;
+    }
+
 main
 }
