@@ -865,3 +865,23 @@ button:hover {
         text-align: center;
     }
 }
+
+/* =========================================
+   AJUSTE DE PROGRESO Y RACHA
+   ========================================= */
+
+.dashboard-contenido > .dashboard-card:first-child {
+    min-height: 210px;
+}
+
+.dashboard-racha {
+    background-color: #EDD0EC;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard-racha h2 {
+    font-size: 38px;
+}
