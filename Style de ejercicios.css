@@ -216,7 +216,10 @@ body {
 }
 
 .counter {
-    color: var(--color-texto-suave);
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(237, 208, 236, 0.55);
+    color: var(--color-secundario);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
