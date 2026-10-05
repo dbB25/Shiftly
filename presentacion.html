@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiftly - Quiénes Somos y Nuestro Equipo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#111344',
+                            secondary: '#52154E',
+                            bg: '#DAE0F2',
+                            surface: '#EFE9E7',
+                            accent: '#EDD0EC',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #111344;
+            --secondary-color: #52154E;
+            --bg-neutral: #DAE0F2;
+            --card-surface: #EFE9E7;
+            --accent-color: #EDD0EC;
+            --text-dark: #111344;
+            --text-muted: #52154E;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-neutral);
+            color: var(--text-dark);
+        }
+
+        .gradient-card-border {
+            background: linear-gradient(135deg, rgba(82, 21, 78, 0.08) 0%, rgba(237, 208, 236, 0.3) 100%);
+            border: 1px solid rgba(82, 21, 78, 0.2);
+        }
+
+        .tab-btn.active {
+            background-color: #52154E;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse-subtle {
+            animation: subtle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- PROTOTYPE NOTICE BANNER -->
+    <div class="bg-brand-accent text-brand-primary px-4 py-2 text-xs md:text-sm font-medium text-center flex items-center justify-center gap-2 shadow-sm border-b border-brand-secondary/20">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-brand-secondary text-white uppercase tracking-wider">Presentación de Equipo</span>
+        <span>Conoce a las mentes detrás de <strong>Shiftly</strong> y nuestra misión educativa.</span>
+    </div>
+
+    <!-- HEADER / NAVIGATION (Sin perfil de usuario) -->
+    <header class="bg-brand-surface border-b border-brand-accent/50 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <!-- Shiftly Logo con Hámster -->
+                <div class="flex items-center gap-3 font-bold text-2xl text-brand-primary tracking-tight cursor-pointer">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-brand-secondary shadow-sm flex items-center justify-center bg-[#52154E]">
+                        <img src="logo-hamster.png" alt="Shiftly Logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-extrabold text-brand-primary tracking-wide">Shiftly</span>
+                </div>
+            </div>
+            
+            <!-- Nav Links -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-brand-primary/80">
+                <a href="#about" class="text-brand-secondary font-semibold border-b-2 border-brand-secondary pb-1">Quiénes Somos</a>
+                <a href="#purpose" class="hover:text-brand-secondary transition-colors pb-1">Propósito</a>
+                <a href="#team" class="hover:text-brand-secondary transition-colors pb-1">Nuestro Equipo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-10">
+        
+        <!-- ABOUT US SECTION -->
+        <section id="about" class="bg-brand-surface rounded-2xl shadow-md border border-brand-accent/50 overflow-hidden relative">
+            <div class="h-2 bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-accent"></div>
+            <div class="p-6 sm:p-10">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/60 border border-brand-secondary/20 text-brand-secondary text-xs font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-brand-secondary animate-pulse-subtle"></span>
+                            Sobre Nuestra Plataforma
+                        </div>
+                        <h1 class="text-2xl sm:text-4xl font-extrabold text-brand-primary tracking-tight">
+                            Quiénes Somos
+                        </h1>
+                        <p class="text-base text-brand-primary/80 leading-relaxed">
+                            En <strong>Shiftly</strong>, somos una plataforma web educativa diseñada para transformar la manera en que estudiantes y profesionales aprenden inglés para el entorno laboral e internacional. Entendemos que comunicarse en un ambiente global no solo requiere gramática básica, sino el dominio de vocabulario técnico, jerga profesional y modismos corporativos clave para el día a día en la industria.
+                        </p>
+                        <p class="text-base text-brand-primary/80 leading-relaxed">
+                            A través de un enfoque dinámico y gamificado, ofrecemos módulos de aprendizaje adaptativos, pruebas de diagnóstico inicial y ejercicios interactivos que ayudan a los usuarios a superar la barrera del idioma, construir confianza y desenvolverse de forma fluida en reuniones, presentaciones y entrevistas de trabajo.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="p-6 bg-white/60 rounded-2xl border border-brand-accent/60 shadow-inner text-center max-w-sm w-full">
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-brand-accent flex items-center justify-center p-1 border-2 border-brand-secondary shadow-md">
+                                <img src="logo-hamster.png" alt="Mascota Shiftly" class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <h3 class="font-bold text-brand-primary text-lg">Aprende con Shiftly</h3>
+                            <p class="text-xs text-brand-primary/70 mt-1">Inglés profesional y técnico al ritmo de tu crecimiento laboral.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PURPOSE SECTION -->
+        <section id="purpose" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary flex items-center justify-center gap-2">
+                    <span>🚀</span> Nuestro Propósito
+                </h2>
+                <p class="text-sm sm:text-base text-brand-primary/80 mt-2">
+                    Impulsar el desarrollo profesional de nuestros usuarios, brindándoles las herramientas lingüísticas necesarias para acceder a mejores oportunidades laborales en el extranjero y dentro de empresas multinacionales.
+                </p>
+            </div>
+
+            <!-- Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pillar 1 -->
+                <div class="bg-brand-surface rounded-2xl p-6 border border-brand-accent/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent text-brand-secondary flex items-center justify-center font-bold text-xl mb-4 border border-brand-secondary/20">
+                        1
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-primary mb-2">Aprendizaje Contextualizado</h3>
+                    <p class="text-sm text-brand-primary/80 leading-relaxed">
+                        Vocabulario y escenarios reales ajustados a sectores como tecnología, negocios, gastronomía, turismo y atención al cliente.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-brand-surface rounded-2xl p-6 border border-brand-accent/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent text-brand-secondary flex items-center justify-center font-bold text-xl mb-4 border border-brand-secondary/20">
+                        2
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-primary mb-2">Evaluación Adaptativa</h3>
+                    <p class="text-sm text-brand-primary/80 leading-relaxed">
+                        Un sistema de diagnóstico de nivel que permite a cada usuario avanzar a su propio ritmo sin perder tiempo en conceptos que ya domina.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-brand-surface rounded-2xl p-6 border border-brand-accent/60 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent text-brand-secondary flex items-center justify-center font-bold text-xl mb-4 border border-brand-secondary/20">
+                        3
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-primary mb-2">Experiencia Intuitiva y Práctica</h3>
+                    <p class="text-sm text-brand-primary/80 leading-relaxed">
+                        Lecciones breves, tarjetas interactivas de vocabulario y seguimiento de progreso constante para mantener la motivación diaria.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM SECTION -->
+        <section id="team" class="space-y-6 pt-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-secondary/20 pb-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-brand-primary">Nuestro Equipo</h2>
+                    <p class="text-sm text-brand-primary/70 mt-1">Conoce a las personas dedicadas al desarrollo y éxito de Shiftly.</p>
+                </div>
+
+                <!-- Role Filters -->
+                <div class="inline-flex p-1 bg-brand-primary/10 rounded-xl text-xs font-semibold overflow-x-auto max-w-full">
+                    <button onclick="filterTeam('all')" id="filter-all" class="tab-btn active px-3 py-1.5 rounded-lg transition-all">Todos</button>
+                    <button onclick="filterTeam('lider')" id="filter-lider" class="tab-btn px-3 py-1.5 rounded-lg transition-all">Líder Técnico</button>
+                    <button onclick="filterTeam('analista')" id="filter-analista" class="tab-btn px-3 py-1.5 rounded-lg transition-all">Analista</button>
+                    <button onclick="filterTeam('frontend')" id="filter-frontend" class="tab-btn px-3 py-1.5 rounded-lg transition-all">Frontend</button>
+                    <button onclick="filterTeam('backend')" id="filter-backend" class="tab-btn px-3 py-1.5 rounded-lg transition-all">Backend</button>
+                </div>
+            </div>
+
+            <!-- TEAM CARDS GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="team-grid">
+                
+                <!-- MEMBER 1: Luis David -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="lider">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-1">
+                                <span>LD</span>
+                            </div>
+                            <label for="upload-1" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-1" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-1')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Líder Técnico</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Luis David Balandrano Delgado</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Coordinación de arquitectura, planificación técnica y gestión de proyectos.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Liderazgo</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Arquitectura</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 2: Keydhy Marelo -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="analista">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-2">
+                                <span>KV</span>
+                            </div>
+                            <label for="upload-2" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-2" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-2')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Analista</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Keydhy Marelo Villa Aldana</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Análisis de requerimientos, diseño de flujos e investigación de usuarios.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Requerimientos</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Flujos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 3: Isis Dayane -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="frontend">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-3">
+                                <span>IA</span>
+                            </div>
+                            <label for="upload-3" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-3" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-3')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Frontend</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Isis Dayane Arellano Carrillo</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Desarrollo de interfaces interactivas, componentes de usuario y UX.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">UI/UX</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 4: Brian -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="frontend">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-4">
+                                <span>B</span>
+                            </div>
+                            <label for="upload-4" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-4" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-4')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Frontend</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Brian</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Maquetación web, responsive design e integración de vistas dinámicas.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Tailwind</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 5: Julio Cesar -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="backend">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-5">
+                                <span>JL</span>
+                            </div>
+                            <label for="upload-5" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-5" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-5')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Backend</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Julio Cesar Licona Hernandez</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Desarrollo de APIs, lógica de negocio y gestión de bases de datos.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">APIs</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Database</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 6: Vanesa Lugo -->
+                <div class="team-card bg-brand-surface rounded-2xl border border-brand-accent/60 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300" data-role="backend">
+                    <div class="h-2 bg-brand-secondary"></div>
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <div class="relative group mb-4">
+                            <div class="w-24 h-24 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl border-4 border-white shadow-md overflow-hidden" id="photo-box-6">
+                                <span>VL</span>
+                            </div>
+                            <label for="upload-6" class="absolute bottom-0 right-0 bg-brand-secondary text-white p-1.5 rounded-full cursor-pointer hover:bg-brand-primary transition-colors shadow" title="Cambiar Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </label>
+                            <input type="file" id="upload-6" class="hidden" accept="image/*" onchange="previewImage(event, 'photo-box-6')">
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-brand-accent text-brand-secondary text-xs font-bold mb-2">Backend</span>
+                        <h3 class="text-lg font-bold text-brand-primary">Vanesa Lugo Ramírez</h3>
+                        <p class="text-xs text-brand-primary/70 mt-1 mb-4">Implementación de microservicios, seguridad y lógica del servidor.</p>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Backend</span>
+                            <span class="px-2 py-0.5 bg-white/70 rounded text-[11px] font-medium text-brand-primary border border-brand-accent">Seguridad</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-primary text-white text-xs py-6 mt-12 border-t border-brand-secondary/30">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-semibold text-brand-accent">Shiftly &copy; 2026 - Plataforma Educativa de Inglés Técnico</p>
+            <p class="text-slate-300">Diseñado para impulsar tu crecimiento profesional en entornos globales.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Función para filtrar integrantes por rol
+        function filterTeam(role) {
+            const cards = document.querySelectorAll('.team-card');
+            
+            // Actualizar estados de botones de filtro
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('filter-' + role);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // Filtrar las tarjetas
+            cards.forEach(card => {
+                if (role === 'all' || card.getAttribute('data-role') === role) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Función para cargar imagen localmente
+        function previewImage(event, containerId) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const container = document.getElementById(containerId);
+                container.innerHTML = `<img src="${reader.result}" class="w-full h-full object-cover">`;
+            }
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
