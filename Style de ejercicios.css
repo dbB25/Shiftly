@@ -6,7 +6,7 @@ body {
     margin: 0;
     background-color: #DAE0F2;
     color: #111344;
-    font-family: Arial, sans-serif;
+    font-family: Poppins, Arial, sans-serif;
 }
 
 /* Barra de navegación */
@@ -85,6 +85,7 @@ body {
 }
 
 .page-head h1 {
+    font-family: "Playfair Display", Georgia, serif;
     margin: 0 0 15px;
     color: #111344;
     font-size: 42px;
