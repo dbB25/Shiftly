@@ -31,7 +31,7 @@
                 <span class="fw-bold fs-4 text-brand-primary">Shiftly</span>
             </div>
             
-            <nav class="d-none d-md-flex gap-4">
+            <nav class="d-none d-md-flex gap-4" id="main-nav">
                 <a href="#about" class="nav-link-custom active">Quiénes Somos</a>
                 <a href="#purpose" class="nav-link-custom">Propósito</a>
                 <a href="#team" class="nav-link-custom">Nuestro Equipo</a>
@@ -308,12 +308,13 @@
 
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
+        // Función para filtrar el equipo según su rol
         function filterTeam(role) {
             const cards = document.querySelectorAll('.team-card');
             
             document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('filter-' + role);
-            if(activeBtn) activeBtn.classList.add('active');
+            if (activeBtn) activeBtn.classList.add('active');
 
             cards.forEach(card => {
                 if (role === 'all' || card.getAttribute('data-role') === role) {
@@ -324,16 +325,46 @@
             });
         }
 
+        // Función para vista previa y guardado en LocalStorage
         function previewImage(event, containerId) {
+            const file = event.target.files[0];
+            if (!file) return;
+
             const reader = new FileReader();
             reader.onload = function() {
                 const container = document.getElementById(containerId);
                 container.innerHTML = `<img src="${reader.result}" class="w-100 h-100 object-fit-cover">`;
+                
+                // Guardar la foto subida en LocalStorage para no perderla al refrescar
+                try {
+                    localStorage.setItem(`shiftly_team_photo_${containerId}`, reader.result);
+                } catch (e) {
+                    console.warn("No se pudo guardar la imagen en localStorage debido al límite de tamaño.");
+                }
             }
-            if (event.target.files[0]) {
-                reader.readAsDataURL(event.target.files[0]);
-            }
+            reader.readAsDataURL(file);
         }
+
+        // Cargar fotos almacenadas al iniciar la página y gestionar navegación
+        document.addEventListener("DOMContentLoaded", () => {
+            // Cargar imágenes previas de LocalStorage
+            const photoBoxes = document.querySelectorAll('.photo-box');
+            photoBoxes.forEach(box => {
+                const savedImage = localStorage.getItem(`shiftly_team_photo_${box.id}`);
+                if (savedImage) {
+                    box.innerHTML = `<img src="${savedImage}" class="w-100 h-100 object-fit-cover">`;
+                }
+            });
+
+            // Resaltado dinámico del menú de navegación
+            const navLinks = document.querySelectorAll('#main-nav .nav-link-custom');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>
