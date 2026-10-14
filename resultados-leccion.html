@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiftly - Resultados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">Shiftly</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="dashboard.html">Panel del Usuario</a>
+                <a class="nav-link" href="rutaDeAprendizaje.html">Ruta de Aprendizaje</a>
+                <a class="nav-link active" href="resultados-leccion.html">Resultados</a>
+                <a class="nav-link" href="glosario.html">Glosario</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 text-center">
+        <h1 class="mb-4 fw-bold">Resultados de la Lección</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <h3 class="card-title mb-3">Puntuación Final</h3>
+                    <div class="display-3 fw-bold mb-3" id="contadorPuntaje">0 / 100</div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary btn-detalle" data-modulo="Medicina" data-aciertos="9/10" data-tiempo="12 minutos">Ver Detalle Medicina</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Gastronomía" data-aciertos="10/10" data-tiempo="8 minutos">Ver Detalle Gastronomía</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Derecho" data-aciertos="8/10" data-tiempo="15 minutos">Ver Detalle Derecho</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Arquitectura" data-aciertos="9/10" data-tiempo="10 minutos">Ver Detalle Arquitectura</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDetalles" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: var(--color-superficie);">
+                <div class="modal-header" style="border-bottom-color: rgba(17, 19, 68, 0.1);">
+                    <h5 class="modal-title fw-bold" id="modalTitulo">Detalles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p><strong>Aciertos:</strong> <span id="modalAciertos"></span></p>
+                    <p><strong>Tiempo empleado:</strong> <span id="modalTiempo"></span></p>
+                </div>
+                <div class="modal-footer" style="border-top-color: rgba(17, 19, 68, 0.1);">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/resultados-leccion.js"></script>
+</body>
+</html>

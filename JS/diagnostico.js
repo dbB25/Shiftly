@@ -11,7 +11,7 @@ const nivelesDiagnostico = [
     { nivel: 'B2', nombre: 'Intermedio alto', descripcion: 'Puedes comprender ideas principales y comunicarte con soltura en una variedad de situaciones.', recomendacion: 'Practica textos más complejos, expresiones naturales y conversaciones sobre temas variados.' },
     { nivel: 'C1', nombre: 'Avanzado', descripcion: 'Demuestras un dominio avanzado y puedes comprender contenidos exigentes con fluidez.', recomendacion: 'Perfecciona matices, vocabulario especializado y comunicación precisa en contextos profesionales.' }
 ];
-
+/* Diagnóstico */
 function iniciarDiagnostico() {
     const formulario = document.getElementById('diagnostico-form');
     if (!formulario) return;
@@ -107,13 +107,78 @@ function iniciarDiagnostico() {
         try {
             localStorage.setItem('shiftlyDiagnosticoResultado', JSON.stringify(resultado));
         } catch (_) {
-            
+
         }
         window.location.href = `resultado.html?aciertos=${aciertos}`;
     });
     renderizarPregunta();
 }
 
+/* recomendaciones */
+function iniciarRecomendaciones() {
+    const buscador = document.getElementById('buscar-modulo');
+    if (!buscador) return;
+
+    function cambiarEstado(estado) {
+        const estados = ['active', 'completed', 'empty'];
+        estados.forEach((nombre) => {
+            document.getElementById(`card-${nombre}-state`).classList.toggle('d-none', nombre !== estado);
+            const boton = document.getElementById(`btn-state-${nombre}`);
+            boton.classList.toggle('active', nombre === estado);
+            boton.setAttribute('aria-pressed', String(nombre === estado));
+        });
+        const mensajes = {
+            active: 'Se muestra tu recomendación activa.',
+            completed: 'Se muestran tus rutas completadas.',
+            empty: 'Se muestran las opciones para elegir una ruta.'
+        };
+        document.getElementById('mensaje-notificacion').textContent = mensajes[estado] || 'Vista actualizada.';
+        bootstrap.Toast.getOrCreateInstance(document.getElementById('notificacion-estado')).show();
+    }
+
+    let resultado = null;
+    try {
+        resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null');
+    } catch (_) {
+
+    }
+    if (!resultado) {
+        const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
+        const aciertos = parametroAciertos === null ? NaN : Number(parametroAciertos);
+        if (Number.isInteger(aciertos) && aciertos >= 0 && aciertos <= 5) {
+            const indiceNivel = Math.min(aciertos, nivelesDiagnostico.length - 1);
+            resultado = { nivel: nivelesDiagnostico[indiceNivel].nivel, nombre: nivelesDiagnostico[indiceNivel].nombre };
+        }
+    }
+    if (resultado && resultado.nivel) {
+        const etiquetaNivel = document.querySelector('#card-active-state .badge.bg-brand-accent.bg-opacity-50');
+        if (etiquetaNivel) etiquetaNivel.textContent = resultado.nombre || resultado.nivel;
+        const textoRazon = document.querySelector('#card-active-state .rounded-3.bg-white.bg-opacity-50 .mt-1');
+        if (textoRazon) textoRazon.textContent = `Tu diagnóstico indica un nivel ${resultado.nivel} (${resultado.nombre}). Esta lección te ayudará a seguir avanzando desde tu nivel actual.`;
+    }
+    const botonComenzar = document.querySelector('#card-active-state a[href="#start-lesson"]');
+    if (botonComenzar) botonComenzar.href = 'rutaDeAprendizaje.html';
+
+    ['active', 'completed', 'empty'].forEach((estado) => {
+        const boton = document.getElementById(`btn-state-${estado}`);
+        boton.setAttribute('aria-controls', `card-${estado}-state`);
+        boton.addEventListener('click', () => cambiarEstado(estado));
+    });
+
+    const modulos = [...document.querySelectorAll('.module-item')];
+    buscador.addEventListener('input', () => {
+        const consulta = buscador.value.trim().toLocaleLowerCase('es');
+        let visibles = 0;
+        modulos.forEach((modulo) => {
+            const coincide = modulo.dataset.search.toLocaleLowerCase('es').includes(consulta);
+            modulo.classList.toggle('d-none', !coincide);
+            if (coincide) visibles += 1;
+        });
+        document.getElementById('sin-resultados-modulo').classList.toggle('d-none', visibles > 0);
+    });
+}
+
+/* resultados */
 function iniciarResultado() {
     const nivelElemento = document.getElementById('nivel-resultado');
     if (!nivelElemento) return;
@@ -122,7 +187,7 @@ function iniciarResultado() {
     try {
         resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null');
     } catch (_) {
-        
+
     }
     const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
     const aciertosUrl = parametroAciertos === null ? NaN : Number(parametroAciertos);
@@ -165,67 +230,4 @@ function iniciarResultado() {
     botonContinuar.href = resultado && Number.isInteger(resultado.aciertos)
         ? `recomendaciones.html?aciertos=${resultado.aciertos}`
         : 'recomendaciones.html';
-}
-
-function iniciarRecomendaciones() {
-    const buscador = document.getElementById('buscar-modulo');
-    if (!buscador) return;
-
-    function cambiarEstado(estado) {
-        const estados = ['active', 'completed', 'empty'];
-        estados.forEach((nombre) => {
-            document.getElementById(`card-${nombre}-state`).classList.toggle('d-none', nombre !== estado);
-            const boton = document.getElementById(`btn-state-${nombre}`);
-            boton.classList.toggle('active', nombre === estado);
-            boton.setAttribute('aria-pressed', String(nombre === estado));
-        });
-        const mensajes = {
-            active: 'Se muestra tu recomendación activa.',
-            completed: 'Se muestran tus rutas completadas.',
-            empty: 'Se muestran las opciones para elegir una ruta.'
-        };
-        document.getElementById('mensaje-notificacion').textContent = mensajes[estado] || 'Vista actualizada.';
-        bootstrap.Toast.getOrCreateInstance(document.getElementById('notificacion-estado')).show();
-    }
-
-    let resultado = null;
-    try {
-        resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null');
-    } catch (_) {
-        
-    }
-    if (!resultado) {
-        const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
-        const aciertos = parametroAciertos === null ? NaN : Number(parametroAciertos);
-        if (Number.isInteger(aciertos) && aciertos >= 0 && aciertos <= 5) {
-            const indiceNivel = Math.min(aciertos, nivelesDiagnostico.length - 1);
-            resultado = { nivel: nivelesDiagnostico[indiceNivel].nivel, nombre: nivelesDiagnostico[indiceNivel].nombre };
-        }
-    }
-    if (resultado && resultado.nivel) {
-        const etiquetaNivel = document.querySelector('#card-active-state .badge.bg-brand-accent.bg-opacity-50');
-        if (etiquetaNivel) etiquetaNivel.textContent = resultado.nombre || resultado.nivel;
-        const textoRazon = document.querySelector('#card-active-state .rounded-3.bg-white.bg-opacity-50 .mt-1');
-        if (textoRazon) textoRazon.textContent = `Tu diagnóstico indica un nivel ${resultado.nivel} (${resultado.nombre}). Esta lección te ayudará a seguir avanzando desde tu nivel actual.`;
-    }
-    const botonComenzar = document.querySelector('#card-active-state a[href="#start-lesson"]');
-    if (botonComenzar) botonComenzar.href = 'rutaDeAprendizaje.html';
-
-    ['active', 'completed', 'empty'].forEach((estado) => {
-        const boton = document.getElementById(`btn-state-${estado}`);
-        boton.setAttribute('aria-controls', `card-${estado}-state`);
-        boton.addEventListener('click', () => cambiarEstado(estado));
-    });
-
-    const modulos = [...document.querySelectorAll('.module-item')];
-    buscador.addEventListener('input', () => {
-        const consulta = buscador.value.trim().toLocaleLowerCase('es');
-        let visibles = 0;
-        modulos.forEach((modulo) => {
-            const coincide = modulo.dataset.search.toLocaleLowerCase('es').includes(consulta);
-            modulo.classList.toggle('d-none', !coincide);
-            if (coincide) visibles += 1;
-        });
-        document.getElementById('sin-resultados-modulo').classList.toggle('d-none', visibles > 0);
-    });
 }
