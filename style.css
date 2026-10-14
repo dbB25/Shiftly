@@ -1383,3 +1383,13 @@ main.resultado-leccion,
     align-items: center;
     text-align: center;
 }
+
+
+#formularioLogin input.is-valid {
+    border: 2px solid #198754 !important;
+}
+
+#formularioLogin input.is-invalid {
+    border: 2px solid #dc3545 !important;
+}
+

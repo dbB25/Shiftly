@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,71 +8,357 @@
     <title>Shiftly - Verificación de Correo</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Estilos Propios -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilos propios -->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background-color: #DAE0F2;
+            font-family: sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarjeta-verificacion {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(17, 19, 68, 0.08);
+        }
+
+        .icono-verificacion {
+            width: 88px;
+            height: 88px;
+            background-color: #EFE9E7;
+            color: #52154E;
+            font-size: 36px;
+        }
+
+        .codigo {
+            width: 68px;
+            height: 76px;
+            border: 2px solid #CBD5E1;
+            font-size: 30px;
+        }
+
+        .codigo:focus {
+            border-color: #52154E;
+            box-shadow: 0 0 0 0.2rem rgba(82, 21, 78, 0.15);
+        }
+
+        .barra-shiftly {
+            background-color: #52154E;
+            transition: width 0.2s ease;
+        }
+
+        .btn-shiftly {
+            background-color: #52154E;
+            border-color: #52154E;
+        }
+
+        .btn-shiftly:hover {
+            background-color: #42113F;
+            border-color: #42113F;
+        }
+
+        @media (max-width: 480px) {
+            .codigo {
+                width: 55px;
+                height: 62px;
+            }
+
+            .tarjeta-verificacion {
+                padding: 1.5rem !important;
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color: #DAE0F2; font-family: sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column;">
+<body>
 
-    <!-- NAVBAR BLANCO CON SOMBRA -->
+    <!-- Navbar -->
     <header class="bg-white shadow-sm sticky-top py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-decoration-none" href="index.html" style="color: #111344;">
-                <img src="img_log/logotipo interfaz.svg" alt="Logo Shiftly" width="40" height="40">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-decoration-none"
+               href="index.html" style="color: #111344;">
+
+                <img src="img_log/logotipo interfaz.svg"
+                     alt="Logo Shiftly" width="40" height="40">
+
                 <span>Shiftly</span>
             </a>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="py-5 flex-grow-1 d-flex align-items-center">
-        <div class="container" style="max-width: 500px;">
-            
-            <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 text-center" style="background-color: #FFFFFF;">
-                
-                <!-- Icono Destacado -->
-                <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px; background-color: #EFE9E7; color: #52154E; font-size: 32px;">
-                    <i class="bi bi-envelope-check-fill"></i>
-                </div>
+    <!-- Contenido principal -->
+    <main class="py-5 px-3 flex-grow-1 d-flex align-items-center">
+        <div class="tarjeta-verificacion p-4 p-md-5 text-center">
 
-                <!-- Encabezado -->
-                <div class="mb-4">
-                    <p class="text-uppercase fw-bold small mb-1" style="color: #52154E; letter-spacing: 1px;">VERIFICACIÓN REQUERIDA</p>
-                    <h1 class="h3 fw-bold mb-2" style="color: #111344;">Revisa tu Correo</h1>
-                    <p class="small text-muted mb-0">Hemos enviado un código de verificación de 4 dígitos a tu correo electrónico registrado.</p>
-                </div>
+            <!-- Icono -->
+            <div class="icono-verificacion rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                <i class="bi bi-envelope-check-fill"></i>
+            </div>
 
-                <!-- Inputs del Código -->
+            <!-- Encabezado -->
+            <div class="mb-4">
+                <p class="text-uppercase fw-bold small mb-1"
+                   style="color: #52154E; letter-spacing: 1px;">
+                    VERIFICACIÓN REQUERIDA
+                </p>
+
+                <h1 class="h3 fw-bold mb-2" style="color: #111344;">
+                    Revisa tu Correo
+                </h1>
+
+                <p class="text-muted mb-0">
+                    Introduce el código de verificación de 4 dígitos
+                    enviado a tu correo electrónico registrado.
+                </p>
+            </div>
+
+            <!-- Formulario -->
+            <form id="formularioVerificacion">
+
+                <!-- Casillas del código -->
                 <div class="d-flex justify-content-center gap-2 mb-4">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="8">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="4">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="1">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="9">
+
+                    <input type="text"
+                           inputmode="numeric"
+                           pattern="[0-9]"
+                           maxlength="1"
+                           class="form-control text-center fw-bold rounded-3 codigo"
+                           aria-label="Primer dígito"
+                           autocomplete="one-time-code"
+                           required>
+
+                    <input type="text"
+                           inputmode="numeric"
+                           pattern="[0-9]"
+                           maxlength="1"
+                           class="form-control text-center fw-bold rounded-3 codigo"
+                           aria-label="Segundo dígito"
+                           required>
+
+                    <input type="text"
+                           inputmode="numeric"
+                           pattern="[0-9]"
+                           maxlength="1"
+                           class="form-control text-center fw-bold rounded-3 codigo"
+                           aria-label="Tercer dígito"
+                           required>
+
+                    <input type="text"
+                           inputmode="numeric"
+                           pattern="[0-9]"
+                           maxlength="1"
+                           class="form-control text-center fw-bold rounded-3 codigo"
+                           aria-label="Cuarto dígito"
+                           required>
+
                 </div>
 
-                <button type="button" class="btn text-white rounded-pill w-100 py-2 fw-semibold" style="background-color: #52154E; border-color: #52154E;">
+                <!-- Barra de progreso -->
+                <div class="mb-3 text-start">
+
+                    <div class="d-flex justify-content-between mb-1">
+                        <small class="text-muted">
+                            Progreso de verificación
+                        </small>
+
+                        <small id="textoProgreso" class="fw-bold">
+                            0%
+                        </small>
+                    </div>
+
+                    <div class="progress" style="height: 8px;">
+                        <div id="barraProgreso"
+                             class="progress-bar barra-shiftly"
+                             role="progressbar"
+                             style="width: 0%;"
+                             aria-valuenow="0"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Mensajes -->
+                <div id="mensajeVerificacion"
+                     class="alert d-none text-start"
+                     role="status"
+                     aria-live="polite">
+                </div>
+
+                <!-- Botón verificar -->
+                <button type="submit"
+                        class="btn btn-shiftly text-white rounded-pill w-100 py-3 fw-semibold">
                     Verificar Cuenta
                 </button>
 
-                <!-- Reenviar Código -->
-                <div class="mt-4 pt-3 border-top">
-                    <p class="small text-muted mb-0">¿No recibiste el correo? <a href="#" class="fw-bold text-decoration-none" style="color: #52154E;">Reenviar código</a></p>
-                </div>
+            </form>
 
+            <!-- Reenviar código -->
+            <div class="mt-4 pt-3 border-top">
+                <p class="small text-muted mb-1">
+                    ¿No recibiste el correo?
+                </p>
+
+                <button type="button"
+                        id="reenviarCodigo"
+                        class="btn btn-link p-0 fw-bold text-decoration-none"
+                        style="color: #52154E;">
+                    Reenviar código
+                </button>
             </div>
 
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="bg-white border-top py-3 mt-auto text-center">
-        <p class="mb-0 text-muted small">&copy; 2026 Shiftly. Todos los derechos reservados.</p>
+        <p class="mb-0 text-muted small">
+            &copy; 2026 Shiftly. Todos los derechos reservados.
+        </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- JavaScript: interacciones -->
+    <script>
+        const formulario = document.getElementById("formularioVerificacion");
+        const campos = document.querySelectorAll(".codigo");
+        const mensaje = document.getElementById("mensajeVerificacion");
+        const botonReenviar = document.getElementById("reenviarCodigo");
+        const barra = document.getElementById("barraProgreso");
+        const textoProgreso = document.getElementById("textoProgreso");
 
+        // Mostrar mensajes
+        function mostrarMensaje(texto, tipo) {
+            mensaje.textContent = texto;
+            mensaje.className = "alert alert-" + tipo + " text-start";
+        }
+
+        // Actualizar la barra de progreso
+        function actualizarProgreso() {
+            const completados = Array.from(campos)
+                .filter(campo => campo.value.trim() !== "")
+                .length;
+
+            const porcentaje = (completados / campos.length) * 100;
+
+            barra.style.width = porcentaje + "%";
+            barra.setAttribute("aria-valuenow", porcentaje);
+            textoProgreso.textContent = porcentaje + "%";
+        }
+
+        // Validar números y avanzar entre casillas
+        campos.forEach((campo, indice) => {
+
+            campo.addEventListener("input", () => {
+                campo.value = campo.value.replace(/\D/g, "").slice(-1);
+
+                if (campo.value && indice < campos.length - 1) {
+                    campos[indice + 1].focus();
+                }
+
+                mensaje.className = "alert d-none text-start";
+                actualizarProgreso();
+            });
+
+            // Retroceder a la casilla anterior
+            campo.addEventListener("keydown", evento => {
+
+                if (evento.key === "Backspace" &&
+                    !campo.value && indice > 0) {
+                    campos[indice - 1].focus();
+                }
+
+                if (evento.key === "ArrowLeft" && indice > 0) {
+                    campos[indice - 1].focus();
+                }
+
+                if (evento.key === "ArrowRight" &&
+                    indice < campos.length - 1) {
+                    campos[indice + 1].focus();
+                }
+            });
+
+            // Pegar el código completo
+            campo.addEventListener("paste", evento => {
+                evento.preventDefault();
+
+                const codigoPegado = evento.clipboardData
+                    .getData("text")
+                    .replace(/\D/g, "")
+                    .slice(0, campos.length);
+
+                codigoPegado.split("").forEach((digito, posicion) => {
+                    campos[posicion].value = digito;
+                });
+
+                const siguienteVacio = Array.from(campos)
+                    .findIndex(c => !c.value);
+
+                const indiceEnfoque = siguienteVacio === -1
+                    ? campos.length - 1
+                    : siguienteVacio;
+
+                campos[indiceEnfoque].focus();
+
+                mensaje.className = "alert d-none text-start";
+                actualizarProgreso();
+            });
+
+        });
+
+        // Validar el formulario
+        
+  // Validar el código de verificación
+  formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      const codigo = Array.from(campos)
+          .map(campo => campo.value.trim())
+          .join("");
+
+      if (!/^\d{4}$/.test(codigo)) {
+          mostrarMensaje(
+              "Ingresa los cuatro dígitos del código.",
+              "warning"
+          );
+          return;
+      }
+
+      mostrarMensaje(
+          "¡Código capturado correctamente! La verificación real requiere validar el código con el servidor.",
+          "info"
+      );
+  });
+
+
+
+
+        // Simular el reenvío del código
+        botonReenviar.addEventListener("click", () => {
+            mostrarMensaje(
+                "La solicitud de reenvío fue registrada en esta demostración. El envío real requiere configurar un servidor de correo.",
+                "info"
+            );
+        });
+
+        // Inicializar el progreso
+        actualizarProgreso();
+    </script>
+
+</body>
 </html>
