@@ -21,20 +21,24 @@
         <span>Conoce a las mentes detrás de <strong>Shiftly</strong> y nuestra misión educativa.</span>
     </div>
 
-    <!-- HEADER / NAVIGATION -->
+    <!-- HEADER / NAVIGATION (Alineado con sección 'Públicas e Informativas' del diagrama) -->
     <header class="header-nav sticky-top shadow-sm">
         <div class="container-xxl d-flex align-items-center justify-content-between py-2" style="height: 64px;">
-            <div class="d-flex align-items-center gap-3">
+            <a href="index.html" class="d-flex align-items-center gap-3 text-decoration-none">
                 <div class="rounded-circle overflow-hidden border border-2 border-brand-secondary shadow-sm bg-brand-secondary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
                     <img src="logo-hamster.png" alt="Shiftly Logo" class="w-100 h-100 object-fit-cover">
                 </div>
                 <span class="fw-bold fs-4 text-brand-primary">Shiftly</span>
-            </div>
+            </a>
             
-            <nav class="d-none d-md-flex gap-4" id="main-nav">
-                <a href="#about" class="nav-link-custom active">Quiénes Somos</a>
-                <a href="#purpose" class="nav-link-custom">Propósito</a>
-                <a href="#team" class="nav-link-custom">Nuestro Equipo</a>
+            <!-- Navegación del mapa de sitio (Públicas e Informativas) -->
+            <nav class="d-none d-md-flex align-items-center gap-4" id="main-nav">
+                <a href="index.html" class="nav-link-custom">Inicio</a>
+                <a href="presentacion.html" class="nav-link-custom">Presentación</a>
+                <a href="servicios.html" class="nav-link-custom">Servicios</a>
+                <a href="nosotros.html" class="nav-link-custom active">Nosotros</a>
+                <a href="contacto.html" class="nav-link-custom">Contacto</a>
+                <a href="login.html" class="btn btn-outline-primary btn-sm fw-bold ms-2">Login</a>
             </nav>
         </div>
     </header>
@@ -354,15 +358,6 @@
                 if (savedImage) {
                     box.innerHTML = `<img src="${savedImage}" class="w-100 h-100 object-fit-cover">`;
                 }
-            });
-
-            // Resaltado dinámico del menú de navegación
-            const navLinks = document.querySelectorAll('#main-nav .nav-link-custom');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
             });
         });
     </script>
