@@ -5,122 +5,349 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shiftly - Selección de áreas</title>
 
-    
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        :root {
+            --bg-color: #e8ebf8;
+            --card-bg: #f4efea;
+            --primary-purple: #4a154b;
+            --border-purple: #4a154b;
+            --text-dark: #1d1c1d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* Navbar con Logotipo */
+        .navbar-custom {
+            background-color: #ffffff;
+            padding: 0.8rem 2rem;
+        }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .navbar-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .navbar-brand-custom {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #000;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+        .nav-link-custom {
+            color: #2b2b2b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        .nav-link-custom:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Hero Header Centrado */
+        .subtitle-tag {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-bottom: 0.5rem;
+        }
+        .main-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0d0e15;
+            margin-bottom: 0.75rem;
+        }
+        .description-text {
+            color: #4a4a4a;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Tarjetas de Áreas */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .area-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem;
+            width: 210px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .area-card.seleccionada {
+            border-color: var(--border-purple);
+            background-color: #f7f3f0;
+        }
+
+        /* Icono SVG dentro de caja */
+        .icon-box {
+            width: 50px;
+            height: 38px;
+            border: 1.5px solid var(--primary-purple);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+        }
+
+        /* Badge Check cuando está seleccionada */
+        .check-badge {
+            display: none;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 26px;
+            height: 26px;
+            background-color: var(--primary-purple);
+            color: #fff;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .area-card.seleccionada .check-badge {
+            display: flex;
+        }
+
+        .area-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #111;
+        }
+        .area-desc {
+            font-size: 0.85rem;
+            color: #4a4a4a;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Botón Seleccionar */
+        .btn-select {
+            background-color: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+            width: 100%;
+        }
+        .btn-select:hover {
+            opacity: 0.9;
+            color: white;
+        }
+
+        /* Botón Continuar Centrado Abajo */
+        .btn-continue {
+            background-color: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(74, 21, 75, 0.2);
+            transition: transform 0.1s ease;
+        }
+        .btn-continue:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        .footer-custom {
+            margin-top: 4rem;
+            padding: 1.5rem 2rem;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        .social-icons svg {
+            width: 18px;
+            height: 18px;
+            fill: #333;
+            margin-left: 0.75rem;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    SHIFT
-                </a>
+    <!-- Header Navegación con Logotipo Integrado -->
+    <header class="navbar-custom d-flex justify-content-between align-items-center shadow-sm">
+        <a href="index.html" class="brand-container">
+           <img src="../../img_logo/logotipo interfaz.pfd" alt="SHIFT Logo" class="navbar-logo">
+            <span class="navbar-brand-custom">SHIFT</span>
+        </a>
 
-                <div class="navbar-links">
-                    <a href="#">Inicio</a>
-                    <a href="#">Aprender</a>
-                    <a href="#">Mi perfil</a>
-                    <a href="#">Ayuda</a>
-                </div>
-            </div>
+        <nav class="d-flex align-items-center">
+            <a href="index.html" class="nav-link-custom">Inicio</a>
+            <a href="presentacion.html" class="nav-link-custom">Presentación</a>
+            <a href="servicios.html" class="nav-link-custom">Servicios</a>
+            <a href="nosotros.html" class="nav-link-custom">Nosotros</a>
+            <a href="contacto.html" class="nav-link-custom">Contacto</a>
+            <a href="perfil.html" class="nav-link-custom">Mi perfil</a>
+            <a href="login.html" class="nav-link-custom fw-semibold">Login</a>
         </nav>
     </header>
-    <main>
 
-        <section class="seleccion-areas">
-            <div class="container">
-
-                <div class="encabezado-areas">
-                    <p>ÁREA DE APRENDIZAJE</p>
-
-                    <h1>¿Qué inglés quieres aprender?</h1>
-
-                    <p>
-                        Elige un área de aprendizaje para adaptar el contenido
-                        a tus intereses y comienza tu camino con SHIFT
-                    </p>
-                </div>
-                <div id="areas-aprendizaje">
-                    <article class="area">
-        <h2>Programación</h2>
-        <p>Inglés enfocado en tecnología, desarrollo y mundo digital</p>
-        <button type="button">Seleccionar →</button>
-    </article>
-
-    <article class="area">
-        <h2>Gastronomía</h2>
-        <p>Aprende vocabulario, expresiones y situaciones del mundo culinario</p>
-        <button type="button">Seleccionar →</button>
-    </article>
-
-    <article class="area">
-        <h2>Turismo</h2>
-        <p>Inglés para viajes, hoteles, atención al cliente y experiencias turísticas</p>
-        <button type="button">Seleccionar →</button>
-    </article>
-
-    <article class="area">
-        <h2>Negocios</h2>
-        <p>Inglés para ambientes profesionales, empresariales y comunicación laboral</p>
-        <button type="button">Seleccionar →</button>
-    </article>
-
-    <article class="area">
-        <h2>Inglés cotidiano</h2>
-        <p>Expresiones y vocabulario para situaciones diarias de la vida real</p>
-        <button type="button">Seleccionar →</button>
-    </article>
-                </div>
-                <div class="boton-continuar">
-                    <button type="button">
-                        Continuar →
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-    <footer>
-        <p>
-            En SHIFT creemos que el inglés puede llevarte más lejos
+    <main class="container py-5 text-center">
+        <!-- Encabezado Centrado -->
+        <div class="subtitle-tag">SELECCIÓN DE ÁREAS</div>
+        <h1 class="main-title">¿Qué inglés quieres aprender?</h1>
+        <p class="description-text">
+            Elige un área de aprendizaje para adaptar el contenido a tus intereses y comienza tu camino con SHIFT
         </p>
+
+        <!-- Tarjetas de Selección en Fila -->
+        <div id="areas-aprendizaje" class="cards-container">
+            
+            <!-- Programación -->
+            <article class="area-card seleccionada">
+                <div class="check-badge">✓</div>
+                <div class="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                </div>
+                <h2 class="area-title">Programación</h2>
+                <p class="area-desc">Inglés enfocado en tecnología, desarrollo y mundo digital</p>
+                <button type="button" class="btn-select">Seleccionar →</button>
+            </article>
+
+            <!-- Gastronomía -->
+            <article class="area-card">
+                <div class="check-badge">✓</div>
+                <div class="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 13.87A8 8 0 0 1 12 4a8 8 0 0 1 6 9.87M4 17h16M10 20h4"/></svg>
+                </div>
+                <h2 class="area-title">Gastronomía</h2>
+                <p class="area-desc">Aprende vocabulario, expresiones y situaciones del mundo culinario</p>
+                <button type="button" class="btn-select">Seleccionar →</button>
+            </article>
+
+            <!-- Turismo -->
+            <article class="area-card">
+                <div class="check-badge">✓</div>
+                <div class="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.8-.2-1.6.1-2.1.7l-.6.6 6 4-3.5 3.5-2.4-.8-.9.9 3 2.1 2.1 3 .9-.9-.8-2.4 3.5-3.5 4 6 .6-.6c.6-.5.9-1.3.7-2.1z"/></svg>
+                </div>
+                <h2 class="area-title">Turismo</h2>
+                <p class="area-desc">Inglés para viajes, hoteles, atención al cliente y experiencias turísticas</p>
+                <button type="button" class="btn-select">Seleccionar →</button>
+            </article>
+
+            <!-- Negocios -->
+            <article class="area-card">
+                <div class="check-badge">✓</div>
+                <div class="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <h2 class="area-title">Negocios</h2>
+                <p class="area-desc">Inglés para ambientes profesionales, empresariales y comunicación laboral</p>
+                <button type="button" class="btn-select">Seleccionar →</button>
+            </article>
+
+            <!-- Inglés cotidiano -->
+            <article class="area-card">
+                <div class="check-badge">✓</div>
+                <div class="icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h2 class="area-title">Inglés cotidiano</h2>
+                <p class="area-desc">Expresiones y vocabulario para situaciones diarias de la vida real</p>
+                <button type="button" class="btn-select">Seleccionar →</button>
+            </article>
+
+        </div>
+
+        <!-- Botón Continuar Centrado -->
+        <div class="mt-4">
+            <button type="button" class="btn-continue">
+                Continuar →
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer Completo -->
+    <footer class="footer-custom d-flex justify-content-between align-items-center flex-wrap container">
+        <div>
+            En SHIFT creemos que el inglés puede llevarte más lejos
+        </div>
+        <div class="d-flex align-items-center mt-2 mt-md-0">
+            <div class="footer-links me-3">
+                <a href="#">Aviso Legal</a> |
+                <a href="#">Privacidad</a> |
+                <a href="#">Preguntas Frecuentes</a>
+            </div>
+            <div class="social-icons d-flex align-items-center">
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="#"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            </div>
+        </div>
     </footer>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
-<script>
-    const botones = document.querySelectorAll("#areas-aprendizaje .area button");
-    const botonContinuar = document.querySelector(".boton-continuar button");
 
-    let areaSeleccionada = false;
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const cards = document.querySelectorAll(".area-card");
+        const botonContinuar = document.querySelector(".btn-continue");
 
-    botones.forEach(boton => {
-        boton.addEventListener("click", () => {
+        let areaSeleccionada = true;
 
-            botones.forEach(b => {
-                b.closest(".area").classList.remove("seleccionada");
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                cards.forEach(c => c.classList.remove("seleccionada"));
+                card.classList.add("seleccionada");
+                areaSeleccionada = true;
             });
-
-            boton.closest(".area").classList.add("seleccionada");
-            areaSeleccionada = true;
         });
-    });
 
-    botonContinuar.addEventListener("click", () => {
-
-        if (!areaSeleccionada) {
-            alert("Selecciona un área de aprendizaje para continuar");
-            return;
-        }
-
-        alert("Área seleccionada¡Continuemos!");
-    });
-</script>
+        botonContinuar.addEventListener("click", () => {
+            if (!areaSeleccionada) {
+                alert("Selecciona un área de aprendizaje para continuar");
+                return;
+            }
+            window.location.href = "dashboard.html";
+        });
+    </script>
 </body>
 </html>
