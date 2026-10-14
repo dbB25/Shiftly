@@ -1,164 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiftly - Resultado de Lección</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Estilos Propios -->
+    <title>Shiftly - Resultados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- NAVBAR BLANCO CON SOMBRA -->
-    <header class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img_log/logotipo interfaz.svg" alt="Logo Shiftly" class="logo-shiftly">
-                <span>Shiftly</span>
-            </a>
-
-            <div class="navbar-links">
-                <a href="index.html">Inicio</a>
-                <a href="servicios.html">Aprender</a>
-                <a href="glosario.html">Glosario</a>
-                <a href="contacto.html">Contacto</a>
+            <a class="navbar-brand fw-bold fs-3" href="index.html">Shiftly</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="dashboard.html">Panel del Usuario</a>
+                <a class="nav-link" href="rutaDeAprendizaje.html">Ruta de Aprendizaje</a>
+                <a class="nav-link active" href="resultados-leccion.html">Resultados</a>
+                <a class="nav-link" href="glosario.html">Glosario</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="vista-resultado">
-        <div class="contenedor-resultado">
+    <div class="container my-5 text-center">
+        <h1 class="mb-4 fw-bold">Resultados de la Lección</h1>
 
-            <!-- ENCABEZADO -->
-            <div class="encabezado-resultado">
-                <p class="etiqueta-resultado">¡LECCIÓN COMPLETADA!</p>
-                <h1>Everyday English</h1>
-                <p class="subtitulo-resultado">Excelente trabajo. Aquí tienes el desglose visual de tu rendimiento y calificación.</p>
-            </div>
-
-            <!-- TARJETA PRINCIPAL DE CALIFICACIÓN -->
-            <div class="tarjeta-resultado tarjeta-centrada">
-                
-                <!-- Estrellas -->
-                <div class="estrellas-puntaje">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                    <i class="bi bi-star estrella-vacia"></i>
-                </div>
-
-                <!-- Porcentaje -->
-                <div class="circulo-porcentaje">
-                    <span>85%</span>
-                </div>
-
-                <h2>¡Nivel Dominado!</h2>
-                <p class="texto-resumen">
-                    Has respondido correctamente <strong>17 de 20 preguntas</strong>. Sumaste <strong>+150 XP</strong> a tu racha actual.
-                </p>
-
-                <!-- Barra de Precisión -->
-                <div class="caja-precision">
-                    <div class="info-precision">
-                        <span>Precisión de aciertos</span>
-                        <span>17/20 Aciertos</span>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- RESUMEN DE RESPUESTAS -->
-            <div class="tarjeta-resultado">
-                <h3 class="titulo-seccion">Resumen de Respuestas</h3>
-
-                <div class="lista-respuestas">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <h3 class="card-title mb-3">Puntuación Final</h3>
+                    <div class="display-3 fw-bold mb-3" id="contadorPuntaje">0 / 100</div>
                     
-                    <!-- Pregunta 1 -->
-                    <div class="item-respuesta acierto">
-                        <div class="encabezado-item">
-                            <span class="insignia-estado estado-acierto">
-                                <i class="bi bi-check-circle-fill me-1"></i> Correcta
-                            </span>
-                            <span class="numero-pregunta">Pregunta 1</span>
-                        </div>
-                        <p class="pregunta-texto">¿Cómo saludas formalmente en un correo laboral?</p>
-                        <div class="detalle-caja">
-                            <p class="mb-1"><strong>Tu respuesta:</strong> <span class="texto-verde">"Dear Mr. Smith,"</span></p>
-                            <p class="mb-0 text-muted"><strong>Explicación:</strong> Es el encabezado estándar y profesional en inglés comercial.</p>
-                        </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary btn-detalle" data-modulo="Medicina" data-aciertos="9/10" data-tiempo="12 minutos">Ver Detalle Medicina</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Gastronomía" data-aciertos="10/10" data-tiempo="8 minutos">Ver Detalle Gastronomía</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Derecho" data-aciertos="8/10" data-tiempo="15 minutos">Ver Detalle Derecho</button>
+                        <button class="btn btn-outline-primary btn-detalle" data-modulo="Arquitectura" data-aciertos="9/10" data-tiempo="10 minutos">Ver Detalle Arquitectura</button>
                     </div>
-
-                    <!-- Pregunta 2 -->
-                    <div class="item-respuesta error">
-                        <div class="encabezado-item">
-                            <span class="insignia-estado estado-error">
-                                <i class="bi bi-x-circle-fill me-1"></i> Incorrecta
-                            </span>
-                            <span class="numero-pregunta">Pregunta 2</span>
-                        </div>
-                        <p class="pregunta-texto">Significado de la expresión "As per our conversation"</p>
-                        <div class="detalle-caja">
-                            <p class="mb-1 text-danger"><strong>Tu respuesta:</strong> "Para iniciar una nueva reunión"</p>
-                            <p class="mb-1 texto-verde"><strong>Respuesta correcta:</strong> "Según lo conversado / Como acordamos"</p>
-                            <p class="mb-0 text-muted"><strong>Tip de repaso:</strong> Se utiliza en correos de seguimiento tras llamadas o juntas.</p>
-                        </div>
-                    </div>
-
-                    <!-- Pregunta 3 -->
-                    <div class="item-respuesta acierto">
-                        <div class="encabezado-item">
-                            <span class="insignia-estado estado-acierto">
-                                <i class="bi bi-check-circle-fill me-1"></i> Correcta
-                            </span>
-                            <span class="numero-pregunta">Pregunta 3</span>
-                        </div>
-                        <p class="pregunta-texto">Traducción de "Mise en place" en gastronomía</p>
-                        <div class="detalle-caja">
-                            <p class="mb-1"><strong>Tu respuesta:</strong> <span class="texto-verde">"Preparación previa de ingredientes"</span></p>
-                            <p class="mb-0 text-muted"><strong>Explicación:</strong> Término técnico utilizado internacionalmente en cocinas.</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
-            <!-- BOTONES DE NAVEGACIÓN -->
-            <div class="botones-resultado">
-                <a href="servicios.html" class="btn-resultado btn-repasar">
-                    <i class="bi bi-arrow-repeat me-1"></i> Repasar lección
-                </a>
-                <a href="dashboard.html" class="btn-resultado btn-siguiente">
-                    Siguiente Lección <i class="bi bi-arrow-right ms-1"></i>
-                </a>
-            </div>
-
         </div>
-    </main>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer-simple">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
-            <p class="mb-0 text-muted small">&copy; 2026 Shiftly. Todos los derechos reservados.</p>
-            <div class="d-flex gap-3">
-                <a href="#" class="text-muted text-decoration-none small">Privacidad</a>
-                <a href="#" class="text-muted text-decoration-none small">Términos</a>
-                <a href="#" class="text-muted text-decoration-none small">Soporte</a>
+    <div class="modal fade" id="modalDetalles" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: var(--color-superficie);">
+                <div class="modal-header" style="border-bottom-color: rgba(17, 19, 68, 0.1);">
+                    <h5 class="modal-title fw-bold" id="modalTitulo">Detalles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p><strong>Aciertos:</strong> <span id="modalAciertos"></span></p>
+                    <p><strong>Tiempo empleado:</strong> <span id="modalTiempo"></span></p>
+                </div>
+                <div class="modal-footer" style="border-top-color: rgba(17, 19, 68, 0.1);">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/resultados-leccion.js"></script>
 </body>
-
 </html>

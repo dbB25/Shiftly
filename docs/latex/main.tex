@@ -1,0 +1,247 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Project Titlepage Modified (v 0.1) by rcx
+%
+% Original Source: http://www.howtotex.com
+% Date: February 2014
+% 
+% This is a title page template which be used for articles & reports.
+% 
+% This is the modified version of the original Latex template from
+% aforementioned website.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry}
+\usepackage[myheadings]{fullpage}
+\usepackage{xcolor}
+\definecolor{shiftlyblue}{HTML}{111344}
+\definecolor{shiftlypurple}{HTML}{52154E}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{fourier}
+\usepackage[protrusion=true, expansion=true]{microtype}
+\usepackage[english]{babel}
+\usepackage{sectsty}
+\usepackage{url, lipsum}
+\usepackage{tgbonum}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\onehalfspacing
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+
+%-------------------------------------------------------------------------------
+% HEADER & FOOTER
+%-------------------------------------------------------------------------------
+%\pagestyle{fancy}
+%\fancyhf{}
+%\setlength\headheight{15pt}
+%\fancyhead[L]{Student ID: 1034511}
+%\fancyhead[R]{Anglia Ruskin University}
+%\fancyfoot[R]{Page \thepage\ of \pageref{LastPage}}
+%-------------------------------------------------------------------------------
+% TITLE PAGE
+%-------------------------------------------------------------------------------
+
+\begin{document}
+{\fontfamily{cmr}\selectfont
+\begin{titlepage}
+\begin{center}
+\vspace*{0.1cm}
+\IfFileExists{upp.png}{
+\includegraphics[width=0.16\textwidth]{upp.png}
+\par\vspace{0.2cm}
+}{}
+{\Large
+\textcolor{shiftlyblue}{\textbf{UNIVERSIDAD POLITÉCNICA DE PACHUCA}}
+\par}
+\vspace{0.20cm}
+{\large
+\textcolor{shiftlyblue}{\textbf{TECNOLOGÍAS DE LA INFORMACIÓN E INNOVACIÓN DIGITAL}}
+\par}
+\vspace{0.6cm}
+\textcolor{shiftlypurple}{\rule{\textwidth}{1.2pt}}
+\vspace{0.4cm}
+{\Large
+\textcolor{shiftlypurple}{\textbf{APLICACIONES WEB}}
+\par}
+\vspace{0.35cm}
+{\LARGE
+\textbf{SHIFTLY}
+\par}
+\vspace{0.2cm}
+{\huge
+\textcolor{shiftlypurple}{\textbf{REPORTE DEL PROYECTO}}
+\par}
+\vspace{0.4cm}
+\textcolor{shiftlypurple}{\rule{\textwidth}{1.2pt}}
+\vspace{0.1 cm}
+{\large \textbf{Docente}}
+\par
+\vspace{0.1cm}
+{\large Yeniza Sarahí Montoya Martínez}
+\par
+\vspace{0.1cm}
+{\large \textbf{Integrantes del equipo}}
+\par
+\vspace{0.1cm}
+{\normalsize
+Luis David Balandrano Delgado\\
+Keydhy Mareli Villa Aldana\\
+Isis Dayane Arellano Carillo\\
+Vaneza Lugo Ramirez\\
+Brian Jael Juarez Rodriguez\\
+Julio Cesar Licona Acosta\\
+\par}
+\vspace{0.7cm}
+{\large
+\textbf{GRUPO: 04\_02}
+\par}
+\vfill
+{\normalsize
+\textbf{Fecha:} 5 de octubre de 2026
+\par}
+\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+%-------------------------------------------------------------------------------
+% Section title formatting
+\sectionfont{\scshape}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+% BODY
+%-------------------------------------------------------------------------------
+% =====================================================
+% DOCUMENTACIÓN DEL PROYECTO SHIFT
+% =====================================================
+
+\section{Introducción}
+\input{Objective.tex}
+
+\section{Alcance del proyecto}
+\input{Theoretical.tex}
+
+\section{Equipo de trabajo y responsabilidades}
+\input{Team.tex}
+
+\section{Requerimientos específicos}
+\input{Method.tex}
+
+\section{Requerimientos funcionales}
+\input{Results.tex}
+
+\section{Requerimientos no funcionales}
+\input{Tables.tex}
+
+\section{Guía de estilo}
+\input{Multisim.tex}
+
+\section{Desarrollo y evidencias}
+\input{ICdiagrams.tex}
+
+\clearpage
+
+\section{Conclusiones}
+\input{Conclusion.tex}
+
+
+%-------------------------------------------------------------------------------
+% REFERENCES
+%-------------------------------------------------------------------------------
+\newpage
+\section*{References}
+
+%[2]John W. Eaton, David Bateman, Sren Hauberg, Rik Wehbring (2015). GNU
+%Octave version 4.0.0 manual: a high-level interactive language for numer-
+%ical computations. Available: http://www.gnu.org/software/octave/doc/
+%interpreter/. 
+}
+\end{document}
+
+%-------------------------------------------------------------------------------
+% SNIPPETS
+%-------------------------------------------------------------------------------
+
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{file_name}
+%	\caption{}
+%	\centering
+%	\label{label:file_name}
+%\end{figure}
+
+%\begin{figure}[!ht]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{graph}
+%	\caption{Blood pressure ranges and associated level of hypertension (American Heart Association, 2013).}
+%	\centering
+%	\label{label:graph}
+%\end{figure}
+
+%\begin{wrapfigure}{r}{0.30\textwidth}
+%	\vspace{-40pt}
+%	\begin{center}
+%		\includegraphics[width=0.29\textwidth]{file_name}
+%	\end{center}
+%	\vspace{-20pt}
+%	\caption{}
+%	\label{label:file_name}
+%\end{wrapfigure}
+
+%\begin{wrapfigure}{r}{0.45\textwidth}
+%	\begin{center}
+%		\includegraphics[width=0.29\textwidth]{manometer}
+%	\end{center}
+%	\caption{Aneroid sphygmomanometer with stethoscope (Medicalexpo, 2012).}
+%	\label{label:manometer}
+%\end{wrapfigure}
+
+%\begin{table}[!ht]\footnotesize
+%	\centering
+%	\begin{tabular}{cccccc}
+%	\toprule
+%	\multicolumn{2}{c} {Pearson's correlation test} & \multicolumn{4}{c} {Independent t-test} \\
+%	\midrule	
+%	\multicolumn{2}{c} {Gender} & \multicolumn{2}{c} {Activity level} & \multicolumn{2}{c} {Gender} \\
+%	\midrule
+%	Males & Females & 1st level & 6th level & Males & Females \\
+%	\midrule
+%	\multicolumn{2}{c} {BMI vs. SP} & \multicolumn{2}{c} {Systolic pressure} & \multicolumn{2}{c} {Systolic Pressure} \\
+%	\multicolumn{2}{c} {BMI vs. DP} & \multicolumn{2}{c} {Diastolic pressure} & \multicolumn{2}{c} {Diastolic pressure} \\
+%	\multicolumn{2}{c} {BMI vs. MAP} & \multicolumn{2}{c} {MAP} & \multicolumn{2}{c} {MAP} \\
+%	\multicolumn{2}{c} {W:H ratio vs. SP} & \multicolumn{2}{c} {BMI} & \multicolumn{2}{c} {BMI} \\
+%	\multicolumn{2}{c} {W:H ratio vs. DP} & \multicolumn{2}{c} {W:H ratio} & \multicolumn{2}{c} {W:H ratio} \\
+%	\multicolumn{2}{c} {W:H ratio vs. MAP} & \multicolumn{2}{c} {\% Body fat} & \multicolumn{2}{c} {\% Body fat} \\
+%	\multicolumn{2}{c} {} & \multicolumn{2}{c} {Height} & \multicolumn{2}{c} {Height} \\
+%	\multicolumn{2}{c} {} & \multicolumn{2}{c} {Weight} & \multicolumn{2}{c} {Weight} \\
+%	\multicolumn{2}{c} {} & \multicolumn{2}{c} {Heart rate} & \multicolumn{2}{c} {Heart rate} \\
+%	\bottomrule
+%	\end{tabular}
+%	\caption{Parameters that were analysed and related statistical test performed for current study. BMI - body mass index; SP - systolic pressure; DP - diastolic pressure; MAP - mean arterial pressure; W:H ratio - waist to hip ratio.}
+%	\label{label:tests}
+%\end{table}%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+
+%\title{Weekly Report template}
+%\author{gandhalijuvekar }
+%\date{January 2019}
+
+%\begin{document}
+
+%\maketitle
+
+%\section{Introduction}
+
+%\end{document}
