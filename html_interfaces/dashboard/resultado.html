@@ -58,13 +58,13 @@
                         TU NIVEL ESTIMADO
                     </p>
 
-                    <div class="nivel">
+                    <div class="nivel" id="nivel-resultado" aria-live="polite">
                         B1
                     </div>
 
-                    <h2>Intermedio</h2>
+                    <h2 id="nombre-nivel">Intermedio</h2>
 
-                    <p>
+                    <p id="descripcion-nivel">
                         Tienes conocimientos que te permiten comprender
                         y utilizar expresiones frecuentes en situaciones
                         cotidianas.
@@ -76,7 +76,7 @@
 
                     <h2>Recomendación para ti</h2>
 
-                    <p>
+                    <p id="texto-recomendacion">
                         Continúa practicando vocabulario, comprensión
                         y comunicación para fortalecer tu dominio del inglés.
                     </p>
@@ -84,6 +84,10 @@
                 </div>
 
                 <div class="resultado-botones">
+
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-revision">
+                        Revisar mis respuestas
+                    </button>
 
                     <a href="diagnostico.html"
                        class="btn btn-outline-secondary">
@@ -99,6 +103,24 @@
 
             </div>
 
+            <div class="modal fade" id="modal-revision" tabindex="-1" aria-labelledby="titulo-modal-revision" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="titulo-modal-revision">Repaso de tu diagnóstico</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="resumen-revision">Tu diagnóstico estima tu nivel de inglés con base en tus respuestas.</p>
+                            <div id="lista-revision" class="d-flex flex-column gap-3"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </main>
@@ -111,6 +133,55 @@
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        (() => {
+            const niveles = [
+                { nivel: 'A1', nombre: 'Principiante', descripcion: 'Estás comenzando. Puedes comprender y usar expresiones muy básicas en situaciones cotidianas.', recomendacion: 'Empieza por vocabulario esencial, frases frecuentes y estructuras básicas del inglés.' },
+                { nivel: 'A2', nombre: 'Básico', descripcion: 'Puedes comunicarte en tareas sencillas y comprender expresiones frecuentes sobre temas familiares.', recomendacion: 'Refuerza vocabulario cotidiano, comprensión lectora y conversaciones breves.' },
+                { nivel: 'B1', nombre: 'Intermedio', descripcion: 'Tienes conocimientos que te permiten comprender y utilizar expresiones frecuentes en situaciones cotidianas.', recomendacion: 'Continúa practicando vocabulario, comprensión y comunicación para fortalecer tu dominio del inglés.' },
+                { nivel: 'B2', nombre: 'Intermedio alto', descripcion: 'Puedes comprender ideas principales y comunicarte con soltura en una variedad de situaciones.', recomendacion: 'Practica textos más complejos, expresiones naturales y conversaciones sobre temas variados.' },
+                { nivel: 'C1', nombre: 'Avanzado', descripcion: 'Demuestras un dominio avanzado y puedes comprender contenidos exigentes con fluidez.', recomendacion: 'Perfecciona matices, vocabulario especializado y comunicación precisa en contextos profesionales.' }
+            ];
+            let resultado = null;
+            try { resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null'); } catch (_) { /* Se usa el resultado de la URL como alternativa. */ }
+            const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
+            const aciertosUrl = parametroAciertos === null ? NaN : Number(parametroAciertos);
+            if (!resultado && Number.isInteger(aciertosUrl) && aciertosUrl >= 0 && aciertosUrl <= 5) {
+                resultado = { ...niveles[Math.min(aciertosUrl, niveles.length - 1)], aciertos: aciertosUrl, total: 5 };
+            }
+            if (resultado && niveles.some((nivel) => nivel.nivel === resultado.nivel)) {
+                document.getElementById('nivel-resultado').textContent = resultado.nivel;
+                document.getElementById('nombre-nivel').textContent = resultado.nombre;
+                document.getElementById('descripcion-nivel').textContent = resultado.descripcion;
+                document.getElementById('texto-recomendacion').textContent = resultado.recomendacion;
+            }
+            const listaRevision = document.getElementById('lista-revision');
+            if (resultado && Array.isArray(resultado.revision)) {
+                document.getElementById('resumen-revision').textContent = `${resultado.aciertos} de ${resultado.total} respuestas correctas.`;
+                resultado.revision.forEach((item, indice) => {
+                    const bloque = document.createElement('div');
+                    bloque.className = 'border rounded p-3';
+                    const titulo = document.createElement('strong');
+                    titulo.textContent = `Pregunta ${indice + 1}: ${item.pregunta}`;
+                    const estado = document.createElement('p');
+                    estado.className = item.correcta ? 'text-success mb-0 mt-2' : 'text-danger mb-0 mt-2';
+                    estado.textContent = item.correcta ? `Correcta: ${item.respuestaCorrecta}` : `Tu respuesta: ${item.respuestaElegida}. Correcta: ${item.respuestaCorrecta}`;
+                    bloque.append(titulo, estado);
+                    listaRevision.appendChild(bloque);
+                });
+            } else {
+                listaRevision.textContent = 'Completa el diagnóstico para consultar el repaso personalizado de tus respuestas.';
+            }
+            document.querySelector('.resultado-botones .btn-outline-secondary').addEventListener('click', () => {
+                try { localStorage.removeItem('shiftlyDiagnosticoResultado'); } catch (_) { /* Puede no estar disponible en navegación local. */ }
+            });
+            const botonContinuar = document.querySelector('.resultado-botones .btn-primary');
+            botonContinuar.href = resultado && Number.isInteger(resultado.aciertos)
+                ? `recomendaciones.html?aciertos=${resultado.aciertos}`
+                : 'recomendaciones.html';
+        })();
     </script>
 
 </body>

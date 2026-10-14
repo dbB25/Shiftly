@@ -285,8 +285,10 @@
                 <!-- ADDITIONAL DASHBOARD SECTION -->
                 <div class="card-custom p-4 shadow-sm">
                     <h3 class="fs-6 fw-bold text-brand-primary mb-3">Módulos Recientes de la Ruta</h3>
-                    <div class="d-flex flex-column gap-2">
-                        <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-white bg-opacity-40 border border-brand-accent">
+                    <label for="buscar-modulo" class="form-label small mb-1">Buscar en tus módulos</label>
+                    <input type="search" class="form-control mb-3" id="buscar-modulo" placeholder="Escribe para filtrar..." aria-label="Buscar módulos recientes">
+                    <div class="d-flex flex-column gap-2" id="lista-modulos">
+                        <div class="module-item d-flex align-items-center justify-content-between p-3 rounded-3 bg-white bg-opacity-40 border border-brand-accent" data-search="introduccion plataforma">
                             <div class="d-flex align-items-center gap-3">
                                 <span class="rounded-circle bg-brand-accent text-brand-secondary d-flex align-items-center justify-content-center fw-bold small" style="width: 28px; height: 28px;">✓</span>
                                 <div>
@@ -296,7 +298,7 @@
                             </div>
                             <span class="small fw-medium text-muted">100%</span>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-white bg-opacity-40 border border-brand-accent">
+                        <div class="module-item d-flex align-items-center justify-content-between p-3 rounded-3 bg-white bg-opacity-40 border border-brand-accent" data-search="gestion usuarios roles">
                             <div class="d-flex align-items-center gap-3">
                                 <span class="rounded-circle bg-brand-accent text-brand-secondary d-flex align-items-center justify-content-center fw-bold small" style="width: 28px; height: 28px;">✓</span>
                                 <div>
@@ -307,6 +309,7 @@
                             <span class="small fw-medium text-muted">100%</span>
                         </div>
                     </div>
+                    <p id="sin-resultados-modulo" class="small text-muted mt-3 mb-0 d-none">No hay módulos que coincidan con la búsqueda.</p>
                 </div>
 
             </div>
@@ -352,6 +355,16 @@
         </div>
     </main>
 
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificacion-estado" class="toast" role="status" aria-live="polite" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Shiftly</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+            <div class="toast-body" id="mensaje-notificacion">Vista actualizada.</div>
+        </div>
+    </div>
+
     <!-- Bootstrap 5.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -379,7 +392,58 @@
                 document.getElementById('card-empty-state').classList.remove('d-none');
                 document.getElementById('btn-state-empty').classList.add('active');
             }
+            const mensajes = { active: 'Se muestra tu recomendación activa.', completed: 'Se muestran tus rutas completadas.', empty: 'Se muestran las opciones para elegir una ruta.' };
+            document.getElementById('mensaje-notificacion').textContent = mensajes[stateName] || 'Vista actualizada.';
+            bootstrap.Toast.getOrCreateInstance(document.getElementById('notificacion-estado')).show();
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let resultado = null;
+            try { resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null'); } catch (_) { /* La vista conserva el contenido predeterminado. */ }
+            if (!resultado) {
+                const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
+                const aciertos = parametroAciertos === null ? NaN : Number(parametroAciertos);
+                const niveles = ['A1', 'A2', 'B1', 'B2', 'C1'];
+                if (Number.isInteger(aciertos) && aciertos >= 0 && aciertos <= 5) {
+                    resultado = { nivel: niveles[Math.min(aciertos, niveles.length - 1)], nombre: ['Principiante', 'Básico', 'Intermedio', 'Intermedio alto', 'Avanzado'][Math.min(aciertos, niveles.length - 1)] };
+                }
+            }
+            if (resultado && resultado.nivel) {
+                const etiquetaNivel = document.querySelector('#card-active-state .badge.bg-brand-accent.bg-opacity-50');
+                if (etiquetaNivel) etiquetaNivel.textContent = resultado.nombre || resultado.nivel;
+                const textoRazon = document.querySelector('#card-active-state .rounded-3.bg-white.bg-opacity-50 .mt-1');
+                if (textoRazon) textoRazon.textContent = `Tu diagnóstico indica un nivel ${resultado.nivel} (${resultado.nombre}). Esta lección te ayudará a seguir avanzando desde tu nivel actual.`;
+            }
+            const botonComenzar = document.querySelector('#card-active-state a[href="#start-lesson"]');
+            if (botonComenzar) botonComenzar.href = 'rutaDeAprendizaje.html';
+            const botonesEstados = [
+                ['btn-state-active', 'active'],
+                ['btn-state-completed', 'completed'],
+                ['btn-state-empty', 'empty']
+            ];
+            botonesEstados.forEach(([id, estado]) => {
+                const boton = document.getElementById(id);
+                if (boton) {
+                    boton.setAttribute('aria-controls', `card-${estado}-state`);
+                    boton.setAttribute('aria-pressed', String(boton.classList.contains('active')));
+                    boton.addEventListener('click', () => {
+                        botonesEstados.forEach(([otroId]) => document.getElementById(otroId)?.setAttribute('aria-pressed', String(otroId === id)));
+                    });
+                }
+            });
+            const buscador = document.getElementById('buscar-modulo');
+            const modulos = [...document.querySelectorAll('.module-item')];
+            buscador.addEventListener('input', () => {
+                const consulta = buscador.value.trim().toLocaleLowerCase('es');
+                let visibles = 0;
+                modulos.forEach((modulo) => {
+                    const coincide = modulo.dataset.search.toLocaleLowerCase('es').includes(consulta);
+                    modulo.classList.toggle('d-none', !coincide);
+                    if (coincide) visibles += 1;
+                });
+                document.getElementById('sin-resultados-modulo').classList.toggle('d-none', visibles > 0);
+            });
+        });
     </script>
 </body>
 </html>
