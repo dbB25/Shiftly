@@ -156,6 +156,25 @@
         </div>
     </main>
 
+    <!-- VENTANA EMERGENTE (MODAL) DE BOOTSTRAP -->
+    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: rgba(82, 21, 78, 0.1); color: #52154E; font-size: 28px;">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <h5 class="modal-title fw-bold mb-2" id="modalConfirmacionLabel" style="color: #111344;">¡Mensaje Enviado!</h5>
+                    <p class="text-muted mb-4">Se ha enviado tu mensaje correctamente.</p>
+                    <button type="button" class="btn text-white rounded-pill px-4 py-2 fw-semibold" style="background-color: #52154E;" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="bg-white border-top py-4 mt-auto text-center">
         <div class="container-xl d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
@@ -171,50 +190,20 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- INTERACTIVIDAD Y LÓGICA DE CONTACTO -->
+    <!-- Script para abrir la ventana emergente al enviar -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const formContacto = document.getElementById("form-contacto");
-            const inputNombre = document.getElementById("nombre");
-            const inputCorreo = document.getElementById("correo");
-            const inputMensaje = document.getElementById("mensaje");
-            const btnEnviar = document.getElementById("btn-enviar");
-            const alertContainer = document.getElementById("alert-container");
+        document.getElementById('form-contacto').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            // Instanciar y mostrar el modal de Bootstrap
+            const modalElement = document.getElementById('modalConfirmacion');
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
 
-            function mostrarAlerta(mensajeTexto, tipo) {
-                alertContainer.innerHTML = `
-                    <div class="alert alert-${tipo} alert-dismissible fade show mb-3" role="alert">
-                        ${mensajeTexto}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                `;
-            }
-
-            formContacto.addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                const texto = inputMensaje.value.trim();
-
-                if (!texto) {
-                    mostrarAlerta("Por favor, escribe un mensaje antes de enviar.", "warning");
-                    return;
-                }
-
-                btnEnviar.disabled = true;
-                btnEnviar.innerHTML = `Enviando... <span class="spinner-border spinner-border-sm ms-1"></span>`;
-
-                setTimeout(() => {
-                    btnEnviar.disabled = false;
-                    btnEnviar.innerHTML = `Enviar Mensaje <i class="bi bi-send ms-1"></i>`;
-                    inputNombre.value = "";
-                    inputCorreo.value = "";
-                    inputMensaje.value = "";
-                    mostrarAlerta("¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.", "success");
-                }, 1200);
-            });
+            // Limpiar los campos del formulario
+            this.reset();
         });
     </script>
-
 </body>
 
 </html>

@@ -3,351 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiftly - Selección de áreas</title>
-
+    <title>Shiftly - Plataforma Educativa de Inglés Técnico</title>
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
-
-    <style>
-        :root {
-            --bg-color: #e8ebf8;
-            --card-bg: #f4efea;
-            --primary-purple: #4a154b;
-            --border-purple: #4a154b;
-            --text-dark: #1d1c1d;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            font-family: system-ui, -apple-system, sans-serif;
-            color: var(--text-dark);
-        }
-
-        /* Navbar con Logotipo */
-        .navbar-custom {
-            background-color: #ffffff;
-            padding: 0.8rem 2rem;
-        }
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .navbar-logo {
-            width: 42px;
-            height: 42px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-        .navbar-brand-custom {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #000;
-            letter-spacing: 0.5px;
-            margin: 0;
-        }
-        .nav-link-custom {
-            color: #2b2b2b;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-left: 1.5rem;
-            transition: color 0.2s;
-        }
-        .nav-link-custom:hover {
-            color: var(--primary-purple);
-        }
-
-        /* Hero Header Centrado */
-        .subtitle-tag {
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            color: #4a4a4a;
-            margin-bottom: 0.5rem;
-        }
-        .main-title {
-            font-family: 'Georgia', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #0d0e15;
-            margin-bottom: 0.75rem;
-        }
-        .description-text {
-            color: #4a4a4a;
-            max-width: 650px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        /* Tarjetas de Áreas */
-        .cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .area-card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 1.5rem 1.2rem;
-            width: 210px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            border: 2px solid transparent;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-
-        .area-card.seleccionada {
-            border-color: var(--border-purple);
-            background-color: #f7f3f0;
-        }
-
-        /* Icono SVG dentro de caja */
-        .icon-box {
-            width: 50px;
-            height: 38px;
-            border: 1.5px solid var(--primary-purple);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            color: var(--primary-purple);
-        }
-
-        /* Badge Check cuando está seleccionada */
-        .check-badge {
-            display: none;
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 26px;
-            height: 26px;
-            background-color: var(--primary-purple);
-            color: #fff;
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .area-card.seleccionada .check-badge {
-            display: flex;
-        }
-
-        .area-title {
-            font-family: 'Georgia', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #111;
-        }
-        .area-desc {
-            font-size: 0.85rem;
-            color: #4a4a4a;
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        /* Botón Seleccionar */
-        .btn-select {
-            background-color: var(--primary-purple);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 0.4rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
-            width: 100%;
-        }
-        .btn-select:hover {
-            opacity: 0.9;
-            color: white;
-        }
-
-        /* Botón Continuar Centrado Abajo */
-        .btn-continue {
-            background-color: var(--primary-purple);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 0.75rem 2.5rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(74, 21, 75, 0.2);
-            transition: transform 0.1s ease;
-        }
-        .btn-continue:active {
-            transform: scale(0.98);
-        }
-
-        /* Footer */
-        .footer-custom {
-            margin-top: 4rem;
-            padding: 1.5rem 2rem;
-            font-size: 0.9rem;
-            color: #333;
-        }
-        .footer-links a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
-        .social-icons svg {
-            width: 18px;
-            height: 18px;
-            fill: #333;
-            margin-left: 0.75rem;
-        }
-    </style>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/menu.css">
 </head>
 
-<body>
-    <!-- Header Navegación con Logotipo Integrado -->
-    <header class="navbar-custom d-flex justify-content-between align-items-center shadow-sm">
-        <a href="index.html" class="brand-container">
-           <img src="../../img_logo/logotipo interfaz.pfd" alt="SHIFT Logo" class="navbar-logo">
-            <span class="navbar-brand-custom">SHIFT</span>
-        </a>
+<body class="d-flex flex-column min-vh-100">
 
-        <nav class="d-flex align-items-center">
-            <a href="index.html" class="nav-link-custom">Inicio</a>
-            <a href="presentacion.html" class="nav-link-custom">Presentación</a>
-            <a href="servicios.html" class="nav-link-custom">Servicios</a>
-            <a href="nosotros.html" class="nav-link-custom">Nosotros</a>
-            <a href="contacto.html" class="nav-link-custom">Contacto</a>
-            <a href="perfil.html" class="nav-link-custom">Mi perfil</a>
-            <a href="login.html" class="nav-link-custom fw-semibold">Login</a>
-        </nav>
-    </header>
+    <!-- BANNER DE PRESENTACIÓN DE PROTOTIPO -->
+    <div class="notice-banner py-2 px-3 text-center d-flex align-items-center justify-content-center gap-2 shadow-sm">
+        <span class="badge bg-white text-dark text-uppercase px-2 py-1 fw-bold">Plataforma SHIFT</span>
+        <span>Aprende inglés técnico diseñado para potenciar tu carrera profesional.</span>
+    </div>
 
-    <main class="container py-5 text-center">
-        <!-- Encabezado Centrado -->
-        <div class="subtitle-tag">SELECCIÓN DE ÁREAS</div>
-        <h1 class="main-title">¿Qué inglés quieres aprender?</h1>
-        <p class="description-text">
-            Elige un área de aprendizaje para adaptar el contenido a tus intereses y comienza tu camino con SHIFT
-        </p>
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="navbar-custom sticky-top">
+        <div class="container-xxl d-flex align-items-center justify-content-between">
+            <a href="index.html" class="brand-container">
+                <img src="logo-hamster.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100/4a154b/ffffff?text=SHIFT';" alt="Shiftly Logo" class="navbar-logo">
+                <span class="navbar-brand-custom">SHIFT</span>
+            </a>
 
-        <!-- Tarjetas de Selección en Fila -->
-        <div id="areas-aprendizaje" class="cards-container">
-            
-            <!-- Programación -->
-            <article class="area-card seleccionada">
-                <div class="check-badge">✓</div>
-                <div class="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
-                </div>
-                <h2 class="area-title">Programación</h2>
-                <p class="area-desc">Inglés enfocado en tecnología, desarrollo y mundo digital</p>
-                <button type="button" class="btn-select">Seleccionar →</button>
-            </article>
+            <!-- Navegación -->
+            <nav class="d-none d-lg-flex align-items-center">
+                <a href="#areas" class="nav-link-custom">Áreas</a>
+                <a href="#about" class="nav-link-custom">Quiénes Somos</a>
+                <a href="presentacion.html" class="nav-link-custom">Presentación</a>
+                <a href="servicios.html" class="nav-link-custom">Servicios</a>
+                <a href="#purpose" class="nav-link-custom">Propósito</a>
+                <a href="#team" class="nav-link-custom">Nuestro Equipo</a>
+                <a href="contacto.html" class="nav-link-custom">Contacto</a>
+                <a href="../dashboard/dashboard.html" class="btn btn-purple-filled ms-3"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+                <a href="../login/login.html" class="btn btn-purple-outline ms-2">Login</a>
+            </nav>
 
-            <!-- Gastronomía -->
-            <article class="area-card">
-                <div class="check-badge">✓</div>
-                <div class="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 13.87A8 8 0 0 1 12 4a8 8 0 0 1 6 9.87M4 17h16M10 20h4"/></svg>
-                </div>
-                <h2 class="area-title">Gastronomía</h2>
-                <p class="area-desc">Aprende vocabulario, expresiones y situaciones del mundo culinario</p>
-                <button type="button" class="btn-select">Seleccionar →</button>
-            </article>
-
-            <!-- Turismo -->
-            <article class="area-card">
-                <div class="check-badge">✓</div>
-                <div class="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3.5c-.5-.5-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.8-.2-1.6.1-2.1.7l-.6.6 6 4-3.5 3.5-2.4-.8-.9.9 3 2.1 2.1 3 .9-.9-.8-2.4 3.5-3.5 4 6 .6-.6c.6-.5.9-1.3.7-2.1z"/></svg>
-                </div>
-                <h2 class="area-title">Turismo</h2>
-                <p class="area-desc">Inglés para viajes, hoteles, atención al cliente y experiencias turísticas</p>
-                <button type="button" class="btn-select">Seleccionar →</button>
-            </article>
-
-            <!-- Negocios -->
-            <article class="area-card">
-                <div class="check-badge">✓</div>
-                <div class="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                </div>
-                <h2 class="area-title">Negocios</h2>
-                <p class="area-desc">Inglés para ambientes profesionales, empresariales y comunicación laboral</p>
-                <button type="button" class="btn-select">Seleccionar →</button>
-            </article>
-
-            <!-- Inglés cotidiano -->
-            <article class="area-card">
-                <div class="check-badge">✓</div>
-                <div class="icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-                <h2 class="area-title">Inglés cotidiano</h2>
-                <p class="area-desc">Expresiones y vocabulario para situaciones diarias de la vida real</p>
-                <button type="button" class="btn-select">Seleccionar →</button>
-            </article>
-
-        </div>
-
-        <!-- Botón Continuar Centrado -->
-        <div class="mt-4">
-            <button type="button" class="btn-continue">
-                Continuar →
+            <!-- Menú hamburguesa para móvil -->
+            <button class="btn btn-sm d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+                <i class="bi bi-list fs-2 text-dark"></i>
             </button>
         </div>
+
+        <div class="collapse d-lg-none bg-white p-3 mt-2 rounded-3 shadow-sm" id="mobileNav">
+            <div class="d-flex flex-column gap-2">
+                <a href="#areas" class="nav-link-custom mx-0">Áreas de Aprendizaje</a>
+                <a href="#about" class="nav-link-custom mx-0">Quiénes Somos</a>
+                <a href="presentacion.html" class="nav-link-custom mx-0">Presentación</a>
+                <a href="servicios.html" class="nav-link-custom mx-0">Servicios</a>
+                <a href="#purpose" class="nav-link-custom mx-0">Propósito</a>
+                <a href="#team" class="nav-link-custom mx-0">Nuestro Equipo</a>
+                <a href="contacto.html" class="nav-link-custom mx-0">Contacto</a>
+                <hr class="my-1">
+                <a href="../dashboard/dashboard.html" class="btn btn-purple-filled w-100 text-center mb-2"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+                <a href="../login/login.html" class="btn btn-purple-outline w-100 text-center">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-xxl py-4 flex-grow-1">
+
+        <!-- SECCIÓN 1: SELECCIÓN DE ÁREAS (HERO) -->
+        <section id="areas" class="py-4 text-center">
+            <div class="subtitle-tag mb-1">SELECCIÓN DE ÁREAS</div>
+            <h1 class="serif-title display-5 mb-2">¿Qué inglés quieres aprender?</h1>
+            <p class="text-muted mx-auto mb-4" style="max-width: 650px; font-size: 1.05rem;">
+                Elige un área de aprendizaje para adaptar el contenido a tus intereses profesionales y comienza tu camino con <strong>SHIFT</strong>.
+            </p>
+
+            <!-- Tarjetas de Selección en Fila -->
+            <div id="areas-aprendizaje" class="cards-container mb-4">
+                
+                <!-- Programación -->
+                <article class="area-card seleccionada" onclick="selectArea(this, 'Programación')">
+                    <div class="check-badge">✓</div>
+                    <div class="icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                    </div>
+                    <h2 class="area-title">Programación</h2>
+                    <p class="area-desc">Inglés enfocado en tecnología, desarrollo de software y entorno digital.</p>
+                    <button type="button" class="btn-select">Seleccionar →</button>
+                </article>
+
+                <!-- Gastronomía -->
+                <article class="area-card" onclick="selectArea(this, 'Gastronomía')">
+                    <div class="check-badge">✓</div>
+                    <div class="icon-box">
+                        <i class="bi bi-cup-hot fs-5"></i>
+                    </div>
+                    <h2 class="area-title">Gastronomía</h2>
+                    <p class="area-desc">Vocabulario para cocina internacional, gastronomía y servicio gastronómico.</p>
+                    <button type="button" class="btn-select">Seleccionar →</button>
+                </article>
+
+                <!-- Negocios -->
+                <article class="area-card" onclick="selectArea(this, 'Negocios')">
+                    <div class="check-badge">✓</div>
+                    <div class="icon-box">
+                        <i class="bi bi-briefcase fs-5"></i>
+                    </div>
+                    <h2 class="area-title">Negocios</h2>
+                    <p class="area-desc">Comunicación corporativa, reuniones, presentaciones y ventas globales.</p>
+                    <button type="button" class="btn-select">Seleccionar →</button>
+                </article>
+
+                <!-- Turismo -->
+                <article class="area-card" onclick="selectArea(this, 'Turismo')">
+                    <div class="check-badge">✓</div>
+                    <div class="icon-box">
+                        <i class="bi bi-globe-americas fs-5"></i>
+                    </div>
+                    <h2 class="area-title">Turismo</h2>
+                    <p class="area-desc">Atención a viajeros, hotelería, guías turísticos e interacción internacional.</p>
+                    <button type="button" class="btn-select">Seleccionar →</button>
+                </article>
+
+                <!-- Atención al Cliente -->
+                <article class="area-card" onclick="selectArea(this, 'Atención al Cliente')">
+                    <div class="check-badge">✓</div>
+                    <div class="icon-box">
+                        <i class="bi bi-headset fs-5"></i>
+                    </div>
+                    <h2 class="area-title">Atención al Cliente</h2>
+                    <p class="area-desc">Soporte, resolución de conflictos y habilidades de servicio en inglés.</p>
+                    <button type="button" class="btn-select">Seleccionar →</button>
+                </article>
+
+            </div>
+
+            <div class="text-center pt-2 mb-5">
+                <button type="button" class="btn btn-continue" onclick="confirmAreaSelection()">
+                    Continuar con <span id="selected-area-label">Programación</span> <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 2: QUIÉNES SOMOS -->
+        <section id="about" class="section-box mb-5">
+            <div class="gradient-top-bar"></div>
+            <div class="p-4 p-md-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-light border border-secondary border-opacity-25 fs-7 fw-semibold mb-3" style="color: var(--primary-purple);">
+                            <span class="pulse-dot"></span>
+                            Sobre Nuestra Plataforma
+                        </div>
+                        <h2 class="serif-title display-6 mb-3">Quiénes Somos</h2>
+                        <p class="lh-base mb-3 text-secondary" style="font-size: 1.05rem;">
+                            En <strong>Shiftly</strong>, somos una plataforma web educativa diseñada para transformar la manera en que estudiantes y profesionales aprenden inglés para el entorno laboral e internacional. Entendemos que comunicarse en un ambiente global no solo requiere gramática básica, sino el dominio de vocabulario técnico, jerga profesional y modismos corporativos clave para el día a día en la industria.
+                        </p>
+                        <p class="lh-base mb-0 text-secondary" style="font-size: 1.05rem;">
+                            A través de un enfoque dinámico y gamificado, ofrecemos módulos de aprendizaje adaptativos, pruebas de diagnóstico inicial y ejercicios interactivos que ayudan a los usuarios a superar la barrera del idioma, construir confianza y desenvolverse de forma fluida en reuniones, presentaciones y entrevistas de trabajo.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center">
+                        <div class="p-4 bg-light rounded-4 border text-center w-100 shadow-sm" style="max-width: 320px;">
+                            <div class="rounded-circle p-1 border border-2 border-purple shadow-sm mx-auto mb-3" style="width: 100px; height: 100px; background-color: var(--light-pill);">
+                                <img src="logo-hamster.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100/4a154b/ffffff?text=Mascota';" alt="Mascota Shiftly" class="w-100 h-100 rounded-circle object-fit-cover">
+                            </div>
+                            <h3 class="fw-bold fs-5 mb-1 text-dark">Aprende con Shiftly</h3>
+                            <p class="small text-muted mb-0">Inglés profesional y técnico al ritmo de tu crecimiento laboral.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 3: NUESTRO PROPÓSITO -->
+        <section id="purpose" class="mb-5 pt-3">
+            <div class="text-center mx-auto mb-4" style="max-width: 700px;">
+                <div class="subtitle-tag mb-1">NUESTRA VISIÓN</div>
+                <h2 class="serif-title fs-2 d-flex align-items-center justify-content-center gap-2">
+                    🚀 Nuestro Propósito
+                </h2>
+                <p class="text-muted mt-2" style="font-size: 1.05rem;">
+                    Impulsar el desarrollo profesional de nuestros usuarios, brindándoles las herramientas lingüísticas necesarias para acceder a mejores oportunidades laborales en el extranjero y empresas multinacionales.
+                </p>
+            </div>
+
+            <!-- Misiones y Pilares -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="section-box p-4 h-100">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold fs-5 mb-3 text-white" style="width: 48px; height: 48px; background-color: var(--primary-purple);">
+                            1
+                        </div>
+                        <h3 class="fs-5 fw-bold mb-2">Aprendizaje Contextualizado</h3>
+                        <p class="small text-secondary lh-base mb-0">
+                            Vocabulario y escenarios reales ajustados a sectores clave como tecnología, negocios, gastronomía, turismo y atención al cliente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="section-box p-4 h-100">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold fs-5 mb-3 text-white" style="width: 48px; height: 48px; background-color: var(--primary-purple);">
+                            2
+                        </div>
+                        <h3 class="fs-5 fw-bold mb-2">Evaluación Adaptativa</h3>
+                        <p class="small text-secondary lh-base mb-0">
+                            Un sistema de diagnóstico de nivel que permite a cada usuario avanzar a su propio ritmo sin perder tiempo en conceptos que ya domina.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="section-box p-4 h-100">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold fs-5 mb-3 text-white" style="width: 48px; height: 48px; background-color: var(--primary-purple);">
+                            3
+                        </div>
+                        <h3 class="fs-5 fw-bold mb-2">Experiencia Intuitiva</h3>
+                        <p class="small text-secondary lh-base mb-0">
+                            Lecciones breves, tarjetas interactivas de vocabulario y seguimiento de progreso constante para mantener la motivación diaria.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 4: NUESTRO EQUIPO -->
+        <section id="team" class="pt-4 mb-5">
+            <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 border-bottom pb-3 mb-4 border-2">
+                <div>
+                    <div class="subtitle-tag mb-1">EQUIPO SHIFTLY</div>
+                    <h2 class="serif-title fs-2 mb-1">Conoce a Nuestro Equipo</h2>
+                    <p class="small text-muted mb-0">Las personas detrás del diseño, arquitectura y desarrollo de la plataforma.</p>
+                </div>
+
+                <!-- Filtros -->
+                <div class="p-1 bg-white rounded-4 border d-inline-flex gap-1 overflow-auto shadow-sm">
+                    <button onclick="filterTeam('all')" id="filter-all" class="btn-filter active">Todos</button>
+                    <button onclick="filterTeam('lider')" id="filter-lider" class="btn-filter">Líder Técnico</button>
+                    <button onclick="filterTeam('analista')" id="filter-analista" class="btn-filter">Analista</button>
+                    <button onclick="filterTeam('frontend')" id="filter-frontend" class="btn-filter">Frontend</button>
+                    <button onclick="filterTeam('backend')" id="filter-backend" class="btn-filter">Backend</button>
+                </div>
+            </div>
+
+            <!-- Grilla de Tarjetas del Equipo -->
+            <div class="row g-4" id="team-grid">
+                
+                <!-- Miembro 1 -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="lider">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-1">
+                                    <span>LD</span>
+                                </div>
+                                <label for="upload-1" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-1" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-1')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Líder Técnico</span>
+                            <h3 class="fs-5 fw-bold mb-1">Luis David Balandrano Delgado</h3>
+                            <p class="small text-muted mb-3">Coordinación de arquitectura, planificación técnica y gestión de proyectos.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">Liderazgo</span>
+                                <span class="badge bg-light text-dark border fw-normal">Arquitectura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 2 -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="analista">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-2">
+                                    <span>KV</span>
+                                </div>
+                                <label for="upload-2" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-2" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-2')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Analista</span>
+                            <h3 class="fs-5 fw-bold mb-1">Keydhy Marelo Villa Aldana</h3>
+                            <p class="small text-muted mb-3">Análisis de requerimientos, diseño de flujos e investigación de usuarios.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">Requerimientos</span>
+                                <span class="badge bg-light text-dark border fw-normal">Flujos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 3 -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="frontend">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-3">
+                                    <span>IA</span>
+                                </div>
+                                <label for="upload-3" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-3" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-3')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Frontend</span>
+                            <h3 class="fs-5 fw-bold mb-1">Isis Dayane Arellano Carrillo</h3>
+                            <p class="small text-muted mb-3">Desarrollo de interfaces interactivas, componentes de usuario y UX.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">UI/UX</span>
+                                <span class="badge bg-light text-dark border fw-normal">HTML/CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 4 -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="frontend">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-4">
+                                    <span>B</span>
+                                </div>
+                                <label for="upload-4" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-4" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-4')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Frontend</span>
+                            <h3 class="fs-5 fw-bold mb-1">Brian</h3>
+                            <p class="small text-muted mb-3">Maquetación web, responsive design e integración de vistas dinámicas.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">Bootstrap</span>
+                                <span class="badge bg-light text-dark border fw-normal">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 5 -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="backend">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-5">
+                                    <span>BE</span>
+                                </div>
+                                <label for="upload-5" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-5" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-5')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Backend</span>
+                            <h3 class="fs-5 fw-bold mb-1">Desarrollador Backend</h3>
+                            <p class="small text-muted mb-3">Gestión de bases de datos, APIs REST y lógica de negocio de la plataforma.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">Databases</span>
+                                <span class="badge bg-light text-dark border fw-normal">API REST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 6: Vaneza Lugo Ramirez -->
+                <div class="col-sm-6 col-lg-4 team-card" data-role="backend">
+                    <div class="section-box h-100">
+                        <div style="height: 6px; background-color: var(--primary-purple);"></div>
+                        <div class="p-4 d-flex flex-column align-items-center text-center">
+                            <div class="photo-upload-wrapper">
+                                <div class="photo-box" id="photo-box-6">
+                                    <span>VR</span>
+                                </div>
+                                <label for="upload-6" class="btn-upload-icon" title="Cambiar Foto">
+                                    <i class="bi bi-camera-fill"></i>
+                                </label>
+                                <input type="file" id="upload-6" class="d-none" accept="image/*" onchange="previewImage(event, 'photo-box-6')">
+                            </div>
+                            <span class="badge rounded-pill mb-2 px-3 py-1 fw-bold text-white" style="background-color: var(--primary-purple);">Backend</span>
+                            <h3 class="fs-5 fw-bold mb-1">Vaneza Lugo Ramirez</h3>
+                            <p class="small text-muted mb-3">Desarrollo de servicios backend, integración de base de datos y lógica del servidor.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-light text-dark border fw-normal">Backend</span>
+                                <span class="badge bg-light text-dark border fw-normal">Databases</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer Completo -->
-    <footer class="footer-custom d-flex justify-content-between align-items-center flex-wrap container">
-        <div>
-            En SHIFT creemos que el inglés puede llevarte más lejos
-        </div>
-        <div class="d-flex align-items-center mt-2 mt-md-0">
-            <div class="footer-links me-3">
-                <a href="#">Aviso Legal</a> |
-                <a href="#">Privacidad</a> |
-                <a href="#">Preguntas Frecuentes</a>
+    <!-- FOOTER -->
+    <footer class="footer-custom">
+        <div class="container-xxl text-center">
+            <div class="mb-3 footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="#areas">Áreas</a>
+                <a href="#about">Quiénes Somos</a>
+                <a href="presentacion.html">Presentación</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="../dashboard/dashboard.html">Dashboard</a>
+                <a href="../login/login.html">Login</a>
             </div>
-            <div class="social-icons d-flex align-items-center">
-                <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                <a href="#"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            </div>
+            <p class="small text-white-50 mb-0">© 2026 Shiftly. Todos los derechos reservados. Plataforma de aprendizaje de inglés técnico.</p>
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const cards = document.querySelectorAll(".area-card");
-        const botonContinuar = document.querySelector(".btn-continue");
-
-        let areaSeleccionada = true;
-
-        cards.forEach(card => {
-            card.addEventListener("click", () => {
-                cards.forEach(c => c.classList.remove("seleccionada"));
-                card.classList.add("seleccionada");
-                areaSeleccionada = true;
-            });
-        });
-
-        botonContinuar.addEventListener("click", () => {
-            if (!areaSeleccionada) {
-                alert("Selecciona un área de aprendizaje para continuar");
-                return;
-            }
-            window.location.href = "dashboard.html";
-        });
-    </script>
+    <script src="../../JS/index.js"></script>
 </body>
 </html>
