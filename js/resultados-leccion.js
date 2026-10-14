@@ -1,3 +1,6 @@
+// JUSTIFICACIÓN DE SELECTORES:
+// Usamos getElementById para modificar el contador y el contenido del modal.
+// Usamos querySelector para seleccionar el elemento modal antes de instanciarlo.
 const contadorPuntaje = document.getElementById('contadorPuntaje');
 const modalElemento = document.getElementById('modalDetalles');
 const modalTitulo = document.getElementById('modalTitulo');

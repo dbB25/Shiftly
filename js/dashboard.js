@@ -1,3 +1,6 @@
+// JUSTIFICACIÓN DE SELECTORES:
+// Usamos getElementById por rendimiento para obtener elementos únicos del formulario.
+// Usamos querySelector para instanciar el componente Toast de Bootstrap por su ID.
 const inputNombre = document.getElementById('nombreUsuario');
 const inputCorreo = document.getElementById('correoUsuario');
 const formularioPerfil = document.getElementById('formPerfil');

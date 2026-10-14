@@ -1,3 +1,6 @@
+// JUSTIFICACIÓN DE SELECTORES:
+// Usamos getElementById para acceder rápidamente al input de búsqueda y la barra.
+// Usamos querySelectorAll para seleccionar todas las tarjetas que se filtran en tiempo real.
 const buscador = document.getElementById('buscadorLecciones');
 const tarjetas = document.querySelectorAll('.tarjeta-modulo');
 const contenedor = document.getElementById('contenedorTarjetas');
