@@ -1771,7 +1771,7 @@ body {
 .team-card:hover {
   transform: translateY(-4px);
 }
-<<<<<<< HEAD
+
 .seleccion-areas {
     padding: 60px 0;
 }
@@ -1786,7 +1786,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-=======
+
 
 /* ==========================================================================
    INTERFAZ: CAMBIAR CONTRASEÑA (cambiar-password.html)
@@ -1857,5 +1857,5 @@ body {
 
 #btnCrearPassword:active {
     transform: scale(0.98);
->>>>>>> origin/main
+}
 }
