@@ -70,6 +70,13 @@ Shiftly/
 │
 ├── img_log/
 │   └── logotipo interfaz.svg     # Logotipo oficial de la aplicación
+
+│
+├── img/                          # Capturas de las interfaces
+│   ├── ruta-aprendizaje-por-areas.png
+│   ├── ruta-aprendizaje-recomendacion.png
+│   ├── resultados-diagnostico.png
+│   └── resultados-leccion.png
 │
 ├── index.html                    # Selección de área de aprendizaje
 ├── login.html                    # Formulario de inicio de sesión
@@ -89,3 +96,14 @@ Shiftly/
 ├── style.css                     # Hoja de estilos global y variables del proyecto
 ├── Style de ejercicios.css      # Estilos dedicados al módulo de ejercicios
 └── README.md                     # Documentación del proyecto
+---
+
+## 🖼️ Capturas de la interfaz
+
+Las capturas disponibles de las interfaces se guardan en `img/`:
+
+- **Ruta de aprendizaje por áreas:** ![Ruta de aprendizaje por áreas](img/ruta-aprendizaje-por-areas.png)
+- **Ruta de aprendizaje con recomendación:** ![Ruta de aprendizaje con recomendación](img/ruta-aprendizaje-recomendacion.png)
+- **Resultados del diagnóstico:** ![Resultados del diagnóstico](img/resultados-diagnostico.png)
+- **Resultados de la lección:** ![Resultados de la lección](img/resultados-leccion.png)
+
