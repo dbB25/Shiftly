@@ -89,3 +89,35 @@ Shiftly/
 ├── style.css                     # Hoja de estilos global y variables del proyecto
 ├── Style de ejercicios.css      # Estilos dedicados al módulo de ejercicios
 └── README.md                     # Documentación del proyecto
+```
+
+## Evidencias de interfaz
+
+1.- Panel del Usuario
+
+El panel del usuario permite acceder de manera rápida a las principales funcionalidades de la plataforma Shiftly. La interfaz cuenta con un menú de navegación, accesos directos a los módulos de aprendizaje y resultados, y un formulario para editar los datos del perfil del usuario.
+
+2.- Test de Diagnóstico de Inglés
+
+La interfaz del test de diagnóstico permite a los usuarios evaluar su nivel actual de inglés mediante una serie de preguntas de opción múltiple. A partir de las respuestas, la plataforma busca orientar al usuario hacia recursos y recomendaciones de aprendizaje adecuados a sus necesidades.
+
+
+3.- Biblioteca y Repaso Técnico
+
+La interfaz de Biblioteca y Repaso Técnico permite a los usuarios explorar y consultar vocabulario relacionado con diferentes sectores profesionales. Cuenta con un buscador para localizar conceptos o lecciones específicas, así como filtros por área de conocimiento.
+
+4.- Panel de Ruta de Aprendizaje y Recomendaciones
+
+Esta interfaz presenta un panel de seguimiento del aprendizaje que permite al usuario consultar la siguiente lección recomendada, revisar sus módulos recientes y visualizar su progreso dentro de la plataforma Shiftly.
+
+5.- Resultados del Diagnóstico de Inglés
+
+Esta interfaz presenta los resultados obtenidos al finalizar el test de diagnóstico de inglés. Muestra el nivel estimado del usuario, una descripción de sus conocimientos y una recomendación general para continuar mejorando sus habilidades lingüísticas.
+
+6.- Resultados de la Lección
+
+Esta interfaz permite al usuario consultar la puntuación obtenida después de completar una lección y acceder al detalle de sus resultados en diferentes sectores profesionales.
+
+7.- Ruta de Aprendizaje
+
+Esta interfaz permite al usuario visualizar las áreas profesionales disponibles para estudiar y llevar un seguimiento de su progreso dentro de la plataforma Shiftly. Cada área cuenta con una descripción de los contenidos que se pueden aprender y una opción para marcarla como completada.
