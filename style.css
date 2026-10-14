@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
 
 :root {
     --color-primario: #111344;
@@ -9,33 +9,72 @@
 }
 
 body {
-    background-color: var(--color-fondo);
+    background-color: var(--color-fondo) !important;
     font-family: 'Poppins', sans-serif;
     color: var(--color-primario);
 }
 
-h1, h2, h3, .font-serif {
+h1, h2, h3, h4, .navbar-brand {
     font-family: 'Playfair Display', serif;
+    color: var(--color-primario);
 }
 
-.badge-shift {
-    background-color: var(--color-secundario);
-    color: #ffffff;
+.navbar-custom {
+    background-color: var(--color-primario) !important;
+}
+
+.card {
+    background-color: var(--color-superficie) !important;
+    border: 1px solid rgba(17, 19, 68, 0.1);
+    border-radius: 12px;
+}
+
+.btn-primary, .btn-success {
+    background-color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+    color: #ffffff !important;
+    font-weight: 500;
     border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 0.85rem;
 }
 
-.card-vocabulario {
-    background-color: var(--color-superficie);
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+.btn-primary:hover, .btn-success:hover {
+    background-color: #3d0e3a !important;
+    border-color: #3d0e3a !important;
 }
 
-.caja-ejemplo {
-    background-color: #ffffff;
-    border-left: 4px solid var(--color-secundario);
-    border-radius: 8px;
-    padding: 12px 16px;
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-info {
+    color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+    background-color: transparent !important;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+.btn-outline-primary:hover, .btn-outline-secondary:hover, .btn-outline-info:hover {
+    background-color: var(--color-acento) !important;
+    color: var(--color-primario) !important;
+}
+
+.btn-completar.active {
+    background-color: var(--color-secundario) !important;
+    border-color: var(--color-secundario) !important;
+    color: #ffffff !important;
+}
+
+.progress {
+    background-color: var(--color-superficie) !important;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background-color: var(--color-secundario) !important;
+}
+
+#contadorPuntaje {
+    color: var(--color-secundario) !important;
+}
+
+.toast {
+    background-color: var(--color-secundario) !important;
+    color: #ffffff !important;
 }
