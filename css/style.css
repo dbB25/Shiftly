@@ -1771,6 +1771,7 @@ body {
 .team-card:hover {
   transform: translateY(-4px);
 }
+<<<<<<< HEAD
 .seleccion-areas {
     padding: 60px 0;
 }
@@ -1785,4 +1786,76 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+=======
+
+/* ==========================================================================
+   INTERFAZ: CAMBIAR CONTRASEÑA (cambiar-password.html)
+   Estilos específicos para la vista de actualización de contraseña
+   ========================================================================== */
+
+/* Tarjeta contenedora del formulario */
+.card {
+    background-color: #FFFFFF !important;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 1rem;
+}
+
+/* Circlulo contenedor del icono destacado */
+.card .rounded-circle {
+    background-color: #EFE9E7 !important;
+    color: #52154E !important;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.card .rounded-circle:hover {
+    transform: scale(1.05);
+}
+
+/* Campos de entrada e iconos integrados */
+.input-group .input-group-text {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1;
+}
+
+.input-group .form-control {
+    border-color: #CBD5E1;
+    font-size: 0.95rem;
+}
+
+.input-group .form-control:focus {
+    border-color: #52154E;
+    box-shadow: 0 0 0 0.2rem rgba(82, 21, 78, 0.15);
+}
+
+/* Botón alternador para mostrar/ocultar contraseña (icono ojo) */
+.toggle-pass {
+    border-color: #CBD5E1;
+    color: #64748B;
+    background-color: #F8FAFC;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toggle-pass:hover {
+    background-color: #E2E8F0;
+    color: #111344;
+    border-color: #CBD5E1;
+}
+
+/* Botón principal submit */
+#btnCrearPassword {
+    background-color: #52154E !important;
+    border-color: #52154E !important;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#btnCrearPassword:hover {
+    background-color: #3d0e3a !important;
+    border-color: #3d0e3a !important;
+}
+
+#btnCrearPassword:active {
+    transform: scale(0.98);
+>>>>>>> origin/main
 }
