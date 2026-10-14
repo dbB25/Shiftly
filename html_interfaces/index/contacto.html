@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<body style="background-color: #DAE0F2; font-family: sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column;">
+<body style="background-color: #DAE0F2; font-family: system-ui, -apple-system, sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column;">
 
     <!-- NAVBAR BLANCO CON SOMBRA -->
     <header class="bg-white shadow-sm sticky-top py-3">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="container-xl d-flex justify-content-between align-items-center">
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-decoration-none" href="index.html" style="color: #111344;">
                 <img src="img_log/logotipo interfaz.svg" alt="Logo Shiftly" width="40" height="40">
                 <span>Shiftly</span>
@@ -34,88 +34,115 @@
     </header>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="py-5 flex-grow-1">
-        <div class="container" style="max-width: 1000px;">
+    <main class="py-5 flex-grow-1 d-flex align-items-center">
+        <div class="container-xl py-2">
 
             <!-- ENCABEZADO -->
             <div class="text-center mb-5">
-                <p class="text-uppercase fw-bold small mb-1" style="color: #52154E; letter-spacing: 1.2px;">ESTAMOS PARA AYUDARTE</p>
-                <h1 class="display-5 fw-bold mb-2" style="color: #111344;">Ponte en Contacto</h1>
-                <p style="color: #111344;" class="lead">¿Tienes dudas o sugerencias? Escríbenos o visítanos directamente en nuestra ubicación.</p>
+                <span class="badge text-uppercase px-3 py-2 rounded-pill fw-bold mb-2" style="background-color: rgba(82, 21, 78, 0.1); color: #52154E; letter-spacing: 1.2px;">
+                    ESTAMOS PARA AYUDARTE
+                </span>
+                <h1 class="display-5 fw-bold mb-3" style="color: #111344;">Ponte en Contacto</h1>
+                <p style="color: #2D3748;" class="lead fs-5 max-w-600 mx-auto">
+                    ¿Tienes dudas o sugerencias? Escríbenos o visítanos directamente en nuestra ubicación.
+                </p>
             </div>
 
-            <div class="row g-4">
+            <!-- GRILLA DE CONTENIDO PRINCIPAL -->
+            <div class="row g-4 align-items-stretch">
                 
-                <!-- COLUMNA IZQUIERDA: TARJETA DE INFORMACIÓN DE CONTACTO Y FORMULARIO -->
-                <div class="col-lg-5">
-                    <div class="card border-0 shadow-sm p-4 rounded-4 h-100" style="background-color: #FFFFFF;">
-                        <h2 class="h4 fw-bold mb-4" style="color: #111344;">Información Directa</h2>
+                <!-- COLUMNA IZQUIERDA: INFORMACIÓN Y FORMULARIO -->
+                <div class="col-lg-6 col-xl-5 d-flex flex-column gap-4">
+                    
+                    <!-- Tarjeta de Información de Contacto -->
+                    <div class="card border-0 shadow-sm p-4 p-md-4 rounded-4 bg-white">
+                        <h2 class="h5 fw-bold mb-4 d-flex align-items-center gap-2" style="color: #111344;">
+                            <i class="bi bi-info-circle-fill" style="color: #52154E;"></i> Información Directa
+                        </h2>
 
-                        <!-- Nombre -->
-                        <div class="d-flex align-items-start gap-3 mb-4">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px; background-color: #EFE9E7; color: #52154E; font-size: 20px;">
-                                <i class="bi bi-person-fill"></i>
+                        <div class="d-flex flex-column gap-3">
+                            <!-- Nombre -->
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3" style="background-color: #F8F9FA;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 44px; height: 44px; background-color: #EFE9E7; color: #52154E; font-size: 18px;">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div>
+                                    <span class="text-uppercase fw-bold text-muted extra-small d-block" style="font-size: 0.75rem;">Contacto Principal</span>
+                                    <strong class="fs-6" style="color: #111344;">Luis David Balandrano Delgado</strong>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-uppercase fw-bold text-muted small d-block">Contacto Principal</span>
-                                <strong class="fs-6" style="color: #111344;">Luis David Balandrano Delgado</strong>
+
+                            <!-- Teléfono -->
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3" style="background-color: #F8F9FA;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 44px; height: 44px; background-color: #EFE9E7; color: #52154E; font-size: 18px;">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div>
+                                    <span class="text-uppercase fw-bold text-muted extra-small d-block" style="font-size: 0.75rem;">Teléfono</span>
+                                    <a href="tel:7714901816" class="text-decoration-none fw-bold fs-6" style="color: #52154E;">7714901816</a>
+                                </div>
+                            </div>
+
+                            <!-- Ubicación -->
+                            <div class="d-flex align-items-start gap-3 p-3 rounded-3" style="background-color: #F8F9FA;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 mt-1" style="width: 44px; height: 44px; background-color: #EFE9E7; color: #52154E; font-size: 18px;">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <div>
+                                    <span class="text-uppercase fw-bold text-muted extra-small d-block" style="font-size: 0.75rem;">Ubicación Institucional</span>
+                                    <span class="fw-bold d-block" style="color: #111344;">Universidad Politécnica de Pachuca</span>
+                                    <small class="text-muted d-block mt-1" style="line-height: 1.3;">Carretera Pachuca-Sahagún Km 20, Ex-Hacienda de Santa Bárbara, Zempoala, Hidalgo.</small>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Teléfono -->
-                        <div class="d-flex align-items-start gap-3 mb-4">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px; background-color: #EFE9E7; color: #52154E; font-size: 20px;">
-                                <i class="bi bi-telephone-fill"></i>
-                            </div>
-                            <div>
-                                <span class="text-uppercase fw-bold text-muted small d-block">Teléfono</span>
-                                <a href="tel:7777777777" class="text-decoration-none fw-bold fs-6" style="color: #52154E;">7777777777</a>
-                            </div>
-                        </div>
-
-                        <!-- Ubicación Institucional -->
-                        <div class="d-flex align-items-start gap-3 mb-4">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px; background-color: #EFE9E7; color: #52154E; font-size: 20px;">
-                                <i class="bi bi-geo-alt-fill"></i>
-                            </div>
-                            <div>
-                                <span class="text-uppercase fw-bold text-muted small d-block">Ubicación</span>
-                                <span class="fw-semibold d-block" style="color: #111344;">Universidad Politécnica de Pachuca</span>
-                                <small class="text-muted">Carretera Pachuca-Sahagún Km 20, Ex-Hacienda de Santa Bárbara, Zempoala, Hidalgo.</small>
-                            </div>
-                        </div>
-
-                        <hr class="my-3" style="opacity: 0.1;">
-
-                        <!-- Contenedor para Alertas Dinámicas -->
+                    <!-- Tarjeta de Formulario de Contacto -->
+                    <div class="card border-0 shadow-sm p-4 p-md-4 rounded-4 bg-white flex-grow-1">
+                        <h2 class="h5 fw-bold mb-3" style="color: #111344;">Envíanos un Mensaje</h2>
+                        
                         <div id="alert-container"></div>
 
-                        <!-- Enviar Mensaje Rápido -->
-                        <form class="mt-2" id="form-contacto">
-                            <div class="mb-3">
-                                <label for="mensaje" class="form-label fw-bold small" style="color: #111344;">Mensaje Rápido</label>
-                                <textarea id="mensaje" class="form-control bg-light" rows="3" placeholder="Escribe tu mensaje..." required></textarea>
+                        <form id="form-contacto" class="d-flex flex-column gap-3">
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label fw-semibold small mb-1" style="color: #111344;">Tu Nombre</label>
+                                    <input type="text" id="nombre" class="form-control border-1 bg-light py-2" placeholder="Ej. Juan Pérez" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="correo" class="form-label fw-semibold small mb-1" style="color: #111344;">Correo Electrónico</label>
+                                    <input type="email" id="correo" class="form-control border-1 bg-light py-2" placeholder="ejemplo@correo.com" required>
+                                </div>
                             </div>
-                            <button type="submit" id="btn-enviar" class="btn text-white rounded-pill w-100 py-2 fw-semibold" style="background-color: #52154E; border-color: #52154E;">
+
+                            <div>
+                                <label for="mensaje" class="form-label fw-semibold small mb-1" style="color: #111344;">Mensaje</label>
+                                <textarea id="mensaje" class="form-control border-1 bg-light py-2" rows="3" placeholder="Escribe tu mensaje o consulta..." required></textarea>
+                            </div>
+
+                            <button type="submit" id="btn-enviar" class="btn text-white rounded-pill w-100 py-2.5 fw-semibold mt-2 shadow-sm" style="background-color: #52154E; border: none;">
                                 Enviar Mensaje <i class="bi bi-send ms-1"></i>
                             </button>
                         </form>
-
                     </div>
+
                 </div>
 
-                <!-- COLUMNA DERECHA: GOOGLE MAPS INTERACTIVO -->
-                <div class="col-lg-7">
-                    <div class="card border-0 shadow-sm p-3 rounded-4 h-100" style="background-color: #FFFFFF;">
-                        <h2 class="h5 fw-bold mb-3 px-2" style="color: #111344;">
-                            <i class="bi bi-map-fill me-2" style="color: #52154E;"></i>Mapa de Ubicación
-                        </h2>
-                        <div class="rounded-3 overflow-hidden flex-grow-1" style="min-height: 400px;">
+                <!-- COLUMNA DERECHA: MAPA INTERACTIVO -->
+                <div class="col-lg-6 col-xl-7 d-flex">
+                    <div class="card border-0 shadow-sm p-3 p-md-4 rounded-4 bg-white w-100 d-flex flex-column">
+                        <div class="d-flex align-items-center justify-content-between mb-3 px-2">
+                            <h2 class="h5 fw-bold mb-0" style="color: #111344;">
+                                <i class="bi bi-map-fill me-2" style="color: #52154E;"></i>Mapa de Ubicación
+                            </h2>
+                            <span class="badge bg-light text-dark border">UPP Pachuca</span>
+                        </div>
+                        
+                        <div class="rounded-4 overflow-hidden flex-grow-1 position-relative" style="min-height: 450px;">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.7495966373807!2d-98.67930542477028!3d20.018967981504994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a1532e1f579d%3A0xb30f80a3ee41a18d!2sUniversidad%20Polit%C3%A9cnica%20de%20Pachuca!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx" 
-                                width="100%" 
-                                height="100%" 
-                                style="border:0; min-height: 400px;" 
+                                class="position-absolute top-0 start-0 w-100 h-100"
+                                style="border:0;" 
                                 allowfullscreen="" 
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade">
@@ -131,7 +158,7 @@
 
     <!-- FOOTER -->
     <footer class="bg-white border-top py-4 mt-auto text-center">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+        <div class="container-xl d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
             <p class="mb-0 text-muted small">&copy; 2026 Shiftly. Todos los derechos reservados.</p>
             <div class="d-flex gap-3">
                 <a href="#" class="text-muted text-decoration-none small">Privacidad</a>
@@ -144,10 +171,12 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- INTERACTVIDAD Y LOGICA DE CONTACTO -->
+    <!-- INTERACTIVIDAD Y LÓGICA DE CONTACTO -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const formContacto = document.getElementById("form-contacto");
+            const inputNombre = document.getElementById("nombre");
+            const inputCorreo = document.getElementById("correo");
             const inputMensaje = document.getElementById("mensaje");
             const btnEnviar = document.getElementById("btn-enviar");
             const alertContainer = document.getElementById("alert-container");
@@ -171,13 +200,14 @@
                     return;
                 }
 
-                // Simular envío de mensaje
                 btnEnviar.disabled = true;
                 btnEnviar.innerHTML = `Enviando... <span class="spinner-border spinner-border-sm ms-1"></span>`;
 
                 setTimeout(() => {
                     btnEnviar.disabled = false;
                     btnEnviar.innerHTML = `Enviar Mensaje <i class="bi bi-send ms-1"></i>`;
+                    inputNombre.value = "";
+                    inputCorreo.value = "";
                     inputMensaje.value = "";
                     mostrarAlerta("¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.", "success");
                 }, 1200);

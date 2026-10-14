@@ -1771,3 +1771,18 @@ body {
 .team-card:hover {
   transform: translateY(-4px);
 }
+.seleccion-areas {
+    padding: 60px 0;
+}
+#areas-aprendizaje {
+    display: flex;
+    gap: 16px;
+}
+.area {
+    padding: 24px 16px;
+    border-radius: 16px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
