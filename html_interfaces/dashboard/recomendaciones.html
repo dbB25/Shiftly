@@ -166,13 +166,13 @@
                 
                 <!-- State Selector Tabs -->
                 <div class="state-tabs-container d-inline-flex">
-                    <button id="btn-state-active" onclick="switchState('active')" class="tab-btn active">
+                    <button id="btn-state-active" data-state="active" class="tab-btn active">
                         1. Lección Disponible
                     </button>
-                    <button id="btn-state-completed" onclick="switchState('completed')" class="tab-btn">
+                    <button id="btn-state-completed" data-state="completed" class="tab-btn">
                         2. Todo Completado
                     </button>
-                    <button id="btn-state-empty" onclick="switchState('empty')" class="tab-btn">
+                    <button id="btn-state-empty" data-state="empty" class="tab-btn">
                         3. Sin Ruta Activa
                     </button>
                 </div>
@@ -368,82 +368,6 @@
     <!-- Bootstrap 5.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- INTERACTIVE STATE SWITCHER JAVASCRIPT -->
-    <script>
-        function switchState(stateName) {
-            // Hide all states
-            document.getElementById('card-active-state').classList.add('d-none');
-            document.getElementById('card-completed-state').classList.add('d-none');
-            document.getElementById('card-empty-state').classList.add('d-none');
-
-            // Reset tab styles
-            document.getElementById('btn-state-active').classList.remove('active');
-            document.getElementById('btn-state-completed').classList.remove('active');
-            document.getElementById('btn-state-empty').classList.remove('active');
-
-            // Show selected state & highlight active tab
-            if (stateName === 'active') {
-                document.getElementById('card-active-state').classList.remove('d-none');
-                document.getElementById('btn-state-active').classList.add('active');
-            } else if (stateName === 'completed') {
-                document.getElementById('card-completed-state').classList.remove('d-none');
-                document.getElementById('btn-state-completed').classList.add('active');
-            } else if (stateName === 'empty') {
-                document.getElementById('card-empty-state').classList.remove('d-none');
-                document.getElementById('btn-state-empty').classList.add('active');
-            }
-            const mensajes = { active: 'Se muestra tu recomendación activa.', completed: 'Se muestran tus rutas completadas.', empty: 'Se muestran las opciones para elegir una ruta.' };
-            document.getElementById('mensaje-notificacion').textContent = mensajes[stateName] || 'Vista actualizada.';
-            bootstrap.Toast.getOrCreateInstance(document.getElementById('notificacion-estado')).show();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            let resultado = null;
-            try { resultado = JSON.parse(localStorage.getItem('shiftlyDiagnosticoResultado') || 'null'); } catch (_) { /* La vista conserva el contenido predeterminado. */ }
-            if (!resultado) {
-                const parametroAciertos = new URLSearchParams(window.location.search).get('aciertos');
-                const aciertos = parametroAciertos === null ? NaN : Number(parametroAciertos);
-                const niveles = ['A1', 'A2', 'B1', 'B2', 'C1'];
-                if (Number.isInteger(aciertos) && aciertos >= 0 && aciertos <= 5) {
-                    resultado = { nivel: niveles[Math.min(aciertos, niveles.length - 1)], nombre: ['Principiante', 'Básico', 'Intermedio', 'Intermedio alto', 'Avanzado'][Math.min(aciertos, niveles.length - 1)] };
-                }
-            }
-            if (resultado && resultado.nivel) {
-                const etiquetaNivel = document.querySelector('#card-active-state .badge.bg-brand-accent.bg-opacity-50');
-                if (etiquetaNivel) etiquetaNivel.textContent = resultado.nombre || resultado.nivel;
-                const textoRazon = document.querySelector('#card-active-state .rounded-3.bg-white.bg-opacity-50 .mt-1');
-                if (textoRazon) textoRazon.textContent = `Tu diagnóstico indica un nivel ${resultado.nivel} (${resultado.nombre}). Esta lección te ayudará a seguir avanzando desde tu nivel actual.`;
-            }
-            const botonComenzar = document.querySelector('#card-active-state a[href="#start-lesson"]');
-            if (botonComenzar) botonComenzar.href = 'rutaDeAprendizaje.html';
-            const botonesEstados = [
-                ['btn-state-active', 'active'],
-                ['btn-state-completed', 'completed'],
-                ['btn-state-empty', 'empty']
-            ];
-            botonesEstados.forEach(([id, estado]) => {
-                const boton = document.getElementById(id);
-                if (boton) {
-                    boton.setAttribute('aria-controls', `card-${estado}-state`);
-                    boton.setAttribute('aria-pressed', String(boton.classList.contains('active')));
-                    boton.addEventListener('click', () => {
-                        botonesEstados.forEach(([otroId]) => document.getElementById(otroId)?.setAttribute('aria-pressed', String(otroId === id)));
-                    });
-                }
-            });
-            const buscador = document.getElementById('buscar-modulo');
-            const modulos = [...document.querySelectorAll('.module-item')];
-            buscador.addEventListener('input', () => {
-                const consulta = buscador.value.trim().toLocaleLowerCase('es');
-                let visibles = 0;
-                modulos.forEach((modulo) => {
-                    const coincide = modulo.dataset.search.toLocaleLowerCase('es').includes(consulta);
-                    modulo.classList.toggle('d-none', !coincide);
-                    if (coincide) visibles += 1;
-                });
-                document.getElementById('sin-resultados-modulo').classList.toggle('d-none', visibles > 0);
-            });
-        });
-    </script>
+    <script src="../../JS/dashboard.js"></script>
 </body>
 </html>
