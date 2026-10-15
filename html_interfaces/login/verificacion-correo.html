@@ -19,8 +19,8 @@
     <!-- NAVBAR BLANCO CON SOMBRA -->
     <header class="bg-white shadow-sm sticky-top py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-decoration-none" href="index.html" style="color: #111344;">
-                <img src="img_log/logotipo interfaz.svg" alt="Logo Shiftly" width="40" height="40">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-3 text-decoration-none" href="../index/index.html" style="color: #111344;">
+                <img src="../../img_log/logotipo interfaz.svg" alt="Logo Shiftly" width="40" height="40">
                 <span>Shiftly</span>
             </a>
         </div>
@@ -44,21 +44,38 @@
                     <p class="small text-muted mb-0">Hemos enviado un código de verificación de 4 dígitos a tu correo electrónico registrado.</p>
                 </div>
 
-                <!-- Inputs del Código -->
-                <div class="d-flex justify-content-center gap-2 mb-4">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="8">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="4">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="1">
-                    <input type="text" maxlength="1" class="form-control text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;" value="9">
+                <!-- Barra de Progreso -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="small text-muted">Progreso del código:</span>
+                        <span id="textoProgreso" class="small fw-bold" style="color: #52154E;">0%</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div id="barraProgreso" class="progress-bar" role="progressbar" style="width: 0%; background-color: #52154E;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
 
-                <button type="button" class="btn text-white rounded-pill w-100 py-2 fw-semibold" style="background-color: #52154E; border-color: #52154E;">
-                    Verificar Cuenta
-                </button>
+                <!-- Contenedor para Mensajes Dinámicos -->
+                <div id="mensajeVerificacion" class="alert d-none text-start mb-3" role="alert"></div>
+
+                <!-- Formulario de Verificación -->
+                <form id="formularioVerificacion">
+                    <!-- Inputs del Código -->
+                    <div class="d-flex justify-content-center gap-2 mb-4">
+                        <input type="text" maxlength="1" class="form-control codigo text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;">
+                        <input type="text" maxlength="1" class="form-control codigo text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;">
+                        <input type="text" maxlength="1" class="form-control codigo text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;">
+                        <input type="text" maxlength="1" class="form-control codigo text-center fw-bold fs-3 rounded-3" style="width: 55px; height: 60px; border: 2px solid #CBD5E1;">
+                    </div>
+
+                    <button type="submit" class="btn text-white rounded-pill w-100 py-2 fw-semibold" style="background-color: #52154E; border-color: #52154E;">
+                        Verificar Cuenta
+                    </button>
+                </form>
 
                 <!-- Reenviar Código -->
                 <div class="mt-4 pt-3 border-top">
-                    <p class="small text-muted mb-0">¿No recibiste el correo? <a href="#" class="fw-bold text-decoration-none" style="color: #52154E;">Reenviar código</a></p>
+                    <p class="small text-muted mb-0">¿No recibiste el correo? <a href="#" id="reenviarCodigo" class="fw-bold text-decoration-none" style="color: #52154E;">Reenviar código</a></p>
                 </div>
 
             </div>
@@ -70,8 +87,30 @@
     <footer class="bg-white border-top py-3 mt-auto text-center">
         <p class="mb-0 text-muted small">&copy; 2026 Shiftly. Todos los derechos reservados.</p>
     </footer>
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script de redirección directa -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const formulario = document.getElementById("formularioVerificacion");
+            
+            if (formulario) {
+                formulario.addEventListener("submit", (evento) => {
+                    evento.preventDefault();
+                    window.location.href = "new-password.html";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script Lógico de Autenticación -->
+    <script src="../../js/verificacion-correo.js"></script>
 </body>
 
 </html>
