@@ -1,0 +1,108 @@
+/* ==========================================
+   VARIABLES DE COLOR Y TEMA - SHIFTLY
+   ========================================== */
+:root {
+    --color-principal: #52154E;
+    --color-secundario: #111344;
+    --color-fondo: #DAE0F2;
+    --color-blanco: #FFFFFF;
+    --color-texto: #2D3748;
+    --color-borde: #CBD5E1;
+}
+
+/* Base de la vista del perfil */
+body {
+    background-color: var(--color-fondo);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-texto);
+}
+
+/* Navbar personalizado */
+.navbar-brand {
+    color: var(--color-secundario) !important;
+}
+
+.nav-link-custom {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+    color: var(--color-principal);
+}
+
+/* Avatar del Usuario */
+.avatar-perfil-contenedor {
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-principal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-blanco);
+    font-size: 2.5rem;
+    box-shadow: 0 4px 10px rgba(82, 21, 78, 0.15);
+}
+
+/* Badges y Etiquetas */
+.etiqueta-resultado {
+    background-color: rgba(82, 21, 78, 0.1);
+    color: var(--color-principal);
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Personalización de Inputs y Selects */
+.form-control,
+.form-select {
+    border-color: var(--color-borde);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 0.25rem rgba(82, 21, 78, 0.15);
+}
+
+.input-group-text {
+    border-color: var(--color-borde);
+    background-color: #F8F9FA;
+}
+
+/* Estilos de Botones */
+.btn-guardar-perfil {
+    background-color: var(--color-principal);
+    border: none;
+    color: var(--color-blanco);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-guardar-perfil:hover {
+    background-color: #3b0e38;
+    color: var(--color-blanco);
+}
+
+.btn-guardar-perfil:active {
+    transform: scale(0.98);
+}
+
+.btn-descartar-perfil {
+    border-color: var(--color-borde);
+    color: var(--color-texto);
+}
+
+.btn-descartar-perfil:hover {
+    background-color: #E2E8F0;
+    color: var(--color-secundario);
+}
